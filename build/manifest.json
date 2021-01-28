@@ -1,10 +1,10 @@
 {
-  "id": "obsidian-markdown-wysiwyg-editor",
-  "name": "Markdown WYSIWYG Editor",
-  "version": "0.1.0",
+  "id": "obsidian-markdown-editor",
+  "name": "Markdown Editor",
+  "version": "0.1.1",
   "minAppVersion": "0.10.9",
-  "description": "This Plugin provides a simple WYSIWYG Editor for Markdown and in addition a command line interface. The command line interface facilitate a faster workflow.",
+  "description": "This Plugin provides a simple Editor for Markdown and in addition a command line interface. The command line interface facilitate a faster workflow.",
   "author": "Reocin",
-  "authorUrl": "https://github.com/Reocin/obsidian-markdown-wysiwyg-editor-plugin",
+  "authorUrl": "https://github.com/Reocin/obsidian-markdown-editor-plugin",
   "isDesktopOnly": false
 }

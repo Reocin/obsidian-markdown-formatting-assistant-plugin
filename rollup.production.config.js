@@ -22,7 +22,6 @@ export default {
         { src: 'styles.css', dest: exportFolder },
         { src: 'manifest.json', dest: exportFolder },
         { src: 'versions.json', dest: exportFolder },
-        { src: 'README.md', dest: exportFolder },
       ],
     }),
   ],

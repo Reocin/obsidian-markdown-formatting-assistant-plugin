@@ -1,8 +1,8 @@
 {
-  "name": "obsidian-markdown-wysiwyg-editor",
+  "name": "obsidian-markdown-editor",
   "version": "0.1.0",
   "description": "This plugin improves the writing of MarkDown files",
-  "homepage": "https://github.com/Reocin/obsidian-markdown-wysiwyg-editor-plugin",
+  "homepage": "https://github.com/Reocin/obsidian-markdown-editor-plugin",
   "main": "main.js",
   "scripts": {
     "dev": "rollup --config rollup.config.js -w && openObsidian",

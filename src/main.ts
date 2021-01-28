@@ -32,7 +32,7 @@ export default class MarkdownAutocompletePlugin extends Plugin {
   private keyUpFunction: (cm: CodeMirror.Editor, event: KeyboardEvent) => {};
 
   async onload() {
-    console.log('loading obsidian-markdown-wysiwyg-editor plugin');
+    console.log('loading obsidian-markdown-editor plugin');
 
     await this.loadSettings();
     addIcons();
@@ -42,7 +42,7 @@ export default class MarkdownAutocompletePlugin extends Plugin {
       return this.sidePanelControlView;
     });
 
-    this.addRibbonIcon('viewIcon', 'Open Markdown WYSIWYG Editor', () => {
+    this.addRibbonIcon('viewIcon', 'Open Markdown Editor', () => {
       this.toggleSidePanelControlView();
     });
 
@@ -119,7 +119,7 @@ class SettingsTab extends PluginSettingTab {
 
     containerEl.empty();
 
-    containerEl.createEl('h2', { text: 'Markdown WYSIWYG Settings' });
+    containerEl.createEl('h2', { text: 'Markdown Settings' });
 
     new Setting(containerEl)
       .setName('Trigger Char')
