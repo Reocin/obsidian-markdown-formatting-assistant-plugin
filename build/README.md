@@ -4,7 +4,7 @@
 
 > If you find a Bug or have a feature request: https://github.com/Reocin/obsidian-markdown-wysiwyg-editor-plugin/issues
 
-![](assets/Obsidian_Overview_V2.png)
+![](assets/Obsidian_Overview.png)
 
 ## Side Panel
 
