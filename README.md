@@ -21,3 +21,4 @@ With the command language the speed of the workflow can be specifically improved
 	- default: right
 	- options: right, left
 	- Defines the side of the side pane. By default the side pane will open on the right side/leaf.
+
