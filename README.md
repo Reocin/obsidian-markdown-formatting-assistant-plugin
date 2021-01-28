@@ -1,6 +1,6 @@
 # Obsidian Markdown WYSIWYG Editor
 
-> Version 0.1.0
+> Version 0.1.1
 
 > If you find a Bug or have a feature request: https://github.com/Reocin/obsidian-markdown-wysiwyg-editor-plugin/issues
 
