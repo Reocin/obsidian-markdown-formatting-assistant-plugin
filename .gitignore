@@ -1,3 +1,8 @@
+#custom
+Untitled.md
+.obsidian/
+.trash/
+
 # Intellij
 *.iml
 .idea
@@ -10,6 +15,3 @@ package-lock.json
 main.js
 *.js.map
 
-.obsidian
-.trash
-Untitled.md
