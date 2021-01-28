@@ -37,7 +37,6 @@ export class CommandListView {
     );
 
     this.keyDownHandler = (cf: CodeMirror.Editor, e: KeyboardEvent) => {
-      console.log(e.key);
       if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
         e.preventDefault();
         this.changeRowSelected(e.key === 'ArrowUp' ? -1 : 1);
@@ -121,6 +120,7 @@ export class CommandListView {
     root.id = 'CommandListViewRootWidget';
     root.classList.add('widget-background');
     root.style.display = 'inline-block';
+    root.style.zIndex = '300';
 
     const table = root.createEl('table');
     table.classList.add('command-list-view-table');

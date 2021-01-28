@@ -22,7 +22,6 @@ export class SidePanelControlView extends ItemView {
   }
 
   public load(): void {
-    console.log('load side pane');
     super.load();
     this.draw();
   }
