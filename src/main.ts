@@ -112,7 +112,7 @@ class SettingsTab extends PluginSettingTab {
 
     containerEl.empty();
 
-    containerEl.createEl('h2', { text: 'Markdown Autocomplete Settings' });
+    containerEl.createEl('h2', { text: 'Markdown WYSIWYG Settings' });
 
     new Setting(containerEl)
       .setName('Trigger Char')
