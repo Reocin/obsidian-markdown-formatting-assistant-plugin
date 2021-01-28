@@ -1,13 +1,13 @@
 {
-  "name": "obsidian-markdown-autocomplete",
-  "version": "0.0.1",
+  "name": "obsidian-markdown-wysiwyg-editor",
+  "version": "0.1.0",
   "description": "This plugin improves the writing of MarkDown files",
   "main": "main.js",
   "scripts": {
     "dev": "rollup --config rollup.config.js -w && openObsidian",
     "dev2": "nodemon --config nodemon.json",
     "openObsidian": "/usr/bin/flatpak run --branch=stable --arch=x86_64 md.obsidian.Obsidian \"$@\"",
-    "build": "rollup --config rollup.config.js"
+    "build": "rollup --config rollup.production.config.js"
   },
   "keywords": [],
   "author": "Reocin <steinegger.daniel@gmail.com>",
@@ -25,6 +25,11 @@
   },
   "repository": "git@github.com:Reocin/obsidian-markdown-autocomplete.git",
   "dependencies": {
-    "@mdi/js": "^5.9.55"
+    "@mdi/js": "^5.9.55",
+    "@rollup/plugin-json": "^4.1.0",
+    "postcss": "^8.2.4",
+    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-import-css": "^1.1.5",
+    "rollup-plugin-postcss": "^4.0.0"
   }
 }

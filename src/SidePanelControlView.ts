@@ -1,7 +1,6 @@
 import { svgToElement } from './icons';
 import { iconFormatter, formatSettings } from './formatter';
 import { ItemView, MarkdownView, Notice, TFile, WorkspaceLeaf } from 'obsidian';
-import { mdiFormatLetterMatches } from '@mdi/js';
 
 export const SidePanelControlViewType = 'side-panel-control-view';
 
@@ -23,6 +22,7 @@ export class SidePanelControlView extends ItemView {
   }
 
   public load(): void {
+    console.log('load side pane');
     super.load();
     this.draw();
   }

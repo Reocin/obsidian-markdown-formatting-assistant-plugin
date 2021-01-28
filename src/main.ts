@@ -14,14 +14,15 @@ import {
   SidePanelControlViewType,
 } from './SidePanelControlView';
 import { CommandListView } from './CommandListView';
-import { settings } from 'cluster';
 
 interface PluginSettings {
   triggerChar: string;
+  sidePaneSideLeft: Boolean;
 }
 
 const DEFAULT_SETTINGS: PluginSettings = {
   triggerChar: '\\',
+  sidePaneSideLeft: false,
 };
 
 export default class MarkdownAutocompletePlugin extends Plugin {
@@ -30,15 +31,19 @@ export default class MarkdownAutocompletePlugin extends Plugin {
   private commandListView: CommandListView;
 
   async onload() {
-    console.log('loading plugin');
+    console.log('loading obsidian-markdown-wysiwyg-editor plugin');
 
     await this.loadSettings();
     addIcons();
 
-    this.registerView(
-      SidePanelControlViewType,
-      (leaf) => (this.sidePanelControlView = new SidePanelControlView(leaf)),
-    );
+    this.registerView(SidePanelControlViewType, (leaf) => {
+      this.sidePanelControlView = new SidePanelControlView(leaf);
+      return this.sidePanelControlView;
+    });
+
+    this.addRibbonIcon('viewIcon', 'Open Markdown WYSIWYG Editor', () => {
+      this.toggleSidePanelControlView();
+    });
 
     this.addSettingTab(new SettingsTab(this.app, this));
 
@@ -64,24 +69,34 @@ export default class MarkdownAutocompletePlugin extends Plugin {
     await this.saveData(this.settings);
   }
 
-  //   private readonly toggleSidePanelControlView = async (): Promise<void> => {
-  //     const existing = this.app.workspace.getLeavesOfType(
-  //       SidePanelControlViewType,
-  //     );
-  //     if (existing.length) {
-  //       this.app.workspace.revealLeaf(existing[0]);
-  //       return;
-  //     }
+  private readonly toggleSidePanelControlView = async (): Promise<void> => {
+    // const existing = this.app.workspace.getLeavesOfType(
+    //   SidePanelControlViewType,
+    // );
 
-  //     await this.app.workspace.getLeftLeaf(false).setViewState({
-  //       type: SidePanelControlViewType,
-  //       active: false,
-  //     });
+    // if (existing.length) {
+    //   this.app.workspace.revealLeaf(existing[0]);
+    //   return;
+    // }
 
-  //     this.app.workspace.revealLeaf(
-  //       this.app.workspace.getLeavesOfType(SidePanelControlViewType)[0],
-  //     );
-  //   };
+    this.app.workspace.detachLeavesOfType(SidePanelControlViewType);
+
+    if (this.settings.sidePaneSideLeft) {
+      await this.app.workspace.getLeftLeaf(false).setViewState({
+        type: SidePanelControlViewType,
+        active: true,
+      });
+    } else {
+      await this.app.workspace.getRightLeaf(false).setViewState({
+        type: SidePanelControlViewType,
+        active: true,
+      });
+    }
+
+    this.app.workspace.revealLeaf(
+      this.app.workspace.getLeavesOfType(SidePanelControlViewType)[0],
+    );
+  };
 }
 
 class SettingsTab extends PluginSettingTab {
@@ -108,6 +123,20 @@ class SettingsTab extends PluginSettingTab {
           .setValue(this.plugin.settings.triggerChar)
           .onChange(async (value) => {
             this.plugin.settings.triggerChar = value;
+            await this.plugin.saveSettings();
+          }),
+      );
+
+    new Setting(containerEl)
+      .setName('Side Pane side')
+      .setDesc('Choose on which side the Side Pane accours. ()')
+      .addText((text) =>
+        text
+          .setPlaceholder('Enter left or right')
+          .setValue(this.plugin.settings.sidePaneSideLeft ? 'left' : 'right')
+          .onChange(async (value) => {
+            this.plugin.settings.sidePaneSideLeft =
+              value === 'left' ? true : false;
             await this.plugin.saveSettings();
           }),
       );

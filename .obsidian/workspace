@@ -4,27 +4,14 @@
     "type": "split",
     "children": [
       {
-        "id": "4c981264cda644f3",
+        "id": "d8fa4892b7ef669a",
         "type": "leaf",
-        "dimension": 66.66666666666667,
         "active": true,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Untitled.md",
+            "file": "README.md",
             "mode": "source"
-          }
-        }
-      },
-      {
-        "id": "d8fa4892b7ef669a",
-        "type": "leaf",
-        "dimension": 33.333333333333336,
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "Untitled.md",
-            "mode": "preview"
           }
         }
       }
@@ -82,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Untitled.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -92,15 +79,26 @@
             }
           },
           {
-            "id": "8dc5a1de39f9977f",
+            "id": "71051adc6d6c4a12",
             "type": "leaf",
             "state": {
-              "type": "advanced-tables-toolbar",
+              "type": "empty",
               "state": {}
             }
           },
           {
-            "id": "71051adc6d6c4a12",
+            "id": "8e41286efd82a7e5",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "1b87d65ff7745305",
             "type": "leaf",
             "state": {
               "type": "side-panel-control-view",
@@ -108,13 +106,14 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 289
+    "width": 283
   },
   "lastOpenFiles": [
+    "README.md",
     "Untitled.md",
     "node_modules/@rollup/plugin-commonjs/README.md",
     "node_modules/rollup/CHANGELOG.md",
