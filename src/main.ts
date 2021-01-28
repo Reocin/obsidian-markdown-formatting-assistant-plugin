@@ -29,6 +29,7 @@ export default class MarkdownAutocompletePlugin extends Plugin {
   settings: PluginSettings;
   private sidePanelControlView: SidePanelControlView;
   private commandListView: CommandListView;
+  private keyUpFunction: (cm: CodeMirror.Editor, event: KeyboardEvent) => {};
 
   async onload() {
     console.log('loading obsidian-markdown-wysiwyg-editor plugin');
@@ -47,19 +48,25 @@ export default class MarkdownAutocompletePlugin extends Plugin {
 
     this.addSettingTab(new SettingsTab(this.app, this));
 
+    this.keyUpFunction = (cm: CodeMirror.Editor, event: KeyboardEvent) => {
+      return CommandListView.display(
+        this.app,
+        cm,
+        event,
+        this.settings.triggerChar,
+      );
+    };
+
     this.registerCodeMirror((cm: CodeMirror.Editor) => {
-      cm.on('keyup', (cf, event: KeyboardEvent) => {
-        return CommandListView.display(
-          this.app,
-          cf,
-          event,
-          this.settings.triggerChar,
-        );
-      });
+      cm.on('keyup', this.keyUpFunction);
     });
   }
 
-  onunload() {}
+  onunload() {
+    this.app.workspace.iterateCodeMirrors((cm: CodeMirror.Editor) => {
+      cm.off('keyup', this.keyUpFunction);
+    });
+  }
 
   async loadSettings() {
     this.settings = Object.assign(DEFAULT_SETTINGS, await this.loadData());
