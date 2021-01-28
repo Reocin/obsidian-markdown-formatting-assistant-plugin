@@ -1,0 +1,18 @@
+{
+  "restartable": "rs",
+  "ignore": [
+    ".git",
+    "node_modules/",
+    "dist/",
+    "coverage/",
+    ".obsidian",
+    ".gitignore",
+    ".prettierrc"
+  ],
+  "watch": ["./", "src/"],
+  "events": {
+    "start": "rollup --config rollup.config.js; /usr/bin/flatpak run --branch=stable --arch=x86_64 md.obsidian.Obsidian \"$@\"",
+    "restart": "kill -9 $(ps aux | grep '/app/obsidian' | awk '{print $2}') || true; /usr/bin/flatpak run --branch=stable --arch=x86_64 md.obsidian.Obsidian \"$@\""
+  },
+  "ext": "js,json,ts"
+}

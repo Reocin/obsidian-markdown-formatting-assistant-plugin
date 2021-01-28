@@ -1,4 +1,8 @@
 /* Sets all the text color to red! */
-body {
-    color: red;
+nav-action-button {
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0px;
+    margin: 0px 0px 10px 0px;
+    border-radius: 4px;
 }

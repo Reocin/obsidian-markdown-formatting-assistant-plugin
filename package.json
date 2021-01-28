@@ -1,23 +1,30 @@
 {
-  "name": "obsidian-sample-plugin",
-  "version": "0.9.7",
-  "description": "This is a sample plugin for Obsidian (https://obsidian.md)",
+  "name": "obsidian-markdown-autocomplete",
+  "version": "0.0.1",
+  "description": "This plugin improves the writing of MarkDown files",
   "main": "main.js",
   "scripts": {
-    "dev": "rollup --config rollup.config.js -w",
+    "dev": "rollup --config rollup.config.js -w && openObsidian",
+    "dev2": "nodemon --config nodemon.json",
+    "openObsidian": "/usr/bin/flatpak run --branch=stable --arch=x86_64 md.obsidian.Obsidian \"$@\"",
     "build": "rollup --config rollup.config.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Reocin <steinegger.daniel@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "^6.0.0",
     "@types/node": "^14.14.2",
+    "nodemon": "^2.0.7",
     "obsidian": "https://github.com/obsidianmd/obsidian-api/tarball/master",
     "rollup": "^2.32.1",
     "tslib": "^2.0.3",
     "typescript": "^4.0.3"
+  },
+  "repository": "git@github.com:Reocin/obsidian-markdown-autocomplete.git",
+  "dependencies": {
+    "@mdi/js": "^5.9.55"
   }
 }
