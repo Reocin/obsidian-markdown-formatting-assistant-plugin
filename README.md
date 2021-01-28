@@ -1,7 +1,10 @@
 # Obsidian Markdown WYSIWYG Editor
 
-![](https://raw.githubusercontent.com/Reocin/obsidian-markdown-wysiwyg-editor-plugin/main/assets/Obsidian_Overview.png)
+> Version 0.1.0
 
+> If you find a Bug or have a feature request: https://github.com/Reocin/obsidian-markdown-wysiwyg-editor-plugin/issues
+
+![](assets/Obsidian_Overview.png)
 
 ## Side Panel
 
@@ -19,11 +22,11 @@ With the command language the speed of the workflow can be specifically improved
 ## Settings
 
 - Trigger Char
-	-  default: `\`
-	- options: any char
+
+  - default: `\`
+  - options: any char
 
 - Side Pane Side
-	- default: right
-	- options: right, left
-	- Defines the side of the side pane. By default the side pane will open on the right side/leaf.
-
+  - default: right
+  - options: right, left
+  - Defines the side of the side pane. By default the side pane will open on the right side/leaf.
