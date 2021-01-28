@@ -15,3 +15,6 @@ package-lock.json
 main.js
 *.js.map
 
+# reset git after change
+# git rm -rf --cached .
+# git add .

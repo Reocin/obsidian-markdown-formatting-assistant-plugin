@@ -5,13 +5,12 @@ import copy from 'rollup-plugin-copy';
 
 const exportFolder = 'build';
 export default {
-  input: ['src/main.ts'],
+  input: 'src/main.ts',
   output: {
     dir: exportFolder,
     sourcemap: 'inline',
     format: 'cjs',
     exports: 'default',
-    assetFileNames: ['../styles.css', './manifest.json', 'versions.json'],
   },
   external: ['obsidian'],
   plugins: [
@@ -23,6 +22,7 @@ export default {
         { src: 'styles.css', dest: exportFolder },
         { src: 'manifest.json', dest: exportFolder },
         { src: 'versions.json', dest: exportFolder },
+        { src: 'README.md', dest: exportFolder },
       ],
     }),
   ],

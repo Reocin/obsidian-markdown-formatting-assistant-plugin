@@ -128,7 +128,7 @@ class SettingsTab extends PluginSettingTab {
       );
 
     new Setting(containerEl)
-      .setName('Side Pane side')
+      .setName('Side Pane Side')
       .setDesc('Choose on which side the Side Pane accours. ()')
       .addText((text) =>
         text
