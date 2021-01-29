@@ -1,8 +1,8 @@
-# Obsidian Markdown Editor
+# Obsidian Markdown Formatting Assistant
 
 > Version 0.1.1
 
-> If you find a Bug or have a feature request: https://github.com/Reocin/obsidian-markdown-editor-plugin/issues
+> If you find a Bug or have a feature request: https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin/issues
 
 ![](assets/Obsidian_Overview.png)
 

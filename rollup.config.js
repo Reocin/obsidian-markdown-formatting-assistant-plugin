@@ -3,7 +3,8 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import copy from 'rollup-plugin-copy';
 
-const exportFolder = '.obsidian/plugins/obsidian-markdown-editor';
+const exportFolder =
+  '.obsidian/plugins/obsidian-markdown-formatting-assistant-plugin';
 export default {
   input: 'src/main.ts',
   output: {
