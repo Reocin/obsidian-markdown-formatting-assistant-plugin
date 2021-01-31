@@ -116,7 +116,7 @@ export class SidePanelControlView extends ItemView {
     button.appendChild(svgToElement('checkList'));
 
     header = navHeader.createEl('h4');
-    header.appendText('Tabels');
+    header.appendText('Tables');
     header.style.textAlign = 'center';
     header.style.marginTop = '20px';
     header.style.marginBottom = '5px';
@@ -126,7 +126,7 @@ export class SidePanelControlView extends ItemView {
     hr.style.marginBottom = '10px';
 
     const info = navHeader.createEl('p');
-    info.appendText('upcomming ...');
+    info.appendText('upcoming ...');
     info.style.textAlign = 'center';
 
     container.empty();
