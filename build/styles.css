@@ -7,6 +7,30 @@
   border-radius: 4px;
 }
 
+.nav-action-text-button {
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 5px;
+  margin: 4px;
+  border-radius: 4px;
+  text-align: center;
+  border: 1px solid;
+}
+
+.color-icon {
+  color: var(--text-muted);
+  cursor: pointer;
+  width: 16px;
+  min-width: 16px;
+  max-width: 16px;
+  height: 16px;
+  min-height: 16px;
+  max-height: 16px;
+  margin: 3px;
+  display: inline-block;
+  border-radius: 4px;
+}
+
 .command-list-view-table {
   border: 0px solid transparent !important;
 }

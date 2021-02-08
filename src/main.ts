@@ -15,14 +15,16 @@ import {
 } from './SidePanelControlView';
 import { CommandListView } from './CommandListView';
 
-interface PluginSettings {
+export interface PluginSettings {
   triggerChar: string;
   sidePaneSideLeft: Boolean;
+  savedColors: string[];
 }
 
 const DEFAULT_SETTINGS: PluginSettings = {
   triggerChar: '\\',
   sidePaneSideLeft: false,
+  savedColors: ['#ff0000'],
 };
 
 export default class MarkdownAutocompletePlugin extends Plugin {
@@ -38,7 +40,7 @@ export default class MarkdownAutocompletePlugin extends Plugin {
     addIcons();
 
     this.registerView(SidePanelControlViewType, (leaf) => {
-      this.sidePanelControlView = new SidePanelControlView(leaf);
+      this.sidePanelControlView = new SidePanelControlView(leaf, this);
       return this.sidePanelControlView;
     });
 

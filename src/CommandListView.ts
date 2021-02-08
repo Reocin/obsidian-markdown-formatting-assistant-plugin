@@ -1,8 +1,12 @@
 import { mdiSeatLegroomExtra } from '@mdi/js';
 import { App } from 'obsidian';
-import { CursorPos } from 'readline';
 import { svgToElement } from './icons';
 import { formatSettings, formatterSetting, iconFormatter } from './formatter';
+import {
+  htmlFormatter,
+  htmlFormatterSettings,
+  htmlFormatterSetting,
+} from './htmlFormatter';
 
 export class CommandListView {
   private static commandListView: CommandListView;
@@ -126,22 +130,26 @@ export class CommandListView {
     table.classList.add('command-list-view-table');
     const tbody = table.createEl('tbody');
 
-    const rowArgs = Object.values(formatSettings);
+    this.rows = [];
+    Object.values(formatSettings).map((args) => {
+      if (!this.codeString || args.des.indexOf(this.codeString) >= 0) {
+        // @ts-ignore
+        const row = this.getWidgetViewTextEditTableRow(args);
+        if (row) this.rows.push(row);
+      }
+    });
 
-    const rows = rowArgs
-      .map((args) => {
-        if (!this.codeString || args.des.indexOf(this.codeString) >= 0) {
-          // @ts-ignore
-          return this.getWidgetViewTableRow(args);
-        }
-      })
-      .filter((row) => !!row);
-
-    this.rows = rows;
+    Object.values(htmlFormatterSettings).map((args) => {
+      if (!this.codeString || args.des.indexOf(this.codeString) >= 0) {
+        // @ts-ignore
+        const row = this.getWidgetViewHtmlTableRow(args);
+        if (row) this.rows.push(row);
+      }
+    });
 
     if (this.rows.length > 0) this.setRowSelected(this.rows[0].id);
 
-    rows.slice(0, 5).forEach((row) => {
+    this.rows.slice(0, 5).forEach((row) => {
       if (row) tbody.appendChild(row);
     });
 
@@ -180,7 +188,9 @@ export class CommandListView {
     }
   }
 
-  private getWidgetViewTableRow = (item: formatterSetting): HTMLElement => {
+  private getWidgetViewTextEditTableRow = (
+    item: formatterSetting,
+  ): HTMLElement => {
     const row = document.createElement('tr');
     row.id = item.des;
 
@@ -211,6 +221,40 @@ export class CommandListView {
 
     const cell2 = row.createEl('td');
     cell2.classList.add('command-list-view-text');
+    cell2.setText(item.des);
+
+    return row;
+  };
+
+  private getWidgetViewHtmlTableRow = (
+    item: htmlFormatterSetting,
+  ): HTMLElement => {
+    const row = document.createElement('tr');
+    row.id = item.des;
+
+    row.onClickEvent(() => {
+      this.cm.getCursor();
+      this.cm.replaceRange(
+        '',
+        { line: this.cm.getCursor().line, ch: this.startIndex },
+        {
+          line: this.cm.getCursor().line,
+          ch: this.endIndex >= 0 ? this.endIndex : this.cm.getCursor().ch,
+        },
+      );
+
+      htmlFormatter(this.cm, item);
+      this.close();
+    });
+
+    const cell1 = row.createEl('td');
+    const iconDiv = cell1.createDiv();
+    // iconDiv.classList.add('command-list-view-icon');
+    iconDiv.appendText('HTML');
+
+    const cell2 = row.createEl('td');
+    cell2.classList.add('command-list-view-text');
+    cell2.style.color = '#0055F2';
     cell2.setText(item.des);
 
     return row;
