@@ -44,6 +44,8 @@ export class SidePanelControlView extends ItemView {
     const rootEl = document.createElement('div');
 
     const mainDiv = rootEl.createDiv({ cls: 'nav-header' });
+    mainDiv.style.maxWidth = '300px';
+    mainDiv.style.minWidth = '300px';
 
     // --------------
     // Text Edit Section
@@ -248,8 +250,13 @@ export class SidePanelControlView extends ItemView {
       if (!container)
         container = document.getElementById('lastSelectedColorsDiv');
       container.textContent = '';
-      R.reverse(SidePanelControlView.lastColors).forEach((color) => {
-        const colorBox = container.createDiv();
+
+      const table = container.createEl('table');
+      const tbody = table.createEl('tbody');
+      let row: HTMLElement;
+      R.reverse(SidePanelControlView.lastColors).forEach((color, index) => {
+        if (index % 10 === 0) row = tbody.createEl('tr');
+        const colorBox = row.createEl('td');
         colorBox.classList.add('color-icon');
         colorBox.style.backgroundColor = color;
 
@@ -271,8 +278,13 @@ export class SidePanelControlView extends ItemView {
       if (!container) container = document.getElementById('lastSavedColorsDiv');
 
       container.textContent = '';
-      R.reverse(this.plugin.settings.savedColors).forEach((color) => {
-        const colorBox = container.createDiv();
+      const table = container.createEl('table');
+      const tbody = table.createEl('tbody');
+      let row: HTMLElement;
+
+      R.reverse(this.plugin.settings.savedColors).forEach((color, index) => {
+        if (index % 10 === 0) row = tbody.createEl('tr');
+        const colorBox = row.createEl('td');
         colorBox.id = 'lastSavedColorsDiv' + color;
         colorBox.classList.add('color-icon');
         colorBox.style.backgroundColor = color;
@@ -417,5 +429,18 @@ export class SidePanelControlView extends ItemView {
     lastSavedColors.style.display = 'flex';
 
     drawLastSavedColorIcons(lastSavedColors);
+
+    const info = colorSection.createEl('p');
+    info.style.textAlign = 'center';
+    info.style.marginTop = '10px';
+    info.style.marginBottom = '10px';
+
+    const link = info.createEl('a');
+    link.appendText('Do you need some Help?');
+    link.style.textAlign = 'center';
+
+    link.style.fontSize = '10px';
+    link.href =
+      'https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin#color-picker';
   }
 }
