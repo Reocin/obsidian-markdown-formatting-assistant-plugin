@@ -1,9 +1,9 @@
 {
   "id": "obsidian-markdown-formatting-assistant-plugin",
   "name": "Markdown Formatting Assistant",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "minAppVersion": "0.10.9",
-  "description": "This Plugin provides a simple Editor for Markdown and in addition a command line interface. The command line interface facilitate a faster workflow.",
+  "description": "This Plugin provides a simple Editor for Markdown, HTML and Colors and in addition a command line interface. The command line interface facilitate a faster workflow.",
   "author": "Reocin",
   "authorUrl": "https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin",
   "isDesktopOnly": false

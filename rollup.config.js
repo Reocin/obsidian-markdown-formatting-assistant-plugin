@@ -24,6 +24,8 @@ export default {
     }),
     typescript(),
     nodeResolve({ browser: true }),
-    commonjs(),
+    commonjs({
+      include: 'node_modules/ramda/**',
+    }),
   ],
 };

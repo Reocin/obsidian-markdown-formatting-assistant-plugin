@@ -1,6 +1,6 @@
 {
   "name": "obsidian-markdown-formatting-assistant-plugin",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "This plugin improves the writing of MarkDown files",
   "homepage": "https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin",
   "main": "main.js",
@@ -18,6 +18,7 @@
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "^6.0.0",
     "@types/node": "^14.14.2",
+    "@types/ramda": "types/npm-ramda#dist",
     "nodemon": "^2.0.7",
     "obsidian": "https://github.com/obsidianmd/obsidian-api/tarball/master",
     "rollup": "^2.32.1",
@@ -29,6 +30,7 @@
     "@mdi/js": "^5.9.55",
     "@rollup/plugin-json": "^4.1.0",
     "postcss": "^8.2.4",
+    "ramda": "^0.27.1",
     "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-import-css": "^1.1.5",
     "rollup-plugin-postcss": "^4.0.0"
