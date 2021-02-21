@@ -52,6 +52,7 @@ To delete a saved or last used color just click it with the right mouse button.
   - Defines the side of the side pane. By default the side pane will open on the right side/leaf.
 
 ## Changelog
+- added /mermaid snipplet to generate mermaid code block - allows drawing diagrams ![](assets/Mermaid.png)
 -  Vesion 0.2.0
 	-  Added support for HTML snippets in command language and in side pane.
 	-  Added a color picker

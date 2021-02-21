@@ -90,15 +90,6 @@ export const formatSettings = {
     newLine: false,
     enclose: false,
   },
-  codeInline: {
-    des: 'code_inline',
-    icon: 'codeInline',
-    symbol: '``',
-    shift: 1,
-    selectionInput: 1,
-    newLine: false,
-    enclose: false,
-  },
   codeBlock: {
     des: 'code_block',
     icon: 'codeBlock',
@@ -107,6 +98,24 @@ export const formatSettings = {
     selectionInput: 4,
     newLine: true,
     enclose: true,
+  },
+  mermaidBlock: {
+    des: 'mermaid_block',
+    icon: 'mermaidBlock',
+    symbol: '```mermaid \n```',
+    shift: 4,
+    selectionInput: 4,
+    newLine: true,
+    enclose: true,
+  },
+  codeInline: {
+    des: 'code_inline',
+    icon: 'codeInline',
+    symbol: '``',
+    shift: 1,
+    selectionInput: 1,
+    newLine: false,
+    enclose: false,
   },
   link: {
     des: 'link',
@@ -235,7 +244,7 @@ export function iconFormatter(
         editor.replaceRange(item.symbol, curserStart);
         editor.setCursor(curserStart.line, curserStart.ch + item.shift);
       }
-    } else if (['code_block'].contains(item.des)) {
+    } else if (['code_block'].contains(item.des)||['mermaid_block'].contains(item.des)) {
       if (isSelection) {
         const re = new RegExp('^(```).*(```)$', 'gs');
         const match = selection.trim().match(re);

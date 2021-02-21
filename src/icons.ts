@@ -20,6 +20,7 @@ export const icons: Record<string, string> = {
   codeInline: pathToSvg(mdiIcons.mdiCodeTags),
   codeBlock: pathToSvg(mdiIcons.mdiXml),
   link: pathToSvg(mdiIcons.mdiLinkVariant),
+  mermaidBlock: pathToSvg(mdiIcons.mdiGraph),
   fileLink: pathToSvg(mdiIcons.mdiFileLink),
   image: pathToSvg(mdiIcons.mdiImage),
   quote: pathToSvg(mdiIcons.mdiFormatIndentIncrease),
