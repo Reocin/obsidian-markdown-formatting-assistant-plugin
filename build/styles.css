@@ -16,6 +16,16 @@
   text-align: center;
   border: 1px solid;
 }
+.nav-action-text-button.is-active {
+  background-color: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+.nav-action-text-button.is-active:hover {
+  color: var(--text-on-accent);
+}
+.nav-action-text-button:hover {
+  color: var(--text-accent);
+}
 
 .color-icon {
   color: var(--text-muted);

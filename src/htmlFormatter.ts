@@ -1,3 +1,5 @@
+import { checkIfSelection } from './generalFunctions';
+
 export interface htmlFormatterSetting {
   des: string;
   text: string;
@@ -34,7 +36,7 @@ export const htmlFormatterSettings = {
   a: {
     des: '<a>',
     symbol: '<a></a>',
-    shift: 2,
+    shift: 3,
     selectionInput: 3,
   },
   p: {
@@ -92,16 +94,19 @@ export const htmlFormatterSettings = {
     shift: 4,
     selectionInput: 4,
   },
+  details: {
+    des: '<details>',
+    symbol: '<details></details>',
+    shift: 9,
+    selectionInput: 9,
+  },
+  summary: {
+    des: '<summary>',
+    symbol: '<summary></summary>',
+    shift: 9,
+    selectionInput: 9,
+  },
 };
-
-function checkIfSelection(editor: CodeMirror.Editor) {
-  const selection = editor.getSelection();
-  if (!selection || selection === '') {
-    return false;
-  } else {
-    return true;
-  }
-}
 
 export function htmlFormatter(
   editor: CodeMirror.Editor,
