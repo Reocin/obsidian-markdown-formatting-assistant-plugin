@@ -5,9 +5,11 @@ import {
   htmlFormatterSettings,
   htmlFormatterSetting,
 } from './htmlFormatter';
-import { ItemView, MarkdownView, Notice, TFile, WorkspaceLeaf } from 'obsidian';
+import { colorFormatter } from './colorFormatter';
+import { ItemView, Notice, TFile, WorkspaceLeaf } from 'obsidian';
 import * as R from 'ramda';
 import MarkdownAutocompletePlugin from './main';
+import { checkIfMarkdownSource } from './generalFunctions';
 
 export const SidePanelControlViewType = 'side-panel-control-view';
 
@@ -133,7 +135,8 @@ export class SidePanelControlView extends ItemView {
 
         const leaf = this.app.workspace.activeLeaf;
         let editor = null;
-        if (leaf.view instanceof MarkdownView) {
+        if (checkIfMarkdownSource(leaf)) {
+          // @ts-ignore
           editor = leaf.view.sourceMode.cmEditor;
           htmlFormatter(editor, formatterSetting);
         }
@@ -166,7 +169,8 @@ export class SidePanelControlView extends ItemView {
 
         const leaf = this.app.workspace.activeLeaf;
         let editor = null;
-        if (leaf.view instanceof MarkdownView) {
+        if (checkIfMarkdownSource(leaf)) {
+          // @ts-ignore
           editor = leaf.view.sourceMode.cmEditor;
           iconFormatter(editor, formatterSetting);
         }
@@ -237,12 +241,11 @@ export class SidePanelControlView extends ItemView {
     const insertColor = (color: string) => {
       const leaf = this.app.workspace.activeLeaf;
       let editor = null;
-      if (leaf.view instanceof MarkdownView) {
+      if (checkIfMarkdownSource(leaf)) {
+        // @ts-ignore
         editor = leaf.view.sourceMode.cmEditor;
+        colorFormatter(editor, color);
         editor.focus();
-        const curserStart = editor.getCursor('from');
-        editor.replaceRange(color, curserStart);
-        editor.setCursor(curserStart);
       }
     };
 
@@ -423,6 +426,14 @@ export class SidePanelControlView extends ItemView {
     const lastSavedColorsTitle = colorSection.createEl('p');
     lastSavedColorsTitle.appendText('Saved Colors:');
     lastSavedColorsTitle.style.marginBottom = '0px';
+
+    const settingsInfo = colorSection.createEl('p');
+    settingsInfo.appendText(
+      'Saved colors can be directly edited in the settings.',
+    );
+    settingsInfo.style.textAlign = 'left';
+    settingsInfo.style.fontSize = '10px';
+    settingsInfo.style.marginTop = '0px';
 
     const lastSavedColors = colorSection.createEl('div');
     lastSavedColors.id = 'lastSavedColorsDiv';

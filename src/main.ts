@@ -14,6 +14,7 @@ import {
   SidePanelControlViewType,
 } from './SidePanelControlView';
 import { CommandListView } from './CommandListView';
+import plugin from 'rollup-plugin-import-css';
 
 export interface PluginSettings {
   triggerChar: string;
@@ -46,6 +47,24 @@ export default class MarkdownAutocompletePlugin extends Plugin {
 
     this.addRibbonIcon('viewIcon', 'Open Markdown Formatting Assistant', () => {
       this.toggleSidePanelControlView();
+    });
+
+    this.addCommand({
+      id: 'open-sample-modal',
+      name: 'Open Sample Modal',
+      // callback: () => {
+      // 	console.log('Simple Callback');
+      // },
+      checkCallback: (checking: boolean) => {
+        let leaf = this.app.workspace.activeLeaf;
+        if (leaf) {
+          if (!checking) {
+            new SampleModal(this).open();
+          }
+          return true;
+        }
+        return false;
+      },
     });
 
     this.addSettingTab(new SettingsTab(this.app, this));
@@ -108,12 +127,37 @@ export default class MarkdownAutocompletePlugin extends Plugin {
   };
 }
 
+class SampleModal extends Modal {
+  plugin: MarkdownAutocompletePlugin;
+  constructor(plugin: MarkdownAutocompletePlugin) {
+    super(plugin.app);
+    this.plugin = plugin;
+  }
+
+  onOpen() {
+    let { contentEl } = this;
+    contentEl.createEl('h2').setText('Saved Colors');
+    contentEl.createDiv().innerHTML =
+      '<p>' + this.plugin.settings.savedColors.join('<br>') + '</p>';
+  }
+
+  onClose() {
+    let { contentEl } = this;
+    contentEl.empty();
+  }
+}
+
 class SettingsTab extends PluginSettingTab {
   plugin: MarkdownAutocompletePlugin;
 
   constructor(app: App, plugin: MarkdownAutocompletePlugin) {
     super(app, plugin);
     this.plugin = plugin;
+  }
+
+  close() {
+    console.log('closed');
+    super.close();
   }
 
   async display() {
@@ -151,5 +195,49 @@ class SettingsTab extends PluginSettingTab {
             await this.plugin.saveSettings();
           }),
       );
+
+    new Setting(containerEl)
+      .setName('Saved Colors')
+      .setDesc(
+        'Colors which are saved vie the color picker. The order will be also considered. Requiers a restart of obsidian.',
+      )
+      .addTextArea((text) => {
+        text.inputEl.style.minHeight = '400px';
+
+        text
+          .setValue(
+            this.plugin.settings.savedColors
+              .reverse()
+              .map((color, i) => color)
+              .join('\n'),
+          )
+          .onChange(async (value) => {
+            let colors = value.split('\n').reverse();
+            let filteredColors = colors.filter((color) => {
+              return /^#[0-9A-F]{6}$/i.test(color);
+            });
+            this.plugin.settings.savedColors = filteredColors;
+            await this.plugin.saveSettings();
+          });
+
+        text.inputEl.addEventListener('focusout', (ev) => {
+          // @ts-ignore
+          let colors = ev.target.value.split('\n').reverse();
+
+          // @ts-ignore
+          let filteredColors = colors.map((color, i) => {
+            const isHex = /^#[0-9A-F]{6}$/i.test(color);
+            if (!isHex) {
+              new Notice(
+                'The color ' +
+                  color +
+                  'on Line' +
+                  (i + 1) +
+                  " has the wrong format and wan't be saved.",
+              );
+            }
+          });
+        });
+      });
   }
 }
