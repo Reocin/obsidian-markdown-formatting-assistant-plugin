@@ -64,11 +64,13 @@ To delete a saved or last used color just click it with the right mouse button.
 
 ## Changelog
 
+- Version 0.2.2
+  - added /mermaid snipplet to generate mermaid code block - allows drawing diagrams ![](assets/Mermaid.png)
 - Version 0.2.1
   ⁻ Some Bug Fixes
-  - No input preview mode
-  - Highlighting of the html buttons when hover
-  - Replace selection when insert colors.
+    - No input preview mode
+    - Highlighting of the html buttons when hover
+    - Replace selection when insert colors.
   - Saved Colors can be added and edited in the settings.
   - New HTML Tags `<details></details>` and `<summary></summary>`
 - Vesion 0.2.0

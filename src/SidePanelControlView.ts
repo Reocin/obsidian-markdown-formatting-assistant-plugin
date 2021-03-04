@@ -210,6 +210,9 @@ export class SidePanelControlView extends ItemView {
     button = row.createDiv({ cls: 'nav-action-button' });
     addClickEvent(button, 'link');
     button.appendChild(svgToElement('link'));
+    button = row.createDiv({ cls: 'nav-action-button' });
+    addClickEvent(button, 'mermaidBlock');
+    button.appendChild(svgToElement('mermaidBlock'));
 
     button = row.createDiv({ cls: 'nav-action-button' });
     addClickEvent(button, 'internalLink');
