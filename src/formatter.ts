@@ -81,6 +81,15 @@ export const formatSettings = {
     newLine: false,
     enclose: false,
   },
+  underline: {
+    des: 'underline',
+    icon: 'underline',
+    symbol: '<u></u>',
+    shift: 3,
+    selectionInput: 3,
+    newLine: false,
+    enclose: false,
+  },
   strikethrough: {
     des: 'strikethrough',
     icon: 'strikethrough',
@@ -227,6 +236,7 @@ export function iconFormatter(
         'link',
         'internal_link',
         'image',
+        'underline',
       ].contains(item.des)
     ) {
       if (isSelection) {
@@ -244,7 +254,10 @@ export function iconFormatter(
         editor.replaceRange(item.symbol, curserStart);
         editor.setCursor(curserStart.line, curserStart.ch + item.shift);
       }
-    } else if (['code_block'].contains(item.des)||['mermaid_block'].contains(item.des)) {
+    } else if (
+      ['code_block'].contains(item.des) ||
+      ['mermaid_block'].contains(item.des)
+    ) {
       if (isSelection) {
         const re = new RegExp('^(```).*(```)$', 'gs');
         const match = selection.trim().match(re);

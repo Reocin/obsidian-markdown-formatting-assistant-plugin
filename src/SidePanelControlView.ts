@@ -5,8 +5,25 @@ import {
   htmlFormatterSettings,
   htmlFormatterSetting,
 } from './htmlFormatter';
+import {
+  greekFormatter,
+  greekLowerCaseFormatterSettings,
+  greekUpperCaseFormatterSettings,
+  greekFormatterSetting,
+} from './greekFormatter';
+import {
+  latexFormatter,
+  latexFormatterSettings,
+  latexFormatterSetting,
+} from './latexFormatter';
 import { colorFormatter } from './colorFormatter';
-import { ItemView, Notice, TFile, WorkspaceLeaf } from 'obsidian';
+import {
+  ButtonComponent,
+  ItemView,
+  Notice,
+  TFile,
+  WorkspaceLeaf,
+} from 'obsidian';
 import * as R from 'ramda';
 import MarkdownAutocompletePlugin from './main';
 import { checkIfMarkdownSource } from './generalFunctions';
@@ -100,13 +117,90 @@ export class SidePanelControlView extends ItemView {
     info.style.textAlign = 'center';
     info.style.marginTop = '10px';
     info.style.marginBottom = '10px';
-    const link = info.createEl('a');
+    let link = info.createEl('a');
     link.appendText('Do you miss a Tag? report it!');
     link.style.textAlign = 'center';
 
     link.style.fontSize = '10px';
     link.href =
       'https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin/issues';
+
+    // --------------
+    // Latex Section
+    // --------------
+    header = mainDiv.createEl('h4');
+    header.appendText('Latex');
+    header.style.textAlign = 'center';
+    header.style.marginTop = '20px';
+    header.style.marginBottom = '5px';
+
+    hr = mainDiv.createEl('hr');
+    hr.style.marginTop = '0px';
+    hr.style.marginBottom = '10px';
+
+    this.addLatexButtons(mainDiv);
+
+    info = mainDiv.createEl('p');
+    info.style.textAlign = 'center';
+    info.style.marginTop = '10px';
+    info.style.marginBottom = '10px';
+    link = info.createEl('a');
+    link.appendText('Introduction into latex mathematics');
+    link.style.textAlign = 'center';
+    link.style.fontSize = '10px';
+    link.href = 'https://en.wikibooks.org/wiki/LaTeX/Mathematics';
+
+    info = mainDiv.createEl('p');
+    info.style.textAlign = 'center';
+    info.style.marginTop = '10px';
+    info.style.marginBottom = '10px';
+    link = info.createEl('a');
+    link.appendText('Do you miss a latex function? report it!');
+    link.style.textAlign = 'center';
+
+    link.style.fontSize = '10px';
+    link.href =
+      'https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin/issues';
+
+    // --------------
+    // Greek Section
+    // --------------
+    header = mainDiv.createEl('h4');
+    header.appendText('Greek Letters');
+    header.style.textAlign = 'center';
+    header.style.marginTop = '20px';
+    header.style.marginBottom = '5px';
+
+    hr = mainDiv.createEl('hr');
+    hr.style.marginTop = '0px';
+    hr.style.marginBottom = '10px';
+
+    header = mainDiv.createEl('h5');
+    header.appendText('Lower Case');
+    header.style.textAlign = 'center';
+    header.style.marginTop = '0px';
+    header.style.marginBottom = '5px';
+
+    this.addGreekLowerCaseLetters(mainDiv);
+
+    header = mainDiv.createEl('h5');
+    header.appendText('Upper Case');
+    header.style.textAlign = 'center';
+    header.style.marginTop = '10px';
+    header.style.marginBottom = '5px';
+
+    this.addGreekUpperCaseLetters(mainDiv);
+
+    info = mainDiv.createEl('p');
+    info.style.textAlign = 'center';
+    info.style.marginTop = '10px';
+    info.style.marginBottom = '10px';
+    link = info.createEl('a');
+    link.appendText('Overview of greek letters');
+    link.style.textAlign = 'center';
+
+    link.style.fontSize = '10px';
+    link.href = 'https://en.wikipedia.org/wiki/Greek_alphabet';
 
     // --------------
     // Colors
@@ -161,6 +255,115 @@ export class SidePanelControlView extends ItemView {
     );
   }
 
+  private addLatexButtons(mainDiv: HTMLElement) {
+    const addClickEvent = (btn: HTMLElement, type: string) => {
+      btn.onClickEvent(() => {
+        // @ts-ignore
+        const formatterSetting = latexFormatterSettings[type];
+
+        const leaf = this.app.workspace.activeLeaf;
+        let editor = null;
+        if (checkIfMarkdownSource(leaf)) {
+          // @ts-ignore
+          editor = leaf.view.sourceMode.cmEditor;
+          latexFormatter(editor, formatterSetting);
+        }
+      });
+    };
+
+    const numberOfCols = 5;
+    let row: HTMLElement = null;
+
+    R.keys(latexFormatterSettings).forEach((key, index) => {
+      // @ts-ignore
+      const item = latexFormatterSettings[key];
+      if (index === 0 || item.newLine) {
+        row = mainDiv.createDiv({ cls: 'nav-buttons-container' });
+      }
+
+      let button = row.createDiv({ cls: 'nav-action-text-button' });
+      button.style.textJustify = 'center';
+      button.style.textAlign = 'center';
+
+      addClickEvent(button, key);
+
+      if (item.type === 'icon') {
+        let svg = svgToElement(item.text);
+        svg.style.display = 'inline-block';
+        svg.style.verticalAlign = 'middle';
+        button.appendChild(svg);
+      } else if (item.type === 'text') {
+        let div = document.createElement('div');
+        div.innerHTML = item.text;
+        button.appendChild(div);
+      }
+    });
+  }
+
+  private addGreekLowerCaseLetters(mainDiv: HTMLElement) {
+    const addClickEvent = (btn: HTMLElement, type: string) => {
+      btn.onClickEvent(() => {
+        // @ts-ignore
+        const formatterSetting = greekLowerCaseFormatterSettings[type];
+
+        const leaf = this.app.workspace.activeLeaf;
+        let editor = null;
+        if (checkIfMarkdownSource(leaf)) {
+          // @ts-ignore
+          editor = leaf.view.sourceMode.cmEditor;
+          greekFormatter(editor, formatterSetting);
+        }
+      });
+    };
+
+    const numberOfCols = 5;
+    let row: HTMLElement = null;
+
+    R.keys(greekLowerCaseFormatterSettings).forEach((key, index) => {
+      // @ts-ignore
+      const item = greekLowerCaseFormatterSettings[key];
+      if (index % numberOfCols === 0) {
+        row = mainDiv.createDiv({ cls: 'nav-buttons-container' });
+      }
+
+      let button = row.createDiv({ cls: 'nav-action-button' });
+      addClickEvent(button, key);
+      button.appendChild(svgToElement(item.icon));
+    });
+  }
+
+  private addGreekUpperCaseLetters(mainDiv: HTMLElement) {
+    const addClickEvent = (btn: HTMLElement, type: string) => {
+      btn.onClickEvent(() => {
+        // @ts-ignore
+        const formatterSetting = greekUpperCaseFormatterSettings[type];
+
+        const leaf = this.app.workspace.activeLeaf;
+        let editor = null;
+        if (checkIfMarkdownSource(leaf)) {
+          // @ts-ignore
+          editor = leaf.view.sourceMode.cmEditor;
+          greekFormatter(editor, formatterSetting);
+        }
+      });
+    };
+
+    const numberOfCols = 5;
+    let row: HTMLElement = null;
+
+    R.keys(greekUpperCaseFormatterSettings).forEach((key, index) => {
+      // @ts-ignore
+      const item = greekUpperCaseFormatterSettings[key];
+      if (index % numberOfCols === 0) {
+        row = mainDiv.createDiv({ cls: 'nav-buttons-container' });
+      }
+
+      let button = row.createDiv({ cls: 'nav-action-button' });
+      addClickEvent(button, key);
+      button.appendChild(svgToElement(item.icon));
+    });
+  }
+
   private addTextEditButtons(mainDiv: HTMLElement) {
     const addClickEvent = (btn: HTMLElement, type: string) => {
       btn.onClickEvent(() => {
@@ -198,6 +401,10 @@ export class SidePanelControlView extends ItemView {
     addClickEvent(button, 'strikethrough');
     button.appendChild(svgToElement('strikethrough'));
 
+    button = row.createDiv({ cls: 'nav-action-button' });
+    addClickEvent(button, 'underline');
+    button.appendChild(svgToElement('underline'));
+
     row = mainDiv.createDiv({ cls: 'nav-buttons-container' });
     button = row.createDiv({ cls: 'nav-action-button' });
     addClickEvent(button, 'codeInline');
@@ -208,11 +415,12 @@ export class SidePanelControlView extends ItemView {
     button.appendChild(svgToElement('codeBlock'));
 
     button = row.createDiv({ cls: 'nav-action-button' });
-    addClickEvent(button, 'link');
-    button.appendChild(svgToElement('link'));
-    button = row.createDiv({ cls: 'nav-action-button' });
     addClickEvent(button, 'mermaidBlock');
     button.appendChild(svgToElement('mermaidBlock'));
+
+    button = row.createDiv({ cls: 'nav-action-button' });
+    addClickEvent(button, 'link');
+    button.appendChild(svgToElement('link'));
 
     button = row.createDiv({ cls: 'nav-action-button' });
     addClickEvent(button, 'internalLink');

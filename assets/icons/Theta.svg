@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.2 (394de47547, 2021-03-26)"
+   sodipodi:docname="Theta.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="9.7052805"
+     inkscape:cy="90.13496"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1025"
+     inkscape:window-x="1920"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       aria-label="Θ"
+       id="text839"
+       style="font-size:23.5735px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;stroke-width:1.47334">
+      <path
+         d="m 7.9367942,10.451838 h 8.1264118 v 1.956784 H 7.9367942 Z M 12.01151,4.9728405 q -2.532309,0 -4.0171633,1.8877217 -1.4963647,1.8877216 -1.4963647,5.1451928 0,3.24596 1.4848542,5.133682 1.4963648,1.887721 4.0286738,1.887721 2.53231,0 4.017164,-1.887721 1.473344,-1.887722 1.473344,-5.133682 0,-3.2574712 -1.473344,-5.1451928 Q 14.54382,4.9728405 12.01151,4.9728405 Z m 0,-1.8877216 q 3.614297,0 5.77827,2.428715 2.163974,2.4172046 2.163974,6.4919211 0,4.063205 -2.163974,6.48041 -2.163973,2.428715 -5.77827,2.428715 -3.6258063,0 -5.7897799,-2.417204 -2.1754841,-2.417205 -2.1754841,-6.491921 0,-4.0747165 2.1754841,-6.5034316 Q 8.3857037,3.0851189 12.01151,3.0851189 Z"
+         style="stroke-width:1.47334"
+         id="path9" />
+    </g>
+  </g>
+</svg>

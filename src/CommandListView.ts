@@ -1,4 +1,4 @@
-import { mdiSeatLegroomExtra } from '@mdi/js';
+import * as R from 'ramda';
 import { App } from 'obsidian';
 import { svgToElement } from './icons';
 import { formatSettings, formatterSetting, iconFormatter } from './formatter';
@@ -7,6 +7,17 @@ import {
   htmlFormatterSettings,
   htmlFormatterSetting,
 } from './htmlFormatter';
+import {
+  greekFormatter,
+  greekLowerCaseFormatterSettings,
+  greekUpperCaseFormatterSettings,
+  greekFormatterSetting,
+} from './greekFormatter';
+import {
+  latexFormatter,
+  latexFormatterSettings,
+  latexFormatterSetting,
+} from './latexFormatter';
 
 export class CommandListView {
   private static commandListView: CommandListView;
@@ -87,7 +98,8 @@ export class CommandListView {
     let startIndex = line.indexOf(triggerKey);
 
     while (startIndex >= 0) {
-      const endIndex = line.indexOf(' ', startIndex);
+      const endIndex = line.split('$').join(' ').indexOf(' ', startIndex);
+
       if (curser.ch >= startIndex && (endIndex < 0 || curser.ch <= endIndex)) {
         if (this.commandListView) this.commandListView.close();
         this.commandListView = new CommandListView(
@@ -143,6 +155,30 @@ export class CommandListView {
       if (!this.codeString || args.des.indexOf(this.codeString) >= 0) {
         // @ts-ignore
         const row = this.getWidgetViewHtmlTableRow(args);
+        if (row) this.rows.push(row);
+      }
+    });
+
+    Object.values(greekLowerCaseFormatterSettings).map((args) => {
+      if (!this.codeString || args.des.indexOf(this.codeString) >= 0) {
+        // @ts-ignore
+        const row = this.getWidgetViewGreekTableRow(args);
+        if (row) this.rows.push(row);
+      }
+    });
+
+    Object.values(greekUpperCaseFormatterSettings).map((args) => {
+      if (!this.codeString || args.des.indexOf(this.codeString) >= 0) {
+        // @ts-ignore
+        const row = this.getWidgetViewGreekTableRow(args);
+        if (row) this.rows.push(row);
+      }
+    });
+
+    Object.values(latexFormatterSettings).map((args) => {
+      if (!this.codeString || args.des.indexOf(this.codeString) >= 0) {
+        // @ts-ignore
+        const row = this.getWidgetViewLatexTableRow(args);
         if (row) this.rows.push(row);
       }
     });
@@ -255,6 +291,83 @@ export class CommandListView {
     const cell2 = row.createEl('td');
     cell2.classList.add('command-list-view-text');
     cell2.style.color = '#0055F2';
+    cell2.setText(item.des);
+
+    return row;
+  };
+
+  private getWidgetViewGreekTableRow = (
+    item: greekFormatterSetting,
+  ): HTMLElement => {
+    const row = document.createElement('tr');
+    row.id = item.des;
+
+    row.onClickEvent(() => {
+      this.cm.getCursor();
+      this.cm.replaceRange(
+        '',
+        { line: this.cm.getCursor().line, ch: this.startIndex },
+        {
+          line: this.cm.getCursor().line,
+          ch: this.endIndex >= 0 ? this.endIndex : this.cm.getCursor().ch,
+        },
+      );
+
+      greekFormatter(this.cm, item);
+      this.close();
+    });
+
+    const cell1 = row.createEl('td');
+    const iconDiv = cell1.createDiv();
+    iconDiv.classList.add('command-list-view-icon');
+    iconDiv.appendChild(svgToElement(item.icon));
+
+    const cell2 = row.createEl('td');
+    cell2.classList.add('command-list-view-text');
+    cell2.style.color = '#25e712';
+    cell2.setText(item.des);
+
+    return row;
+  };
+
+  private getWidgetViewLatexTableRow = (
+    item: latexFormatterSetting,
+  ): HTMLElement => {
+    const row = document.createElement('tr');
+    row.id = item.des;
+
+    row.onClickEvent(() => {
+      this.cm.getCursor();
+      this.cm.replaceRange(
+        '',
+        { line: this.cm.getCursor().line, ch: this.startIndex },
+        {
+          line: this.cm.getCursor().line,
+          ch: this.endIndex >= 0 ? this.endIndex : this.cm.getCursor().ch,
+        },
+      );
+
+      latexFormatter(this.cm, item);
+      this.close();
+    });
+
+    const cell1 = row.createEl('td');
+    const iconDiv = cell1.createDiv();
+    iconDiv.classList.add('command-list-view-icon');
+    if (item.type === 'icon') {
+      let svg = svgToElement(item.text);
+      svg.style.display = 'inline-block';
+      svg.style.verticalAlign = 'middle';
+      iconDiv.appendChild(svg);
+    } else if (item.type === 'text') {
+      let div = document.createElement('div');
+      div.innerHTML = item.text;
+      iconDiv.appendChild(div);
+    }
+
+    const cell2 = row.createEl('td');
+    cell2.classList.add('command-list-view-text');
+    cell2.style.color = '#25e712';
     cell2.setText(item.des);
 
     return row;

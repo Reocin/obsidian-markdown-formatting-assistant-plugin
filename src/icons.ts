@@ -1,5 +1,7 @@
+import * as R from 'ramda';
 import { addIcon } from 'obsidian';
 import * as mdiIcons from '@mdi/js';
+import * as iconPaths from './iconPaths';
 
 function pathToSvg(icon: string) {
   return `
@@ -7,7 +9,22 @@ function pathToSvg(icon: string) {
         <path fill="currentColor" d="${icon}" />
     </svg>`;
 }
+
+function importIconPaths() {
+  let res = {};
+  // @ts-ignore
+  R.forEachObjIndexed((value, key, obj) => {
+    res = R.merge(res, R.map(pathToSvg, value));
+  }, iconPaths);
+  return res;
+}
+
 export const icons: Record<string, string> = {
+  ...importIconPaths(),
+
+  division: pathToSvg(mdiIcons.mdiDivision),
+  multiplication: pathToSvg(mdiIcons.mdiCircleSmall),
+
   h1: pathToSvg(mdiIcons.mdiFormatHeader1),
   h2: pathToSvg(mdiIcons.mdiFormatHeader2),
   h3: pathToSvg(mdiIcons.mdiFormatHeader3),
@@ -28,6 +45,7 @@ export const icons: Record<string, string> = {
   numberList: pathToSvg(mdiIcons.mdiFormatListNumbered),
   checkList: pathToSvg(mdiIcons.mdiFormatListBulletedSquare),
   viewIcon: pathToSvg(mdiIcons.mdiLanguageMarkdown),
+  underline: pathToSvg(mdiIcons.mdiFormatUnderline),
 };
 
 export const addIcons = (): void => {
@@ -42,6 +60,15 @@ export const addIcons = (): void => {
  * @param svgText svg image as a string
  */
 export const svgToElement = (key: string | number): HTMLElement => {
-  const parser = new DOMParser();
-  return parser.parseFromString(icons[key], 'text/xml').documentElement;
+  if (key.toString().contains('.svg')) {
+    const img = document.createElement('img');
+    img.src = key.toString();
+    img.style.width = '24px';
+    img.style.height = '24px';
+
+    return img;
+  } else {
+    const parser = new DOMParser();
+    return parser.parseFromString(icons[key], 'text/xml').documentElement;
+  }
 };

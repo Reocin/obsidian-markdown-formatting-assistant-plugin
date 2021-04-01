@@ -7,6 +7,7 @@ const exportFolder =
   '.obsidian/plugins/obsidian-markdown-formatting-assistant-plugin';
 export default {
   input: 'src/main.ts',
+
   output: {
     dir: exportFolder,
     sourcemap: 'inline',
@@ -15,6 +16,8 @@ export default {
   },
   external: ['obsidian'],
   plugins: [
+    typescript(),
+    nodeResolve({ browser: true }),
     copy({
       targets: [
         { src: 'styles.css', dest: exportFolder },
@@ -22,8 +25,6 @@ export default {
         { src: 'versions.json', dest: exportFolder },
       ],
     }),
-    typescript(),
-    nodeResolve({ browser: true }),
     commonjs({
       include: 'node_modules/ramda/**',
     }),

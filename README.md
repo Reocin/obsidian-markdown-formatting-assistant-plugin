@@ -1,6 +1,6 @@
 # Obsidian Markdown Formatting Assistant
 
-> This Plugin provides easy to use snippets for Markdown and HTML and a color picker which shows the history of last used colors. Furthermore, it is possible to save any color you want.
+> This Plugin provides easy to use snippets for Markdown, HTML and Latex and a color picker which shows the history of last used colors. Furthermore, it is possible to save any color you want.
 > Version 0.1.1
 
 > If you find a Bug or have a feature request: https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin/issues
@@ -11,7 +11,25 @@
 
 The Side Panel can be opened by the Ribbon Icon on the left side. If you changed the side of the panel in the settings, just hit this butten/icon again and it will reload on the right side.
 
+### Markdown Section
+
 ![](assets/Panel_Overview.png)
+
+### HTML Section
+
+![](assets/Panel_Overview_Html.png)
+
+### Latex Section
+
+> Latex Functions only work if they are in a latex equation section like $...$ or $$...$$.
+
+![](assets/Panel_Overview_Latex.png)
+
+### Greek Letters Section
+
+> Greek Letters only work if they are in a latex equation section like $...$ or $$...$$.
+
+![](assets/Panel_Overview_Greek_Letters.png)
 
 ## Command Language
 
@@ -64,13 +82,15 @@ To delete a saved or last used color just click it with the right mouse button.
 
 ## Changelog
 
+- Version 0.3.0
+  - added a Latex and Greek Letters section
 - Version 0.2.2
   - added /mermaid snipplet to generate mermaid code block - allows drawing diagrams ![](assets/Mermaid.png)
 - Version 0.2.1
   ⁻ Some Bug Fixes
-    - No input preview mode
-    - Highlighting of the html buttons when hover
-    - Replace selection when insert colors.
+  - No input preview mode
+  - Highlighting of the html buttons when hover
+  - Replace selection when insert colors.
   - Saved Colors can be added and edited in the settings.
   - New HTML Tags `<details></details>` and `<summary></summary>`
 - Vesion 0.2.0

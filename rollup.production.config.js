@@ -16,13 +16,15 @@ export default {
   plugins: [
     typescript(),
     nodeResolve({ browser: true }),
-    commonjs(),
     copy({
       targets: [
         { src: 'styles.css', dest: exportFolder },
         { src: 'manifest.json', dest: exportFolder },
         { src: 'versions.json', dest: exportFolder },
       ],
+    }),
+    commonjs({
+      include: 'node_modules/ramda/**',
     }),
   ],
 };

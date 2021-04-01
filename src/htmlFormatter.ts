@@ -42,8 +42,8 @@ export const htmlFormatterSettings = {
   p: {
     des: '<p>',
     symbol: '<p></p>',
-    shift: 5,
-    selectionInput: 5,
+    shift: 3,
+    selectionInput: 3,
   },
   font: {
     des: '<font>',
@@ -105,6 +105,12 @@ export const htmlFormatterSettings = {
     symbol: '<summary></summary>',
     shift: 9,
     selectionInput: 9,
+  },
+  u: {
+    des: '<u>',
+    symbol: '<u></u>',
+    shift: 3,
+    selectionInput: 3,
   },
 };
 
