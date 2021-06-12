@@ -46,6 +46,9 @@ export const icons: Record<string, string> = {
   checkList: pathToSvg(mdiIcons.mdiFormatListBulletedSquare),
   viewIcon: pathToSvg(mdiIcons.mdiLanguageMarkdown),
   underline: pathToSvg(mdiIcons.mdiFormatUnderline),
+  menu: pathToSvg(mdiIcons.mdiMenu),
+  expandArrowDown: pathToSvg(mdiIcons.mdiChevronDown),
+  expandArrowUp: pathToSvg(mdiIcons.mdiChevronUp),
 };
 
 export const addIcons = (): void => {

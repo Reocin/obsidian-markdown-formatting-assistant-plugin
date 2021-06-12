@@ -16,16 +16,39 @@ import {
 import { CommandListView } from './CommandListView';
 import plugin from 'rollup-plugin-import-css';
 
+interface RegionSetting {
+  name: string;
+  active: boolean;
+  visible: boolean;
+}
 export interface PluginSettings {
   triggerChar: string;
   sidePaneSideLeft: Boolean;
   savedColors: string[];
+  aviabileRegions: string[];
+  regionSettings: Array<RegionSetting>;
 }
 
 const DEFAULT_SETTINGS: PluginSettings = {
   triggerChar: '\\',
   sidePaneSideLeft: false,
   savedColors: ['#ff0000'],
+  aviabileRegions: [
+    'textEdit',
+    'tabels',
+    'html',
+    'latex',
+    'greekLetters',
+    'colors',
+  ],
+  regionSettings: [
+    { name: 'textEdit', active: true, visible: false },
+    { name: 'tables', active: true, visible: false },
+    { name: 'html', active: true, visible: false },
+    { name: 'latex', active: true, visible: false },
+    { name: 'greekLetters', active: true, visible: false },
+    { name: 'colors', active: true, visible: false },
+  ],
 };
 
 export default class MarkdownAutocompletePlugin extends Plugin {
@@ -195,6 +218,90 @@ class SettingsTab extends PluginSettingTab {
             await this.plugin.saveSettings();
           }),
       );
+
+    const getRegion = (name: string) => {
+      return this.plugin.settings.regionSettings.find(
+        (item) => item.name === name,
+      );
+    };
+
+    new Setting(containerEl)
+      .setName('Toggle Text Section')
+      .setDesc(
+        'Activate or deactivate the Text Editor section. (restart required)',
+      )
+      .addToggle((comp) => {
+        comp.setValue(getRegion('textEdit').active).onChange(async (e) => {
+          const region = getRegion('textEdit');
+
+          region.active = e;
+          await this.plugin.saveSettings();
+        });
+      });
+
+    new Setting(containerEl)
+      .setName('Toggle Tabels Section')
+      .setDesc(
+        'Activate or deactivate the Greek Letters section. (restart required)',
+      )
+      .addToggle((comp) => {
+        comp.setValue(getRegion('tables').active).onChange(async (e) => {
+          const region = getRegion('tables');
+
+          region.active = e;
+          await this.plugin.saveSettings();
+        });
+      });
+
+    new Setting(containerEl)
+      .setName('Toggle HTML Section')
+      .setDesc('Activate or deactivate the HTML section. (restart required)')
+      .addToggle((comp) => {
+        comp.setValue(getRegion('html').active).onChange(async (e) => {
+          const region = getRegion('html');
+
+          region.active = e;
+          await this.plugin.saveSettings();
+        });
+      });
+
+    new Setting(containerEl)
+      .setName('Toggle Colors Section')
+      .setDesc('Activate or deactivate the Colors section. (restart required)')
+      .addToggle((comp) => {
+        comp.setValue(getRegion('colors').active).onChange(async (e) => {
+          const region = getRegion('colors');
+
+          region.active = e;
+          await this.plugin.saveSettings();
+        });
+      });
+
+    new Setting(containerEl)
+      .setName('Toggle Latex Section')
+      .setDesc('Activate or deactivate the Latex section. (restart required)')
+      .addToggle((comp) => {
+        comp.setValue(getRegion('latex').active).onChange(async (e) => {
+          const region = getRegion('latex');
+
+          region.active = e;
+          await this.plugin.saveSettings();
+        });
+      });
+
+    new Setting(containerEl)
+      .setName('Toggle Greek Letters Section')
+      .setDesc(
+        'Activate or deactivate the Greek Letters section. (restart required)',
+      )
+      .addToggle((comp) => {
+        comp.setValue(getRegion('greekLetters').active).onChange(async (e) => {
+          const region = getRegion('greekLetters');
+
+          region.active = e;
+          await this.plugin.saveSettings();
+        });
+      });
 
     new Setting(containerEl)
       .setName('Saved Colors')

@@ -9,7 +9,13 @@
 
 ## Side Panel
 
-The Side Panel can be opened by the Ribbon Icon on the left side. If you changed the side of the panel in the settings, just hit this butten/icon again and it will reload on the right side.
+The Side Panel can be opened by the Ribbon Icon on the left side. If you changed the side (left or right) of the panel in the settings, just hit this butten/icon again and it will reload on the right side.
+
+### Order and expansion of the Sections
+
+It is possible to change the order of the sections according to the personal wishes. Furthermore it is possible to expand and shrink every section to keep the overview.
+
+![](assets/OrderableAndExpandableRows.gif)
 
 ### Markdown Section
 
@@ -82,6 +88,10 @@ To delete a saved or last used color just click it with the right mouse button.
 
 ## Changelog
 
+- Version 0.3.1
+  - Changeable order of the sections
+  - Expandable sections
+  - Corrected the latex `\$\$` and `\$\$\$\$` buttons as they was switched
 - Version 0.3.0
   - added a Latex and Greek Letters section
 - Version 0.2.2

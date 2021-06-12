@@ -16,7 +16,7 @@ import {
   latexFormatterSettings,
   latexFormatterSetting,
 } from './latexFormatter';
-import { colorFormatter } from './colorFormatter';
+import { colorFormatter } from '../formatters/colorFormatter';
 import {
   ButtonComponent,
   ItemView,
@@ -61,6 +61,23 @@ export class SidePanelControlView extends ItemView {
     const container = this.containerEl.children[1];
 
     const rootEl = document.createElement('div');
+    rootEl.id = 'SidePaneRootElement';
+
+    this.drawContentOfRootElement(rootEl);
+
+    container.empty();
+    container.appendChild(rootEl);
+  }
+
+  private drawContentOfRootElement(rootEl: HTMLElement = null): void {
+    if (!rootEl) rootEl = document.getElementById('SidePaneRootElement');
+    rootEl.textContent = '';
+
+    const getRegion = (name: string) => {
+      return this.plugin.settings.regionSettings.find(
+        (item) => item.name === name,
+      );
+    };
 
     const mainDiv = rootEl.createDiv({ cls: 'nav-header' });
     mainDiv.style.maxWidth = '300px';
@@ -69,156 +86,134 @@ export class SidePanelControlView extends ItemView {
     // --------------
     // Text Edit Section
     // --------------
-    let header = mainDiv.createEl('h4');
-    header.appendText('Text Edit');
-    header.style.textAlign = 'center';
-    header.style.marginTop = '10px';
-    header.style.marginBottom = '5px';
 
-    let hr = mainDiv.createEl('hr');
-    hr.style.marginTop = '0px';
-    hr.style.marginBottom = '10px';
-
-    this.addTextEditButtons(mainDiv);
+    const addTextEditSection = () => {
+      let content = this.addSelectableHeader(mainDiv, 'textEdit', 'Text Edit');
+      this.addTextEditButtons(content);
+    };
 
     // --------------
     // Table Section
     // --------------
-    header = mainDiv.createEl('h4');
-    header.appendText('Tables');
-    header.style.textAlign = 'center';
-    header.style.marginTop = '20px';
-    header.style.marginBottom = '5px';
+    const addTabelsSection = () => {
+      const content = this.addSelectableHeader(mainDiv, 'tables', 'Tables');
 
-    hr = mainDiv.createEl('hr');
-    hr.style.marginTop = '0px';
-    hr.style.marginBottom = '10px';
-
-    let info = mainDiv.createEl('p');
-    info.appendText('upcoming ...');
-    info.style.textAlign = 'center';
+      const info = content.createEl('p');
+      info.appendText('upcoming ...');
+      info.style.textAlign = 'center';
+    };
 
     // --------------
     // HTML Section
     // --------------
-    header = mainDiv.createEl('h4');
-    header.appendText('HTML');
-    header.style.textAlign = 'center';
-    header.style.marginTop = '20px';
-    header.style.marginBottom = '5px';
+    const addHtmlSection = () => {
+      const content = this.addSelectableHeader(mainDiv, 'html', 'HTML');
 
-    hr = mainDiv.createEl('hr');
-    hr.style.marginTop = '0px';
-    hr.style.marginBottom = '10px';
+      this.addHtmlButtons(content);
 
-    this.addHtmlButtons(mainDiv);
+      const info = content.createEl('p');
+      info.style.textAlign = 'center';
+      info.style.marginTop = '10px';
+      info.style.marginBottom = '10px';
+      const link = info.createEl('a');
+      link.appendText('Do you miss a Tag? report it!');
+      link.style.textAlign = 'center';
 
-    info = mainDiv.createEl('p');
-    info.style.textAlign = 'center';
-    info.style.marginTop = '10px';
-    info.style.marginBottom = '10px';
-    let link = info.createEl('a');
-    link.appendText('Do you miss a Tag? report it!');
-    link.style.textAlign = 'center';
-
-    link.style.fontSize = '10px';
-    link.href =
-      'https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin/issues';
+      link.style.fontSize = '10px';
+      link.href =
+        'https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin/issues';
+    };
 
     // --------------
     // Latex Section
     // --------------
-    header = mainDiv.createEl('h4');
-    header.appendText('Latex');
-    header.style.textAlign = 'center';
-    header.style.marginTop = '20px';
-    header.style.marginBottom = '5px';
+    const addLatexSection = () => {
+      const content = this.addSelectableHeader(mainDiv, 'latex', 'Latex');
 
-    hr = mainDiv.createEl('hr');
-    hr.style.marginTop = '0px';
-    hr.style.marginBottom = '10px';
+      this.addLatexButtons(content);
 
-    this.addLatexButtons(mainDiv);
+      let info = content.createEl('p');
+      info.style.textAlign = 'center';
+      info.style.marginTop = '10px';
+      info.style.marginBottom = '10px';
+      let link = info.createEl('a');
+      link.appendText('Introduction into latex mathematics');
+      link.style.textAlign = 'center';
+      link.style.fontSize = '10px';
+      link.href = 'https://en.wikibooks.org/wiki/LaTeX/Mathematics';
 
-    info = mainDiv.createEl('p');
-    info.style.textAlign = 'center';
-    info.style.marginTop = '10px';
-    info.style.marginBottom = '10px';
-    link = info.createEl('a');
-    link.appendText('Introduction into latex mathematics');
-    link.style.textAlign = 'center';
-    link.style.fontSize = '10px';
-    link.href = 'https://en.wikibooks.org/wiki/LaTeX/Mathematics';
+      info = content.createEl('p');
+      info.style.textAlign = 'center';
+      info.style.marginTop = '10px';
+      info.style.marginBottom = '10px';
+      link = info.createEl('a');
+      link.appendText('Do you miss a latex function? report it!');
+      link.style.textAlign = 'center';
 
-    info = mainDiv.createEl('p');
-    info.style.textAlign = 'center';
-    info.style.marginTop = '10px';
-    info.style.marginBottom = '10px';
-    link = info.createEl('a');
-    link.appendText('Do you miss a latex function? report it!');
-    link.style.textAlign = 'center';
-
-    link.style.fontSize = '10px';
-    link.href =
-      'https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin/issues';
-
+      link.style.fontSize = '10px';
+      link.href =
+        'https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin/issues';
+    };
     // --------------
     // Greek Section
     // --------------
-    header = mainDiv.createEl('h4');
-    header.appendText('Greek Letters');
-    header.style.textAlign = 'center';
-    header.style.marginTop = '20px';
-    header.style.marginBottom = '5px';
+    const addGreekLettersSection = () => {
+      const content = this.addSelectableHeader(
+        mainDiv,
+        'greekLetters',
+        'Greek Letters',
+      );
 
-    hr = mainDiv.createEl('hr');
-    hr.style.marginTop = '0px';
-    hr.style.marginBottom = '10px';
+      let header = content.createEl('h5');
+      header.appendText('Lower Case');
+      header.style.textAlign = 'center';
+      header.style.marginTop = '0px';
+      header.style.marginBottom = '5px';
 
-    header = mainDiv.createEl('h5');
-    header.appendText('Lower Case');
-    header.style.textAlign = 'center';
-    header.style.marginTop = '0px';
-    header.style.marginBottom = '5px';
+      this.addGreekLowerCaseLetters(content);
 
-    this.addGreekLowerCaseLetters(mainDiv);
+      header = content.createEl('h5');
+      header.appendText('Upper Case');
+      header.style.textAlign = 'center';
+      header.style.marginTop = '10px';
+      header.style.marginBottom = '5px';
 
-    header = mainDiv.createEl('h5');
-    header.appendText('Upper Case');
-    header.style.textAlign = 'center';
-    header.style.marginTop = '10px';
-    header.style.marginBottom = '5px';
+      this.addGreekUpperCaseLetters(content);
 
-    this.addGreekUpperCaseLetters(mainDiv);
+      const info = content.createEl('p');
+      info.style.textAlign = 'center';
+      info.style.marginTop = '10px';
+      info.style.marginBottom = '10px';
+      const link = info.createEl('a');
+      link.appendText('Overview of greek letters');
+      link.style.textAlign = 'center';
 
-    info = mainDiv.createEl('p');
-    info.style.textAlign = 'center';
-    info.style.marginTop = '10px';
-    info.style.marginBottom = '10px';
-    link = info.createEl('a');
-    link.appendText('Overview of greek letters');
-    link.style.textAlign = 'center';
-
-    link.style.fontSize = '10px';
-    link.href = 'https://en.wikipedia.org/wiki/Greek_alphabet';
+      link.style.fontSize = '10px';
+      link.href = 'https://en.wikipedia.org/wiki/Greek_alphabet';
+    };
 
     // --------------
     // Colors
     // --------------
-    header = mainDiv.createEl('h4');
-    header.appendText('Colors');
-    header.style.textAlign = 'center';
-    header.style.marginTop = '20px';
-    header.style.marginBottom = '5px';
+    const addColorsSection = () => {
+      const content = this.addSelectableHeader(mainDiv, 'colors', 'Colors');
+      this.addColorBody(content);
+    };
 
-    hr = mainDiv.createEl('hr');
-    hr.style.marginTop = '0px';
-    hr.style.marginBottom = '10px';
+    const regions = {
+      textEdit: addTextEditSection,
+      tables: addTabelsSection,
+      html: addHtmlSection,
+      latex: addLatexSection,
+      greekLetters: addGreekLettersSection,
+      colors: addColorsSection,
+    };
 
-    this.addColorSection(mainDiv);
-
-    container.empty();
-    container.appendChild(rootEl);
+    this.plugin.settings.regionSettings.map((item) => {
+      // @ts-ignore
+      const regionFunction = regions[item.name];
+      if (regionFunction && getRegion(item.name).active) regionFunction();
+    });
   }
 
   private addHtmlButtons(mainDiv: HTMLElement) {
@@ -448,7 +443,7 @@ export class SidePanelControlView extends ItemView {
     button.appendChild(svgToElement('checkList'));
   }
 
-  private addColorSection(mainDiv: HTMLElement) {
+  private addColorBody(mainDiv: HTMLElement) {
     const insertColor = (color: string) => {
       const leaf = this.app.workspace.activeLeaf;
       let editor = null;
@@ -664,5 +659,130 @@ export class SidePanelControlView extends ItemView {
     link.style.fontSize = '10px';
     link.href =
       'https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin#color-picker';
+  }
+
+  private addSelectableHeader(
+    mainDiv: HTMLElement,
+    regionName: string,
+    sectionTitle: string,
+  ) {
+    const getRegion = (name: string) => {
+      return this.plugin.settings.regionSettings.find(
+        (item) => item.name === name,
+      );
+    };
+
+    let header = mainDiv.createEl('div');
+    header.id = 'lastSavedHeaderDiv' + regionName;
+    let hr = mainDiv.createEl('hr');
+    let title = header.createEl('h4');
+    let arrowButton = header.createDiv({ cls: 'nav-action-button' });
+    let content = mainDiv.createEl('div');
+
+    header.style.width = '100%';
+    // header.style.border = '2px solid white';
+    header.style.display = 'flex';
+    header.style.flexWrap = 'nowrap';
+    header.style.alignContent = 'center';
+    header.style.position = 'relative';
+    header.style.cursor = 'move';
+    header.draggable = true;
+
+    header.ondragstart = (event) => {
+      // @ts-ignore
+      const sectionId = event.target.id.replace('lastSavedHeaderDiv', '');
+
+      event.dataTransfer.setData('sectionHeaderMoveId', sectionId);
+    };
+
+    const onDrop = async (event: DragEvent) => {
+      const getId = R.pipe(
+        R.find(R.pipe(R.prop('id'), R.contains('lastSavedHeaderDiv'))),
+        R.prop('id'),
+        R.replace('lastSavedHeaderDiv', ''),
+      );
+
+      const start = event.dataTransfer.getData('sectionHeaderMoveId');
+      // @ts-ignore
+      const end = getId(event.path);
+
+      if (
+        end &&
+        this.plugin.settings.aviabileRegions.contains(end) &&
+        start !== end
+      ) {
+        const startIndex = R.findIndex(
+          R.propEq('name', start),
+          this.plugin.settings.regionSettings,
+        );
+        const endIndex = R.findIndex(
+          R.propEq('name', end),
+          this.plugin.settings.regionSettings,
+        );
+
+        const startRegion = this.plugin.settings.regionSettings[startIndex];
+        this.plugin.settings.regionSettings[startIndex] =
+          this.plugin.settings.regionSettings[endIndex];
+        this.plugin.settings.regionSettings[endIndex] = startRegion;
+        await this.plugin.saveSettings();
+        this.drawContentOfRootElement();
+      }
+      event.preventDefault();
+    };
+
+    header.ondragover = async (event) => {
+      event.preventDefault();
+    };
+
+    header.ondrop = onDrop;
+
+    title.appendText(sectionTitle);
+    title.style.flexDirection = 'column';
+    title.style.textAlign = 'left';
+    title.style.margin = '0px';
+    title.style.display = 'flex';
+    title.style.flexWrap = 'nowrap';
+    title.style.justifyContent = 'center';
+
+    arrowButton.appendChild(svgToElement('expandArrowDown'));
+    arrowButton.style.position = 'absolute';
+    arrowButton.style.right = '0px';
+    arrowButton.style.top = '0px';
+    arrowButton.style.bottom = '0px';
+    arrowButton.style.marginTop = 'auto';
+    arrowButton.style.marginBottom = 'auto';
+    arrowButton.style.width = '24px';
+    arrowButton.style.height = '24px';
+    const region = getRegion(regionName);
+    if (region && region.active && region.visible) {
+      content.style.display = 'block';
+    } else {
+      content.style.display = 'none';
+    }
+
+    arrowButton.onClickEvent(async (e) => {
+      const region = getRegion(regionName);
+
+      if (region && region.active) {
+        if (!region.visible) {
+          content.style.display = 'block';
+          arrowButton.innerHTML = null;
+          arrowButton.appendChild(svgToElement('expandArrowUp'));
+          region.visible = true;
+        } else {
+          content.style.display = 'none';
+          arrowButton.innerHTML = null;
+          arrowButton.appendChild(svgToElement('expandArrowDown'));
+          region.visible = false;
+        }
+
+        return await this.plugin.saveSettings();
+      }
+    });
+
+    hr.style.marginTop = '0px';
+    hr.style.marginBottom = '10px';
+
+    return content;
   }
 }
