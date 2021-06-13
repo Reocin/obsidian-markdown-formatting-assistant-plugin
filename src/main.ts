@@ -75,9 +75,9 @@ export default class MarkdownAutocompletePlugin extends Plugin {
     this.addCommand({
       id: 'open-sample-modal',
       name: 'Open Sample Modal',
-      // callback: () => {
-      // 	console.log('Simple Callback');
-      // },
+      callback: () => {
+        console.log('Simple Callback');
+      },
       checkCallback: (checking: boolean) => {
         let leaf = this.app.workspace.activeLeaf;
         if (leaf) {

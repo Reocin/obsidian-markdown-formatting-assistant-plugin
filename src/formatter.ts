@@ -99,6 +99,15 @@ export const formatSettings = {
     newLine: false,
     enclose: false,
   },
+  highlight: {
+    des: 'highlight',
+    icon: 'highlight',
+    symbol: '<mark></mark>',
+    shift: 6,
+    selectionInput: 6,
+    newLine: false,
+    enclose: false,
+  },
   codeBlock: {
     des: 'code_block',
     icon: 'codeBlock',
@@ -237,6 +246,7 @@ export function iconFormatter(
         'internal_link',
         'image',
         'underline',
+        'highlight',
       ].contains(item.des)
     ) {
       if (isSelection) {

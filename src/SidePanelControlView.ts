@@ -387,18 +387,27 @@ export class SidePanelControlView extends ItemView {
     let button = row.createDiv({ cls: 'nav-action-button' });
     addClickEvent(button, 'bold');
     button.appendChild(svgToElement('bold'));
+    button.id = 'obsidianMarkdownFormattingAssistantPluginButtonBold';
 
     button = row.createDiv({ cls: 'nav-action-button' });
     addClickEvent(button, 'italic');
     button.appendChild(svgToElement('italic'));
+    button.id = 'obsidianMarkdownFormattingAssistantPluginButtonItalic';
 
     button = row.createDiv({ cls: 'nav-action-button' });
     addClickEvent(button, 'strikethrough');
     button.appendChild(svgToElement('strikethrough'));
+    button.id = 'obsidianMarkdownFormattingAssistantPluginButtonStrikethrough';
 
     button = row.createDiv({ cls: 'nav-action-button' });
     addClickEvent(button, 'underline');
     button.appendChild(svgToElement('underline'));
+    button.id = 'obsidianMarkdownFormattingAssistantPluginButtonUnderline';
+
+    button = row.createDiv({ cls: 'nav-action-button' });
+    addClickEvent(button, 'highlight');
+    button.appendChild(svgToElement('highlight'));
+    button.id = 'obsidianMarkdownFormattingAssistantPluginButtonHighlight';
 
     row = mainDiv.createDiv({ cls: 'nav-buttons-container' });
     button = row.createDiv({ cls: 'nav-action-button' });
@@ -448,9 +457,26 @@ export class SidePanelControlView extends ItemView {
       const leaf = this.app.workspace.activeLeaf;
       let editor = null;
       if (checkIfMarkdownSource(leaf)) {
+        const addColor =
+          // @ts-ignore
+          document.getElementById('inputColorTagCheckBox').checked;
+
+        const addBackgroundColor =
+          // @ts-ignore
+          document.getElementById('inputBackgroundColorTagCheckBox').checked;
+        const addStyle =
+          // @ts-ignore
+          document.getElementById('inputStyleTagCheckBox').checked;
+
+        let res = color;
+        if (addColor) res = `color: ${color}`;
+        if (addBackgroundColor) res = `background-color: ${color}`;
+        if (addColor && addBackgroundColor)
+          res = `color: ${color}; background-color: ${color}`;
+        if (addStyle) res = `style="${res}"`;
         // @ts-ignore
         editor = leaf.view.sourceMode.cmEditor;
-        colorFormatter(editor, color);
+        colorFormatter(editor, res);
         editor.focus();
       }
     };
@@ -618,6 +644,25 @@ export class SidePanelControlView extends ItemView {
       drawLastSavedColorIcons();
       await this.plugin.saveSettings();
     });
+    colorSaveButton.style.marginBottom = '20px';
+
+    const addCheckbox = (id: string, text: string) => {
+      const div = colorSection.createEl('div');
+      let input = div.createEl('input');
+      input.id = id;
+      input.type = 'checkbox';
+      input.name = id;
+      let label = div.createEl('label');
+      label.appendText(text);
+      label.style.fontSize = '12px';
+    };
+
+    addCheckbox('inputColorTagCheckBox', ' Add "color: {your color}"');
+    addCheckbox(
+      'inputBackgroundColorTagCheckBox',
+      ' Add "background-color: {your color}"',
+    );
+    addCheckbox('inputStyleTagCheckBox', ' Add tag: "style={your color}"');
 
     const lastSelectedColorsTitle = colorSection.createEl('p');
     lastSelectedColorsTitle.appendText('Last used colors:');

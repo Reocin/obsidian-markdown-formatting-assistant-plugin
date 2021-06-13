@@ -66,6 +66,20 @@ All saved colors can be sorted via drop a catch.
 
 To delete a saved or last used color just click it with the right mouse button.
 
+### Additonal Formats
+
+For a even easier handling you can select additional options to what should be added to the color.
+
+#### Options
+
+- Add "color: {your color}"
+  - ex. `color: #ffffff`
+- Add "background-color: {your color}
+  - ex. `background-color: #ffffff`
+- Add tag: "style={your color}
+  - This option is only helpful, if you also select one of both of the other options like:
+  - ex. `style="background-color: #ff0000"`
+
 ![](assets/Color_Picker.png)
 
 ## Settings
@@ -88,10 +102,13 @@ To delete a saved or last used color just click it with the right mouse button.
 
 ## Changelog
 
+- Version: 0.3.2
+  - Aditional options for the color picker
+  - New Higlight Button in the Text Edit section and commandline
 - Version 0.3.1
   - Changeable order of the sections
   - Expandable sections
-  - Corrected the latex `\$\$` and `\$\$\$\$` buttons as they was switched
+  - Corrected the latex `\$\$` and `\$\$\$\$` buttons as they were switched
 - Version 0.3.0
   - added a Latex and Greek Letters section
 - Version 0.2.2

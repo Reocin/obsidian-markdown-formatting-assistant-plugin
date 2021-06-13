@@ -49,6 +49,7 @@ export const icons: Record<string, string> = {
   menu: pathToSvg(mdiIcons.mdiMenu),
   expandArrowDown: pathToSvg(mdiIcons.mdiChevronDown),
   expandArrowUp: pathToSvg(mdiIcons.mdiChevronUp),
+  highlight: pathToSvg(mdiIcons.mdiMarker)
 };
 
 export const addIcons = (): void => {
