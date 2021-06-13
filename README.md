@@ -103,8 +103,8 @@ For a even easier handling you can select additional options to what should be a
 ## Changelog
 
 - Version: 0.3.2
-  - Aditional options for the color picker
-  - New Higlight Button in the Text Edit section and commandline
+  - Additional options for the color picker
+  - New Highlight Button in the Text Edit section and command line
 - Version 0.3.1
   - Changeable order of the sections
   - Expandable sections
