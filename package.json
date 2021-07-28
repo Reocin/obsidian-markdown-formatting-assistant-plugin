@@ -1,6 +1,6 @@
 {
   "name": "obsidian-markdown-formatting-assistant-plugin",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "This plugin improves the writing of MarkDown files",
   "homepage": "https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin",
   "main": "main.js",
