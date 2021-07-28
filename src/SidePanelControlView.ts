@@ -395,6 +395,16 @@ export class SidePanelControlView extends ItemView {
     button.id = 'obsidianMarkdownFormattingAssistantPluginButtonItalic';
 
     button = row.createDiv({ cls: 'nav-action-button' });
+    addClickEvent(button, 'subtext');
+    button.appendChild(svgToElement('subtext'));
+    button.id = 'obsidianMarkdownFormattingAssistantPluginButtonSubtext';
+
+    button = row.createDiv({ cls: 'nav-action-button' });
+    addClickEvent(button, 'suptext');
+    button.appendChild(svgToElement('suptext'));
+    button.id = 'obsidianMarkdownFormattingAssistantPluginButtonSuptext';
+
+    button = row.createDiv({ cls: 'nav-action-button' });
     addClickEvent(button, 'strikethrough');
     button.appendChild(svgToElement('strikethrough'));
     button.id = 'obsidianMarkdownFormattingAssistantPluginButtonStrikethrough';
