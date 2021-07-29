@@ -258,6 +258,8 @@ export function iconFormatter(
       [
         'bold',
         'italic',
+        'subscript',
+        'superscript',
         'strikethrough',
         'code_inline',
         'link',
