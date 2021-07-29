@@ -81,18 +81,18 @@ export const formatSettings = {
     newLine: false,
     enclose: false,
   },
-  subtext: {
+  subscript: {
     des: 'subscript',
-    icon: 'subtext',
+    icon: 'subscript',
     symbol: '<sub></sub>',
     shift: 5,
     selectionInput: 5,
     newLine: false,
     enclose: false,
   },
-  suptext: {
+  superscript: {
     des: 'superscript',
-    icon: 'suptext',
+    icon: 'superscript',
     symbol: '<sup></sup>',
     shift: 5,
     selectionInput: 5,
