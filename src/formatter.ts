@@ -81,6 +81,24 @@ export const formatSettings = {
     newLine: false,
     enclose: false,
   },
+  subscript: {
+    des: 'subscript',
+    icon: 'subscript',
+    symbol: '<sub></sub>',
+    shift: 5,
+    selectionInput: 5,
+    newLine: false,
+    enclose: false,
+  },
+  superscript: {
+    des: 'superscript',
+    icon: 'superscript',
+    symbol: '<sup></sup>',
+    shift: 5,
+    selectionInput: 5,
+    newLine: false,
+    enclose: false,
+  },
   underline: {
     des: 'underline',
     icon: 'underline',
@@ -240,6 +258,8 @@ export function iconFormatter(
       [
         'bold',
         'italic',
+        'subscript',
+        'superscript',
         'strikethrough',
         'code_inline',
         'link',

@@ -33,6 +33,8 @@ export const icons: Record<string, string> = {
   h6: pathToSvg(mdiIcons.mdiFormatHeader6),
   bold: pathToSvg(mdiIcons.mdiFormatBold),
   italic: pathToSvg(mdiIcons.mdiFormatItalic),
+  subscript: pathToSvg(mdiIcons.mdiFormatSubscript),
+  superscript: pathToSvg(mdiIcons.mdiFormatSuperscript),
   strikethrough: pathToSvg(mdiIcons.mdiFormatStrikethroughVariant),
   codeInline: pathToSvg(mdiIcons.mdiCodeTags),
   codeBlock: pathToSvg(mdiIcons.mdiXml),

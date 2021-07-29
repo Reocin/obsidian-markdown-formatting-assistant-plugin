@@ -180,6 +180,7 @@ class SettingsTab extends PluginSettingTab {
 
   close() {
     console.log('closed');
+    // @ts-ignore
     super.close();
   }
 

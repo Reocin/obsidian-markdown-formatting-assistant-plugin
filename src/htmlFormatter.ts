@@ -106,6 +106,18 @@ export const htmlFormatterSettings = {
     shift: 9,
     selectionInput: 9,
   },
+  sub: {
+    des: '<sub>',
+    symbol: '<sub></sub>',
+    shift: 5,
+    selectionInput: 5,
+  },
+  sup: {
+    des: '<sup>',
+    symbol: '<sup></sup>',
+    shift: 5,
+    selectionInput: 5,
+  },
   u: {
     des: '<u>',
     symbol: '<u></u>',
