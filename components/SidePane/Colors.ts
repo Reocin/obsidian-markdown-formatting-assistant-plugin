@@ -11,7 +11,7 @@
 
 // export function addColorBody(mainDiv: HTMLElement, SidePanelControlView: ItemView ) {
 //     const insertColor = (color: string) => {
-//       const leaf = this.app.workspace.activeLeaf;
+//       const leaf = this.app.workspace.getMostRecentLeaf();
 //       let editor = null;
 //       if (checkIfMarkdownSource(leaf)) {
 //         // @ts-ignore

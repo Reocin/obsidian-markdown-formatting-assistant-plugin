@@ -1,10 +1,14 @@
 import {
   App,
+  Editor,
+  MarkdownView,
   Modal,
   Notice,
   Plugin,
   PluginSettingTab,
   Setting,
+  Workspace,
+  EditorPosition,
 } from 'obsidian';
 
 import { addIcons } from './icons';
@@ -13,8 +17,8 @@ import {
   SidePanelControlView,
   SidePanelControlViewType,
 } from './SidePanelControlView';
-import { CommandListView } from './CommandListView';
 import plugin from 'rollup-plugin-import-css';
+import { CodeSuggestionModal } from './CommandListView';
 
 interface RegionSetting {
   name: string;
@@ -54,8 +58,6 @@ const DEFAULT_SETTINGS: PluginSettings = {
 export default class MarkdownAutocompletePlugin extends Plugin {
   settings: PluginSettings;
   private sidePanelControlView: SidePanelControlView;
-  private commandListView: CommandListView;
-  private keyUpFunction: (cm: CodeMirror.Editor, event: KeyboardEvent) => {};
 
   async onload() {
     console.log('loading obsidian-markdown-formatting-assistant-plugin');
@@ -73,44 +75,18 @@ export default class MarkdownAutocompletePlugin extends Plugin {
     });
 
     this.addCommand({
-      id: 'open-sample-modal',
-      name: 'Open Sample Modal',
-      callback: () => {
-        console.log('Simple Callback');
-      },
-      checkCallback: (checking: boolean) => {
-        let leaf = this.app.workspace.activeLeaf;
-        if (leaf) {
-          if (!checking) {
-            new SampleModal(this).open();
-          }
-          return true;
-        }
-        return false;
+      id: 'open-command-selector',
+      name: 'Open Command Selector',
+      hotkeys: [{ modifiers: ['Alt'], key: 'q' }],
+      editorCallback: (editor: Editor, view: MarkdownView) => {
+        CodeSuggestionModal.display(this.app, editor);
       },
     });
 
     this.addSettingTab(new SettingsTab(this.app, this));
-
-    this.keyUpFunction = (cm: CodeMirror.Editor, event: KeyboardEvent) => {
-      return CommandListView.display(
-        this.app,
-        cm,
-        event,
-        this.settings.triggerChar,
-      );
-    };
-
-    this.registerCodeMirror((cm: CodeMirror.Editor) => {
-      cm.on('keyup', this.keyUpFunction);
-    });
   }
 
-  onunload() {
-    this.app.workspace.iterateCodeMirrors((cm: CodeMirror.Editor) => {
-      cm.off('keyup', this.keyUpFunction);
-    });
-  }
+  onunload() {}
 
   async loadSettings() {
     this.settings = Object.assign(DEFAULT_SETTINGS, await this.loadData());
@@ -150,26 +126,6 @@ export default class MarkdownAutocompletePlugin extends Plugin {
   };
 }
 
-class SampleModal extends Modal {
-  plugin: MarkdownAutocompletePlugin;
-  constructor(plugin: MarkdownAutocompletePlugin) {
-    super(plugin.app);
-    this.plugin = plugin;
-  }
-
-  onOpen() {
-    let { contentEl } = this;
-    contentEl.createEl('h2').setText('Saved Colors');
-    contentEl.createDiv().innerHTML =
-      '<p>' + this.plugin.settings.savedColors.join('<br>') + '</p>';
-  }
-
-  onClose() {
-    let { contentEl } = this;
-    contentEl.empty();
-  }
-}
-
 class SettingsTab extends PluginSettingTab {
   plugin: MarkdownAutocompletePlugin;
 
@@ -180,7 +136,7 @@ class SettingsTab extends PluginSettingTab {
 
   close() {
     console.log('closed');
-    super.close();
+    super.hide();
   }
 
   async display() {

@@ -41,36 +41,22 @@
   border-radius: 4px;
 }
 
-.command-list-view-table {
-  border: 0px solid transparent !important;
+.command-list-view-row {
+  display: flex;
 }
-
-.command-list-view-table tr {
-  cursor: pointer;
-}
-
-.command-list-view-table td {
-  padding: 6px !important;
-}
-
-.command-list-view-table tr td {
-  border: none !important;
-}
-
-.command-list-view-table tr:hover {
-  background-color: gray;
-}
-
-.command-list-view-row-selected {
-  background-color: gray;
+.command-list-view-container {
+  min-width: 60px;
+  display: flex;
 }
 
 .command-list-view-icon {
   height: 24px;
   max-height: 24px;
   border: 1px solid gray;
+  margin-right: auto;
 }
 
 .command-list-view-text {
+  padding-left: 12px;
   color: #c7254e;
 }

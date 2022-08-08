@@ -1,375 +1,113 @@
+import { App, Editor, Notice, SuggestModal } from 'obsidian';
+import { baseFormatterSetting, iconFormatter } from './formatter';
+import { formatSettings, formatterSetting } from './formatter';
 import * as R from 'ramda';
-import { App } from 'obsidian';
 import { svgToElement } from './icons';
-import { formatSettings, formatterSetting, iconFormatter } from './formatter';
 import {
-  htmlFormatter,
-  htmlFormatterSettings,
-  htmlFormatterSetting,
-} from './htmlFormatter';
-import {
-  greekFormatter,
   greekLowerCaseFormatterSettings,
   greekUpperCaseFormatterSettings,
-  greekFormatterSetting,
+  greekFormatter,
 } from './greekFormatter';
-import {
-  latexFormatter,
-  latexFormatterSettings,
-  latexFormatterSetting,
-} from './latexFormatter';
+import { latexFormatterSettings, latexFormatter } from './latexFormatter';
+import { htmlFormatterSettings, htmlFormatter } from './htmlFormatter';
 
-export class CommandListView {
-  private static commandListView: CommandListView;
-  private static oldCurser: CodeMirror.Position;
-  private readonly app: App;
-  private cm: CodeMirror.Editor;
-  private codeString: string;
-  private startIndex: number;
-  private endIndex: number;
-  private rows: Array<HTMLElement> = [];
-  private selectetRowId: string = null;
+const suggestions = R.values(formatSettings).concat(
+  // @ts-ignore
+  R.values(htmlFormatterSettings),
+  R.values(latexFormatterSettings),
+  R.values(greekLowerCaseFormatterSettings),
+  R.values(greekUpperCaseFormatterSettings),
+);
 
-  private keyDownHandler: (cf: CodeMirror.Editor, e: KeyboardEvent) => boolean;
+export class CodeSuggestionModal extends SuggestModal<baseFormatterSetting> {
+  private editor: Editor;
 
-  constructor(
-    app: App,
-    cm: CodeMirror.Editor,
-    startIndex: number,
-    endIndex: number,
+  public setEditor = (editor: Editor) => {
+    this.editor = editor;
+  };
+
+  // Returns all available suggestions.
+  getSuggestions(query: string): baseFormatterSetting[] {
+    const filterFunction = (setting: baseFormatterSetting) =>
+      setting.des.toLowerCase().includes(query.toLowerCase());
+    // @ts-ignore
+    return R.values(R.filter(filterFunction, suggestions));
+  }
+
+  // Renders each suggestion item.
+  renderSuggestion(
+    baseFormatterSetting: baseFormatterSetting,
+    el: HTMLElement,
   ) {
-    this.app = app;
-    this.cm = cm;
+    const row = el.createEl('div');
+    row.classList.add('command-list-view-row');
+    const iconContainer = row.createDiv();
+    iconContainer.classList.add('command-list-view-container');
+    const iconDiv = iconContainer.createDiv();
+    iconDiv.classList.add('command-list-view-icon');
 
-    const curser = cm.getCursor();
-    const line = cm.getLine(curser.line);
+    const cell2 = row.createDiv();
 
-    this.startIndex = startIndex;
-    this.endIndex = endIndex;
-    this.codeString = line.substring(
-      startIndex + 1,
-      endIndex >= 0 ? endIndex : undefined,
-    );
+    cell2.classList.add('command-list-view-text');
+    cell2.setText(baseFormatterSetting.des);
 
-    this.keyDownHandler = (cf: CodeMirror.Editor, e: KeyboardEvent) => {
-      if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
-        e.preventDefault();
-        this.changeRowSelected(e.key === 'ArrowUp' ? -1 : 1);
-
-        return false;
-      } else if (e.key === 'Enter') {
-        e.preventDefault();
-        const rowIndex = this.rows.findIndex(
-          (r) => r.id === this.selectetRowId,
-        );
-        if (rowIndex >= 0 && this.rows.length > rowIndex) {
-          this.rows[rowIndex].click();
-        }
-
-        return false;
+    console.log(baseFormatterSetting.objectType);
+    if (baseFormatterSetting.objectType === 'formatterSetting') {
+      iconDiv.appendChild(svgToElement(baseFormatterSetting.icon));
+      cell2.style.color = '#c7254e';
+    } else if (baseFormatterSetting.objectType === 'htmlFormatterSetting') {
+      iconDiv.appendText('HTML');
+      cell2.style.color = '#0055F2';
+    } else if (baseFormatterSetting.objectType === 'greekFormatterSetting') {
+      iconDiv.appendChild(svgToElement(baseFormatterSetting.icon));
+      cell2.style.color = '#25e712';
+    } else if (baseFormatterSetting.objectType === 'latexFormatterSetting') {
+      const item = baseFormatterSetting;
+      if (item.type === 'icon') {
+        let svg = svgToElement(item.text);
+        svg.style.display = 'inline-block';
+        svg.style.verticalAlign = 'middle';
+        iconDiv.appendChild(svg);
+      } else if (item.type === 'text') {
+        let div = document.createElement('div');
+        div.innerHTML = item.text;
+        iconDiv.appendChild(div);
       }
-    };
-
-    cm.on('keydown', this.keyDownHandler);
+      cell2.style.color = '#25e712';
+    } else {
+      iconDiv.appendText('HTML');
+    }
   }
 
-  public static display(
-    app: App,
-    cm: CodeMirror.Editor,
-    event: KeyboardEvent,
-    triggerKey: string,
+  // Perform action on the selected suggestion.
+  onChooseSuggestion(
+    baseFormatterSetting: baseFormatterSetting,
+    evt: MouseEvent | KeyboardEvent,
   ) {
-    this.oldCurser = cm.getCursor();
+    // @ts-ignore
+    const item = baseFormatterSetting;
 
-    if (['Enter', 'ArrowUp', 'ArrowDown'].contains(event.key)) {
-      return false;
+    console.log(baseFormatterSetting);
+    if (item.objectType === 'formatterSetting') {
+      // @ts-ignore
+      iconFormatter(this.editor, item);
+    } else if (item.objectType === 'htmlFormatterSetting') {
+      // @ts-ignore
+      htmlFormatter(this.editor, item);
+    } else if (item.objectType === 'latexFormatterSetting') {
+      // @ts-ignore
+      latexFormatter(this.editor, item);
+    } else if (item.objectType === 'greekFormatterSetting') {
+      // @ts-ignore
+      greekFormatter(this.editor, item);
     }
 
-    if (this.commandListView) this.commandListView.close();
-
-    if (['Escape'].contains(event.key)) {
-      return false;
-    }
-
-    const curser = cm.getCursor();
-    if (!curser) return;
-    const line = cm.getLine(curser.line);
-    if (!line) return;
-    let startIndex = line.indexOf(triggerKey);
-
-    while (startIndex >= 0) {
-      const endIndex = line.split('$').join(' ').indexOf(' ', startIndex);
-
-      if (curser.ch >= startIndex && (endIndex < 0 || curser.ch <= endIndex)) {
-        if (this.commandListView) this.commandListView.close();
-        this.commandListView = new CommandListView(
-          app,
-          cm,
-          startIndex,
-          endIndex,
-        );
-        this.commandListView.display();
-
-        break;
-      } else {
-        if (this.commandListView) this.commandListView.close();
-      }
-      startIndex = line.indexOf(triggerKey, startIndex + 1);
-    }
+    // new Notice(`Selected ${baseFormatterSetting.des}`);
   }
 
-  public display = (): void => {
-    this.cm.addWidget(this.cm.getCursor(), this.getWidgetView(), true);
-  };
-
-  public readonly close = (): void => {
-    const el = document.getElementById('CommandListViewRootWidget');
-    if (el) {
-      el.parentNode.removeChild(el);
-      CommandListView.commandListView = null;
-      this.cm.off('keydown', this.keyDownHandler);
-    }
-  };
-
-  private getWidgetView = (): HTMLElement => {
-    const root = document.createElement('div');
-    root.id = 'CommandListViewRootWidget';
-    root.classList.add('widget-background');
-    root.style.display = 'inline-block';
-    root.style.zIndex = '300';
-
-    const table = root.createEl('table');
-    table.classList.add('command-list-view-table');
-    const tbody = table.createEl('tbody');
-
-    this.rows = [];
-    Object.values(formatSettings).map((args) => {
-      if (!this.codeString || args.des.indexOf(this.codeString) >= 0) {
-        // @ts-ignore
-        const row = this.getWidgetViewTextEditTableRow(args);
-        if (row) this.rows.push(row);
-      }
-    });
-
-    Object.values(htmlFormatterSettings).map((args) => {
-      if (!this.codeString || args.des.indexOf(this.codeString) >= 0) {
-        // @ts-ignore
-        const row = this.getWidgetViewHtmlTableRow(args);
-        if (row) this.rows.push(row);
-      }
-    });
-
-    Object.values(greekLowerCaseFormatterSettings).map((args) => {
-      if (!this.codeString || args.des.indexOf(this.codeString) >= 0) {
-        // @ts-ignore
-        const row = this.getWidgetViewGreekTableRow(args);
-        if (row) this.rows.push(row);
-      }
-    });
-
-    Object.values(greekUpperCaseFormatterSettings).map((args) => {
-      if (!this.codeString || args.des.indexOf(this.codeString) >= 0) {
-        // @ts-ignore
-        const row = this.getWidgetViewGreekTableRow(args);
-        if (row) this.rows.push(row);
-      }
-    });
-
-    Object.values(latexFormatterSettings).map((args) => {
-      if (!this.codeString || args.des.indexOf(this.codeString) >= 0) {
-        // @ts-ignore
-        const row = this.getWidgetViewLatexTableRow(args);
-        if (row) this.rows.push(row);
-      }
-    });
-
-    if (this.rows.length > 0) this.setRowSelected(this.rows[0].id);
-
-    this.rows.slice(0, 5).forEach((row) => {
-      if (row) tbody.appendChild(row);
-    });
-
-    return root;
-  };
-
-  private setRowSelected(id: string) {
-    if (this.selectetRowId) {
-      const row = this.rows.find((r) => r.id === this.selectetRowId);
-      if (row) row.classList.remove('command-list-view-row-selected');
-    }
-
-    const row = this.rows.find((r) => r.id === id);
-    if (row) row.classList.add('command-list-view-row-selected');
-
-    this.selectetRowId = id;
-  }
-
-  private changeRowSelected(offset: number) {
-    const rowIndex = this.rows.findIndex((r) => r.id === this.selectetRowId);
-    if (rowIndex >= 0) {
-      if (
-        this.rows.length > rowIndex + offset &&
-        rowIndex + offset >= 0 &&
-        rowIndex + offset < 5
-      ) {
-        this.setRowSelected(this.rows[rowIndex + offset].id);
-      } else if (rowIndex + offset >= 5 && this.rows.length > 0) {
-        this.setRowSelected(this.rows[0].id);
-      } else if (this.rows.length > 0) {
-        const index = this.rows.length > 5 ? 4 : this.rows.length - 1;
-        this.setRowSelected(this.rows[index].id);
-      }
-    } else if (this.rows.length > 0) {
-      this.setRowSelected(this.rows[0].id);
-    }
-  }
-
-  private getWidgetViewTextEditTableRow = (
-    item: formatterSetting,
-  ): HTMLElement => {
-    const row = document.createElement('tr');
-    row.id = item.des;
-
-    row.onClickEvent(() => {
-      this.cm.getCursor();
-      this.cm.replaceRange(
-        '',
-        { line: this.cm.getCursor().line, ch: this.startIndex },
-        {
-          line: this.cm.getCursor().line,
-          ch: this.endIndex >= 0 ? this.endIndex : this.cm.getCursor().ch,
-        },
-      );
-
-      iconFormatter(this.cm, item);
-      this.close();
-      // this.cm.focus();
-      // this.cm.setCursor({
-      //   line: this.cm.getCursor().line,
-      //   ch: this.startIndex + item.shift,
-      // });
-    });
-
-    const cell1 = row.createEl('td');
-    const iconDiv = cell1.createDiv();
-    iconDiv.classList.add('command-list-view-icon');
-    iconDiv.appendChild(svgToElement(item.icon));
-
-    const cell2 = row.createEl('td');
-    cell2.classList.add('command-list-view-text');
-    cell2.setText(item.des);
-
-    return row;
-  };
-
-  private getWidgetViewHtmlTableRow = (
-    item: htmlFormatterSetting,
-  ): HTMLElement => {
-    const row = document.createElement('tr');
-    row.id = item.des;
-
-    row.onClickEvent(() => {
-      this.cm.getCursor();
-      this.cm.replaceRange(
-        '',
-        { line: this.cm.getCursor().line, ch: this.startIndex },
-        {
-          line: this.cm.getCursor().line,
-          ch: this.endIndex >= 0 ? this.endIndex : this.cm.getCursor().ch,
-        },
-      );
-
-      htmlFormatter(this.cm, item);
-      this.close();
-    });
-
-    const cell1 = row.createEl('td');
-    const iconDiv = cell1.createDiv();
-    // iconDiv.classList.add('command-list-view-icon');
-    iconDiv.appendText('HTML');
-
-    const cell2 = row.createEl('td');
-    cell2.classList.add('command-list-view-text');
-    cell2.style.color = '#0055F2';
-    cell2.setText(item.des);
-
-    return row;
-  };
-
-  private getWidgetViewGreekTableRow = (
-    item: greekFormatterSetting,
-  ): HTMLElement => {
-    const row = document.createElement('tr');
-    row.id = item.des;
-
-    row.onClickEvent(() => {
-      this.cm.getCursor();
-      this.cm.replaceRange(
-        '',
-        { line: this.cm.getCursor().line, ch: this.startIndex },
-        {
-          line: this.cm.getCursor().line,
-          ch: this.endIndex >= 0 ? this.endIndex : this.cm.getCursor().ch,
-        },
-      );
-
-      greekFormatter(this.cm, item);
-      this.close();
-    });
-
-    const cell1 = row.createEl('td');
-    const iconDiv = cell1.createDiv();
-    iconDiv.classList.add('command-list-view-icon');
-    iconDiv.appendChild(svgToElement(item.icon));
-
-    const cell2 = row.createEl('td');
-    cell2.classList.add('command-list-view-text');
-    cell2.style.color = '#25e712';
-    cell2.setText(item.des);
-
-    return row;
-  };
-
-  private getWidgetViewLatexTableRow = (
-    item: latexFormatterSetting,
-  ): HTMLElement => {
-    const row = document.createElement('tr');
-    row.id = item.des;
-
-    row.onClickEvent(() => {
-      this.cm.getCursor();
-      this.cm.replaceRange(
-        '',
-        { line: this.cm.getCursor().line, ch: this.startIndex },
-        {
-          line: this.cm.getCursor().line,
-          ch: this.endIndex >= 0 ? this.endIndex : this.cm.getCursor().ch,
-        },
-      );
-
-      latexFormatter(this.cm, item);
-      this.close();
-    });
-
-    const cell1 = row.createEl('td');
-    const iconDiv = cell1.createDiv();
-    iconDiv.classList.add('command-list-view-icon');
-    if (item.type === 'icon') {
-      let svg = svgToElement(item.text);
-      svg.style.display = 'inline-block';
-      svg.style.verticalAlign = 'middle';
-      iconDiv.appendChild(svg);
-    } else if (item.type === 'text') {
-      let div = document.createElement('div');
-      div.innerHTML = item.text;
-      iconDiv.appendChild(div);
-    }
-
-    const cell2 = row.createEl('td');
-    cell2.classList.add('command-list-view-text');
-    cell2.style.color = '#25e712';
-    cell2.setText(item.des);
-
-    return row;
+  public static display = (app: App, editor: Editor): void => {
+    const modal = new CodeSuggestionModal(app);
+    modal.setEditor(editor);
+    modal.open();
   };
 }

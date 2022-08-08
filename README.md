@@ -1,7 +1,7 @@
 # Obsidian Markdown Formatting Assistant
 
 > This Plugin provides easy to use snippets for Markdown, HTML and Latex and a color picker which shows the history of last used colors. Furthermore, it is possible to save any color you want.
-> Version 0.1.1
+> Version 0.4.0
 
 > If you find a Bug or have a feature request: https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin/issues
 
@@ -37,13 +37,20 @@ It is possible to change the order of the sections according to the personal wis
 
 ![](assets/Panel_Overview_Greek_Letters.png)
 
-## Command Language
+## Suggestion Window with Shortcut
 
-With the command language the speed of the workflow can be specifically improved. By typing the trigger char (by default `\`) the commands will be activated and a suggestion window opens. It shows maximal 5 suggestions, which can be improved by adding more letters. The selected suggestion can be changed with the arrow keys and be activated with the enter key.
+This plugin does have a default shortcut `ALT+Q` which opens a Suggestion Window with all commands of this plugin (except colors). Once you get used to it, you want never miss it again. Furthermore, this way there is no need to ever leave your keyboard!
 
-![](assets/Suggestion_Window.png)
-![](assets/Suggestion_Window_Improved.png)
+### How it works
+Just press the shortcut/hotkey `ALT+Q` on any place. It doesn't matter if you are on a specific position or selected some text you want to change. Then enter the name of the command you want to apply. After a few letters your wished command should be suggested in the top 5.
 
+![](assets/Suggestion_Window_How_to_use_with_hotkey.gif)
+
+### How to change the shortcut/hotkey
+
+The shortcut/hotkey `ALT+Q` was selected becaus it can be  comfortable reached with just one hand, but you can change it to what ever you want.
+
+![](assets/Suggestion_Window_change_hot_key.gif)
 ## Color Picker
 
 ### Select a color
@@ -66,7 +73,7 @@ All saved colors can be sorted via drop a catch.
 
 To delete a saved or last used color just click it with the right mouse button.
 
-### Additonal Formats
+### Additional Formats
 
 For a even easier handling you can select additional options to what should be added to the color.
 
@@ -84,11 +91,6 @@ For a even easier handling you can select additional options to what should be a
 
 ## Settings
 
-- Trigger Char
-
-  - default: `\`
-  - options: any char
-
 - Side Pane Side
 
   - default: right
@@ -101,7 +103,10 @@ For a even easier handling you can select additional options to what should be a
   - Manages the saved colors. Colors can be added, deleted, edited. The order is also considered.
 
 ## Changelog
-
+- Version: 0.4.0
+  - Updated the plugin to the new Obsidian API 0.15.x
+  - Replace command language with a suggestion window triggered by a hotkey
+  - Fixed the wrong courser position after use of the header buttons/command (h1,h2, ...)
 - Version: 0.3.2
   - Additional options for the color picker
   - New Highlight Button in the Text Edit section and command line

@@ -12,9 +12,10 @@ function pathToSvg(icon: string) {
 
 function importIconPaths() {
   let res = {};
-  // @ts-ignore
+  console.log(iconPaths);
   R.forEachObjIndexed((value, key, obj) => {
-    res = R.merge(res, R.map(pathToSvg, value));
+    // @ts-ignore
+    res = R.mergeLeft(res, R.map(pathToSvg, value));
   }, iconPaths);
   return res;
 }
@@ -49,7 +50,7 @@ export const icons: Record<string, string> = {
   menu: pathToSvg(mdiIcons.mdiMenu),
   expandArrowDown: pathToSvg(mdiIcons.mdiChevronDown),
   expandArrowUp: pathToSvg(mdiIcons.mdiChevronUp),
-  highlight: pathToSvg(mdiIcons.mdiMarker)
+  highlight: pathToSvg(mdiIcons.mdiMarker),
 };
 
 export const addIcons = (): void => {

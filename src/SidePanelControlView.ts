@@ -24,6 +24,7 @@ import {
   TFile,
   WorkspaceLeaf,
 } from 'obsidian';
+
 import * as R from 'ramda';
 import MarkdownAutocompletePlugin from './main';
 import { checkIfMarkdownSource } from './generalFunctions';
@@ -222,7 +223,7 @@ export class SidePanelControlView extends ItemView {
         // @ts-ignore
         const formatterSetting = htmlFormatterSettings[type];
 
-        const leaf = this.app.workspace.activeLeaf;
+        const leaf = this.app.workspace.getMostRecentLeaf();
         let editor = null;
         if (checkIfMarkdownSource(leaf)) {
           // @ts-ignore
@@ -256,7 +257,7 @@ export class SidePanelControlView extends ItemView {
         // @ts-ignore
         const formatterSetting = latexFormatterSettings[type];
 
-        const leaf = this.app.workspace.activeLeaf;
+        const leaf = this.app.workspace.getMostRecentLeaf();
         let editor = null;
         if (checkIfMarkdownSource(leaf)) {
           // @ts-ignore
@@ -277,6 +278,7 @@ export class SidePanelControlView extends ItemView {
       }
 
       let button = row.createDiv({ cls: 'nav-action-text-button' });
+      // @ts-ignore
       button.style.textJustify = 'center';
       button.style.textAlign = 'center';
 
@@ -301,7 +303,7 @@ export class SidePanelControlView extends ItemView {
         // @ts-ignore
         const formatterSetting = greekLowerCaseFormatterSettings[type];
 
-        const leaf = this.app.workspace.activeLeaf;
+        const leaf = this.app.workspace.getMostRecentLeaf();
         let editor = null;
         if (checkIfMarkdownSource(leaf)) {
           // @ts-ignore
@@ -333,7 +335,7 @@ export class SidePanelControlView extends ItemView {
         // @ts-ignore
         const formatterSetting = greekUpperCaseFormatterSettings[type];
 
-        const leaf = this.app.workspace.activeLeaf;
+        const leaf = this.app.workspace.getMostRecentLeaf();
         let editor = null;
         if (checkIfMarkdownSource(leaf)) {
           // @ts-ignore
@@ -362,10 +364,11 @@ export class SidePanelControlView extends ItemView {
   private addTextEditButtons(mainDiv: HTMLElement) {
     const addClickEvent = (btn: HTMLElement, type: string) => {
       btn.onClickEvent(() => {
+        console.log('Clicked Button', btn, type);
         // @ts-ignore
         const formatterSetting = formatSettings[type];
 
-        const leaf = this.app.workspace.activeLeaf;
+        const leaf = this.app.workspace.getMostRecentLeaf();
         let editor = null;
         if (checkIfMarkdownSource(leaf)) {
           // @ts-ignore
@@ -454,7 +457,7 @@ export class SidePanelControlView extends ItemView {
 
   private addColorBody(mainDiv: HTMLElement) {
     const insertColor = (color: string) => {
-      const leaf = this.app.workspace.activeLeaf;
+      const leaf = this.app.workspace.getMostRecentLeaf();
       let editor = null;
       if (checkIfMarkdownSource(leaf)) {
         const addColor =

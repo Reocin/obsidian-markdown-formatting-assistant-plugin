@@ -1,6 +1,14 @@
-export interface formatterSetting {
+import { Editor } from 'obsidian';
+import * as R from 'ramda';
+export interface baseFormatterSetting {
+  objectType: string;
   des: string;
   icon: string;
+  text: string;
+  type: string;
+}
+
+export interface formatterSetting extends baseFormatterSetting {
   symbol: string;
   shift: number;
   selectionInput: number;
@@ -17,6 +25,7 @@ export const formatSettings = {
     selectionInput: 0,
     newLine: false,
     enclose: false,
+    objectType: 'formatterSetting',
   },
   h2: {
     des: 'h2',
@@ -26,6 +35,7 @@ export const formatSettings = {
     selectionInput: 0,
     newLine: false,
     enclose: false,
+    objectType: 'formatterSetting',
   },
   h3: {
     des: 'h3',
@@ -35,6 +45,7 @@ export const formatSettings = {
     selectionInput: 0,
     newLine: false,
     enclose: false,
+    objectType: 'formatterSetting',
   },
   h4: {
     des: 'h4',
@@ -44,6 +55,7 @@ export const formatSettings = {
     selectionInput: 0,
     newLine: false,
     enclose: false,
+    objectType: 'formatterSetting',
   },
   h5: {
     des: 'h5',
@@ -53,6 +65,7 @@ export const formatSettings = {
     selectionInput: 0,
     newLine: false,
     enclose: false,
+    objectType: 'formatterSetting',
   },
   h6: {
     des: 'h6',
@@ -62,6 +75,7 @@ export const formatSettings = {
     selectionInput: 0,
     newLine: false,
     enclose: false,
+    objectType: 'formatterSetting',
   },
   bold: {
     des: 'bold',
@@ -71,6 +85,7 @@ export const formatSettings = {
     selectionInput: 2,
     newLine: false,
     enclose: false,
+    objectType: 'formatterSetting',
   },
   italic: {
     des: 'italic',
@@ -80,6 +95,7 @@ export const formatSettings = {
     selectionInput: 1,
     newLine: false,
     enclose: false,
+    objectType: 'formatterSetting',
   },
   underline: {
     des: 'underline',
@@ -89,6 +105,7 @@ export const formatSettings = {
     selectionInput: 3,
     newLine: false,
     enclose: false,
+    objectType: 'formatterSetting',
   },
   strikethrough: {
     des: 'strikethrough',
@@ -98,6 +115,7 @@ export const formatSettings = {
     selectionInput: 2,
     newLine: false,
     enclose: false,
+    objectType: 'formatterSetting',
   },
   highlight: {
     des: 'highlight',
@@ -107,6 +125,7 @@ export const formatSettings = {
     selectionInput: 6,
     newLine: false,
     enclose: false,
+    objectType: 'formatterSetting',
   },
   codeBlock: {
     des: 'code_block',
@@ -116,6 +135,7 @@ export const formatSettings = {
     selectionInput: 4,
     newLine: true,
     enclose: true,
+    objectType: 'formatterSetting',
   },
   mermaidBlock: {
     des: 'mermaid_block',
@@ -125,6 +145,7 @@ export const formatSettings = {
     selectionInput: 4,
     newLine: true,
     enclose: true,
+    objectType: 'formatterSetting',
   },
   codeInline: {
     des: 'code_inline',
@@ -134,6 +155,7 @@ export const formatSettings = {
     selectionInput: 1,
     newLine: false,
     enclose: false,
+    objectType: 'formatterSetting',
   },
   link: {
     des: 'link',
@@ -143,6 +165,7 @@ export const formatSettings = {
     selectionInput: 1,
     newLine: false,
     enclose: false,
+    objectType: 'formatterSetting',
   },
   internalLink: {
     des: 'internal_link',
@@ -152,6 +175,7 @@ export const formatSettings = {
     selectionInput: 2,
     newLine: false,
     enclose: false,
+    objectType: 'formatterSetting',
   },
   image: {
     des: 'image',
@@ -161,6 +185,7 @@ export const formatSettings = {
     selectionInput: 2,
     newLine: false,
     enclose: false,
+    objectType: 'formatterSetting',
   },
   blockquote: {
     des: 'blockquote',
@@ -170,6 +195,7 @@ export const formatSettings = {
     selectionInput: 0,
     newLine: true,
     enclose: false,
+    objectType: 'formatterSetting',
   },
   bulletList: {
     des: 'bullet_list',
@@ -179,6 +205,7 @@ export const formatSettings = {
     selectionInput: 0,
     newLine: true,
     enclose: false,
+    objectType: 'formatterSetting',
   },
   numberList: {
     des: 'number_list',
@@ -188,6 +215,7 @@ export const formatSettings = {
     selectionInput: 0,
     newLine: true,
     enclose: false,
+    objectType: 'formatterSetting',
   },
   checkList: {
     des: 'check_list',
@@ -197,24 +225,13 @@ export const formatSettings = {
     selectionInput: 0,
     newLine: true,
     enclose: false,
+    objectType: 'formatterSetting',
   },
 };
 
-function checkIfSelection(editor: CodeMirror.Editor) {
-  const selection = editor.getSelection();
-  if (!selection || selection === '') {
-    return false;
-  } else {
-    return true;
-  }
-}
-
-export function iconFormatter(
-  editor: CodeMirror.Editor,
-  item: formatterSetting,
-) {
+export function iconFormatter(editor: Editor, item: formatterSetting) {
   if (editor) {
-    const isSelection = checkIfSelection(editor);
+    const isSelection = editor.somethingSelected;
     const selection = editor.getSelection();
     const curserStart = editor.getCursor('from');
     const curserEnd = editor.getCursor('to');
@@ -226,16 +243,32 @@ export function iconFormatter(
       const reStringExact = '^\\s*' + item.symbol + '+\\s*';
       const reStringAny = '^\\s*#+\\s*';
       const cleanedLine = line.replace(new RegExp(reStringAny, 'g'), '');
-      let replacment = item.symbol + cleanedLine;
+      let replacement = item.symbol + cleanedLine;
 
+      // To delete the headings if the same heading is clicked twice
       if (new RegExp(reStringExact, 'g').test(line)) {
-        replacment = cleanedLine;
+        replacement = cleanedLine;
       }
+
+      // replace the hole line with the updated new line
       editor.replaceRange(
-        replacment,
+        replacement,
         { line: curserStart.line, ch: 0 },
         { line: curserStart.line, ch: line.length },
       );
+
+      // Calculate the shift of the course depending on how many # are in the old and new line
+      const oldNumberOfHeadings = R.match(/([#])/g, line).length;
+      const newNumberOfHeadings = R.match(/([#])/g, replacement).length;
+      let courserCorrection = newNumberOfHeadings - oldNumberOfHeadings;
+
+      // If the old or the new line doesn't contain any heading than the course correction has to be corrected by the space after the # (### sdfsd)
+      if (newNumberOfHeadings === 0) courserCorrection -= 1;
+      if (oldNumberOfHeadings === 0) courserCorrection += 1;
+
+      // finally set the new course position
+
+      editor.setCursor(curserStart.line, curserStart.ch + courserCorrection);
     } else if (
       [
         'bold',

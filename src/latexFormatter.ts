@@ -1,4 +1,4 @@
-import { checkIfSelection } from './generalFunctions';
+import { Editor } from 'obsidian';
 
 export interface latexFormatterSetting {
   des: string;
@@ -19,6 +19,7 @@ export const latexFormatterSettings = {
     selectionInput: 2,
     type: 'text',
     newLine: false,
+    objectType: 'latexFormatterSetting',
   },
   equation: {
     des: 'equation',
@@ -28,6 +29,7 @@ export const latexFormatterSettings = {
     selectionInput: 1,
     type: 'text',
     newLine: false,
+    objectType: 'latexFormatterSetting',
   },
   division: {
     des: 'frac',
@@ -37,6 +39,7 @@ export const latexFormatterSettings = {
     selectionInput: 6,
     type: 'icon',
     newLine: true,
+    objectType: 'latexFormatterSetting',
   },
   multiplication: {
     des: 'times',
@@ -46,6 +49,7 @@ export const latexFormatterSettings = {
     selectionInput: 6,
     type: 'icon',
     newLine: false,
+    objectType: 'latexFormatterSetting',
   },
   sup: {
     des: 'superscript',
@@ -55,6 +59,7 @@ export const latexFormatterSettings = {
     selectionInput: 2,
     type: 'text',
     newLine: false,
+    objectType: 'latexFormatterSetting',
   },
   div: {
     des: 'division',
@@ -64,6 +69,7 @@ export const latexFormatterSettings = {
     selectionInput: 5,
     type: 'text',
     newLine: false,
+    objectType: 'latexFormatterSetting',
   },
   sub: {
     des: 'subscript',
@@ -73,6 +79,7 @@ export const latexFormatterSettings = {
     selectionInput: 2,
     type: 'text',
     newLine: false,
+    objectType: 'latexFormatterSetting',
   },
   pi: {
     des: 'pi',
@@ -82,6 +89,7 @@ export const latexFormatterSettings = {
     selectionInput: 3,
     type: 'icon',
     newLine: false,
+    objectType: 'latexFormatterSetting',
   },
   e: {
     des: 'e',
@@ -91,6 +99,7 @@ export const latexFormatterSettings = {
     selectionInput: 3,
     type: 'text',
     newLine: true,
+    objectType: 'latexFormatterSetting',
   },
   exp: {
     des: 'exp',
@@ -100,6 +109,7 @@ export const latexFormatterSettings = {
     selectionInput: 5,
     type: 'text',
     newLine: false,
+    objectType: 'latexFormatterSetting',
   },
   log: {
     des: 'log',
@@ -109,6 +119,7 @@ export const latexFormatterSettings = {
     selectionInput: 5,
     type: 'text',
     newLine: false,
+    objectType: 'latexFormatterSetting',
   },
   sin: {
     des: 'sin',
@@ -118,6 +129,7 @@ export const latexFormatterSettings = {
     selectionInput: 5,
     type: 'text',
     newLine: true,
+    objectType: 'latexFormatterSetting',
   },
   cos: {
     des: 'cos',
@@ -127,6 +139,7 @@ export const latexFormatterSettings = {
     selectionInput: 5,
     type: 'text',
     newLine: false,
+    objectType: 'latexFormatterSetting',
   },
   tan: {
     des: 'tan',
@@ -136,6 +149,7 @@ export const latexFormatterSettings = {
     selectionInput: 5,
     type: 'text',
     newLine: false,
+    objectType: 'latexFormatterSetting',
   },
   cot: {
     des: 'cot',
@@ -145,6 +159,7 @@ export const latexFormatterSettings = {
     selectionInput: 5,
     type: 'text',
     newLine: false,
+    objectType: 'latexFormatterSetting',
   },
   sin2: {
     des: 'cos^2',
@@ -154,6 +169,7 @@ export const latexFormatterSettings = {
     selectionInput: 7,
     type: 'text',
     newLine: true,
+    objectType: 'latexFormatterSetting',
   },
   cos2: {
     des: 'cos^2',
@@ -163,6 +179,7 @@ export const latexFormatterSettings = {
     selectionInput: 7,
     type: 'text',
     newLine: false,
+    objectType: 'latexFormatterSetting',
   },
   tan2: {
     des: 'tan^2',
@@ -172,6 +189,7 @@ export const latexFormatterSettings = {
     selectionInput: 7,
     type: 'text',
     newLine: false,
+    objectType: 'latexFormatterSetting',
   },
   cot2: {
     des: 'cot^2',
@@ -181,6 +199,7 @@ export const latexFormatterSettings = {
     selectionInput: 7,
     type: 'text',
     newLine: false,
+    objectType: 'latexFormatterSetting',
   },
   roundBrackets: {
     des: 'round brackets',
@@ -190,6 +209,7 @@ export const latexFormatterSettings = {
     selectionInput: 6,
     type: 'text',
     newLine: true,
+    objectType: 'latexFormatterSetting',
   },
   squareBrackets: {
     des: 'square brackets',
@@ -199,6 +219,7 @@ export const latexFormatterSettings = {
     selectionInput: 6,
     type: 'text',
     newLine: false,
+    objectType: 'latexFormatterSetting',
   },
   curlyBrackets: {
     des: 'curly brackets',
@@ -208,6 +229,7 @@ export const latexFormatterSettings = {
     selectionInput: 7,
     type: 'text',
     newLine: false,
+    objectType: 'latexFormatterSetting',
   },
   pipeBrackets: {
     des: 'pipe brackets',
@@ -217,6 +239,7 @@ export const latexFormatterSettings = {
     selectionInput: 6,
     type: 'text',
     newLine: false,
+    objectType: 'latexFormatterSetting',
   },
   doublePipeBrackets: {
     des: 'double pipe brackets',
@@ -226,15 +249,13 @@ export const latexFormatterSettings = {
     selectionInput: 7,
     type: 'text',
     newLine: false,
+    objectType: 'latexFormatterSetting',
   },
 };
 
-export function latexFormatter(
-  editor: CodeMirror.Editor,
-  item: latexFormatterSetting,
-) {
+export function latexFormatter(editor: Editor, item: latexFormatterSetting) {
   if (editor) {
-    const isSelection = checkIfSelection(editor);
+    const isSelection = editor.somethingSelected;
     const selection = editor.getSelection();
     const curserStart = editor.getCursor('from');
     const curserEnd = editor.getCursor('to');
