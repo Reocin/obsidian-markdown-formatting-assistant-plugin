@@ -120,9 +120,9 @@ export const formatSettings = {
   highlight: {
     des: 'highlight',
     icon: 'highlight',
-    symbol: '<mark></mark>',
-    shift: 6,
-    selectionInput: 6,
+    symbol: '========',
+    shift: 4,
+    selectionInput: 4,
     newLine: false,
     enclose: false,
     objectType: 'formatterSetting',
