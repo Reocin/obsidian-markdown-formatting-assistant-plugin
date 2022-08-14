@@ -20,6 +20,9 @@ import {
 import plugin from 'rollup-plugin-import-css';
 import { CodeSuggestionModal } from './CommandListView';
 
+import { commandsMarkdown } from './settings/CommandsMarkdown';
+import { startFormatter, textEditCommand } from './formatters/formatters';
+
 interface RegionSetting {
   name: string;
   active: boolean;
@@ -31,6 +34,7 @@ export interface PluginSettings {
   savedColors: string[];
   aviabileRegions: string[];
   regionSettings: Array<RegionSetting>;
+  commands: Array<textEditCommand>;
 }
 
 const DEFAULT_SETTINGS: PluginSettings = {
@@ -53,17 +57,25 @@ const DEFAULT_SETTINGS: PluginSettings = {
     { name: 'greekLetters', active: true, visible: false },
     { name: 'colors', active: true, visible: false },
   ],
+  commands: [...commandsMarkdown],
 };
 
 export default class MarkdownAutocompletePlugin extends Plugin {
   settings: PluginSettings;
   private sidePanelControlView: SidePanelControlView;
+  executeCommandById: Function;
 
   async onload() {
     console.log('loading obsidian-markdown-formatting-assistant-plugin');
 
     await this.loadSettings();
     addIcons();
+
+    // @ts-ignore
+    this.executeCommandById = (id: string) =>
+      app.commands.executeCommandById(id);
+
+    console.log(this.settings);
 
     this.registerView(SidePanelControlViewType, (leaf) => {
       this.sidePanelControlView = new SidePanelControlView(leaf, this);
@@ -81,6 +93,24 @@ export default class MarkdownAutocompletePlugin extends Plugin {
       editorCallback: (editor: Editor, view: MarkdownView) => {
         CodeSuggestionModal.display(this.app, editor);
       },
+    });
+
+    this.addCommand({
+      id: 'test',
+      name: 'test',
+      editorCallback: (editor: Editor, view: MarkdownView) => {
+        this.executeCommandById('editor:toggle-italics');
+      },
+    });
+
+    this.settings.commands.forEach((command) => {
+      this.addCommand({
+        id: 'command_' + command.id,
+        name: command.title,
+        editorCallback: (editor: Editor, view: MarkdownView) => {
+          startFormatter(editor, command);
+        },
+      });
     });
 
     this.addSettingTab(new SettingsTab(this.app, this));
