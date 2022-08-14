@@ -120,9 +120,9 @@ export const formatSettings = {
   highlight: {
     des: 'highlight',
     icon: 'highlight',
-    symbol: '========',
-    shift: 4,
-    selectionInput: 4,
+    symbol: '====',
+    shift: 2,
+    selectionInput: 2,
     newLine: false,
     enclose: false,
     objectType: 'formatterSetting',
@@ -294,7 +294,7 @@ export function iconFormatter(editor: Editor, item: formatterSetting) {
           curserStart.ch + selection.length + item.shift,
         );
       } else {
-        editor.replaceRange(item.symbol, curserStart);
+        editor.replaceSelection(item.symbol);
         editor.setCursor(curserStart.line, curserStart.ch + item.shift);
       }
     } else if (

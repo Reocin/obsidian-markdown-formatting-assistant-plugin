@@ -16,7 +16,7 @@ import {
   latexFormatterSettings,
   latexFormatterSetting,
 } from './latexFormatter';
-import { colorFormatter } from '../formatters/colorFormatter';
+import { colorFormatter } from './formatters/colorFormatter';
 import {
   ButtonComponent,
   ItemView,
@@ -363,8 +363,16 @@ export class SidePanelControlView extends ItemView {
 
   private addTextEditButtons(mainDiv: HTMLElement) {
     const addClickEvent = (btn: HTMLElement, type: string) => {
-      btn.onClickEvent(() => {
+      btn.onClickEvent((e) => {
         console.log('Clicked Button', btn, type);
+        // switch (event.which) {
+        //   case 1:
+        //     alert('Left');
+        //     break;
+        //   case 3:
+        //     alert('Right');
+        //     break;
+        // }
         // @ts-ignore
         const formatterSetting = formatSettings[type];
 

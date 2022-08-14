@@ -1,4 +1,4 @@
-import { checkIfSelection } from '../src/generalFunctions';
+import { checkIfSelection } from '../generalFunctions';
 
 export function colorFormatter(editor: CodeMirror.Editor, color: string) {
   if (editor) {

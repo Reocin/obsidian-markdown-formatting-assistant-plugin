@@ -1,17 +1,7 @@
 
-## How to use the hotkey ALT+Q
-
-``` json
-{
-  "id": "obsidian-markdown-formatting-assistant-plugin",
-  "name": "Markdown Formatting Assistant",
-  "version": "0.4.0",
-  "minAppVersion": "0.15.6",
-  "description": "This Plugin provides a simple Editor for Markdown, HTML and Colors and in addition a command interface. The command interface facilitate a faster workflow.",
-  "author": "Reocin",
-  "authorUrl": "https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin",
-  "isDesktopOnly": false
-}
-```
-
-
+1. asdfk
+2. asdföklm
+3. adsfnka
+4. aldksf
+5. $asdkfmn
+6. asdkf
