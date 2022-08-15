@@ -9,6 +9,8 @@ export function simpleFormatter(editor: Editor, item: textEditCommand) {
   let prefix = '';
   let shift = 0;
 
+  if (item.replaceSelectionTo) selection = item.replaceSelectionTo;
+
   if (item.shiftFromStart) {
     shift = item.shiftFromStartOrEnd;
   } else {

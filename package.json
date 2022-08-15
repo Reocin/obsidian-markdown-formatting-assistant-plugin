@@ -21,6 +21,7 @@
     "@types/ramda": "^0.28.15",
     "nodemon": "^2.0.19",
     "rollup": "^2.77.2",
+    "rollup-plugin-html": "^0.2.1",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
   },
@@ -29,6 +30,7 @@
     "@mdi/js": "^7.0.96",
     "@rollup/plugin-json": "^4.1.0",
     "obsidian": "^0.15.9",
+    "petite-vue": "^0.4.1",
     "postcss": "^8.4.16",
     "ramda": "^0.28.0",
     "rollup-plugin-copy": "^3.4.0",

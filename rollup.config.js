@@ -2,6 +2,7 @@ import typescript from '@rollup/plugin-typescript';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import copy from 'rollup-plugin-copy';
+import html from 'rollup-plugin-html';
 
 const exportFolder =
   '.obsidian/plugins/obsidian-markdown-formatting-assistant-plugin';
@@ -16,6 +17,9 @@ export default {
   },
   external: ['obsidian'],
   plugins: [
+    html({
+      include: '**/*.html',
+    }),
     typescript(),
     nodeResolve({ browser: true }),
     copy({
@@ -26,7 +30,7 @@ export default {
       ],
     }),
     commonjs({
-      include: 'node_modules/ramda/**',
+      include: ['node_modules/ramda/**', 'node_modules/petite-vue/**'],
     }),
   ],
 };

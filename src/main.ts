@@ -17,10 +17,10 @@ import {
   SidePanelControlView,
   SidePanelControlViewType,
 } from './SidePanelControlView';
-import plugin from 'rollup-plugin-import-css';
+
 import { CodeSuggestionModal } from './CommandListView';
 
-import { commandsMarkdown } from './settings/CommandsMarkdown';
+import { textEditCommands } from './settings/Commands';
 import { startFormatter, textEditCommand } from './formatters/formatters';
 
 interface RegionSetting {
@@ -57,7 +57,7 @@ const DEFAULT_SETTINGS: PluginSettings = {
     { name: 'greekLetters', active: true, visible: false },
     { name: 'colors', active: true, visible: false },
   ],
-  commands: [...commandsMarkdown],
+  commands: textEditCommands,
 };
 
 export default class MarkdownAutocompletePlugin extends Plugin {
@@ -71,8 +71,8 @@ export default class MarkdownAutocompletePlugin extends Plugin {
     await this.loadSettings();
     addIcons();
 
-    // @ts-ignore
     this.executeCommandById = (id: string) =>
+      // @ts-ignore
       app.commands.executeCommandById(id);
 
     console.log(this.settings);
@@ -105,7 +105,7 @@ export default class MarkdownAutocompletePlugin extends Plugin {
 
     this.settings.commands.forEach((command) => {
       this.addCommand({
-        id: 'command_' + command.id,
+        id: 'textEditCommand_' + command.id,
         name: command.title,
         editorCallback: (editor: Editor, view: MarkdownView) => {
           startFormatter(editor, command);

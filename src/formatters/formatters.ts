@@ -18,6 +18,7 @@ export interface textEditCommand {
   tagsOnOwnLine: boolean;
   shiftFromStartOrEnd: number;
   shiftFromStart: boolean;
+  replaceSelectionTo?: string;
 
   isDefaultCommand: boolean;
   isFavorite: boolean;

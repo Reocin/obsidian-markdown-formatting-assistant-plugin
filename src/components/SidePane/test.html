@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="script.js"></script>
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>Petite-vue Example</title>
+  </head>
+  <body>
+    <div id="movieapp">
+      <nav class="bg-gray-800">
+        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+          <div class="relative flex items-center justify-between h-16">
+            <div>
+              <h1 class="text-white text-3xl">Movie App</h1>
+            </div>
+            <div>
+              <select
+                v-model="app.movieType"
+                v-on:input="app.search"
+                className="ml-auto my-2 py-2 px-4 shadow-md rounded-md font-medium bg-blue-400 text-gray-700"
+              >
+                <option value="">Filter by movie</option>
+                <option value="popular">Most Popular</option>
+                <option value="top_rated">Top Rated</option>
+                <option value="upcoming">Upcoming Movies</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- display our movies -->
+      <div
+        class="mt-6 mx-20 grid md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8"
+      >
+        <article
+          v-for="(result, id) in app.results.results"
+          :key="id"
+          class="bg-white group relative rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform duration-200"
+        >
+          <div class="relative w-full h-80 md:h-64 lg:h-44">
+            <div
+              :style="{
+                      backgroundImage: `url(https://image.tmdb.org/t/p/w500${result.backdrop_path})`
+                    }"
+              class="bg-gray-300 h-64 w-full rounded-lg shadow-md bg-cover bg-center"
+            ></div>
+          </div>
+          <div class="px-3 py-4">
+            <h3 class="text-sm text-gray-500 pb-2">
+              <a class="bg-indigo-600 py-1 px-2 text-white rounded-lg" href="#">
+                <span class="absolute inset-0"></span>
+                {{result.original_title}}
+              </a>
+            </h3>
+            <p class="text-base font-semibold text-gray-900">
+              {{result.overview}}
+            </p>
+            <p class="text-indigo-400 mt-3 font-medium">More info</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

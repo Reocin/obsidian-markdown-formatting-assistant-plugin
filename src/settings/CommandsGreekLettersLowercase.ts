@@ -1,0 +1,487 @@
+import { textEditCommand } from '../formatters/formatters';
+
+export const commandsGreekLettersLowercase: textEditCommand[] = [
+  {
+    id: 'alpha',
+    title: 'alpha',
+    description: 'Greek letter alpha (only usable in latex)',
+    icon: 'alpha',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\alpha',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 6,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'beta',
+    title: 'beta',
+    description: 'Greek letter beta (only usable in latex)',
+    icon: 'beta',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\beta',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 5,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'gamma',
+    title: 'gamma',
+    description: 'Greek letter gamma (only usable in latex)',
+    icon: 'gamma',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\gamma',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 6,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'delta',
+    title: 'delta',
+    description: 'Greek letter delta (only usable in latex)',
+    icon: 'delta',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\delta',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 6,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'epsilon',
+    title: 'epsilon',
+    description: 'Greek letter epsilon (only usable in latex)',
+    icon: 'epsilon',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\epsilon',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 8,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'zeta',
+    title: 'zeta',
+    description: 'Greek letter zeta (only usable in latex)',
+    icon: 'zeta',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\zeta',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 5,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'eta',
+    title: 'eta',
+    description: 'Greek letter eta (only usable in latex)',
+    icon: 'eta',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\eta',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 4,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'theta',
+    title: 'theta',
+    description: 'Greek letter theta (only usable in latex)',
+    icon: 'theta',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\theta',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 6,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'iota',
+    title: 'iota',
+    description: 'Greek letter iota (only usable in latex)',
+    icon: 'iota',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\iota',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 5,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'kappa',
+    title: 'kappa',
+    description: 'Greek letter kappa (only usable in latex)',
+    icon: 'kappa',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\kappa',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 6,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'lambda',
+    title: 'lambda',
+    description: 'Greek letter lambda (only usable in latex)',
+    icon: 'lambda',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\lambda',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 7,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'mu',
+    title: 'mu',
+    description: 'Greek letter mu (only usable in latex)',
+    icon: 'mu',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\mu',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 3,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'nu',
+    title: 'nu',
+    description: 'Greek letter nu (only usable in latex)',
+    icon: 'ny',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\nu',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 3,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'xi',
+    title: 'xi',
+    description: 'Greek letter xi (only usable in latex)',
+    icon: 'xi',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\xi',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 3,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'pi',
+    title: 'pi',
+    description: 'Greek letter pi (only usable in latex)',
+    icon: 'pi',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\pi',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 3,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'rho',
+    title: 'rho',
+    description: 'Greek letter rho (only usable in latex)',
+    icon: 'rho',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\rho',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 4,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'sigma',
+    title: 'sigma',
+    description: 'Greek letter sigma (only usable in latex)',
+    icon: 'sigma',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\sigma',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 6,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'tau',
+    title: 'tau',
+    description: 'Greek letter tau (only usable in latex)',
+    icon: 'tau',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\tau',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 4,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'upsilon',
+    title: 'upsilon',
+    description: 'Greek letter upsilon (only usable in latex)',
+    icon: 'ypsilon',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\upsilon',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 8,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'phi',
+    title: 'phi',
+    description: 'Greek letter phi (only usable in latex)',
+    icon: 'phi',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\phi',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 4,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'chi',
+    title: 'chi',
+    description: 'Greek letter chi (only usable in latex)',
+    icon: 'chi',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\chi',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 4,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'psi',
+    title: 'psi',
+    description: 'Greek letter psi (only usable in latex)',
+    icon: 'psi',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\psi',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 4,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+  {
+    id: 'omega',
+    title: 'omega',
+    description: 'Greek letter omega (only usable in latex)',
+    icon: 'omega',
+    iconType: 'mdiIcon',
+    group: 'GreekLettersLowercase',
+
+    startTag: '\\omega',
+    endTag: '',
+    arguments: [],
+
+    tagsOnOwnLine: false,
+    shiftFromStartOrEnd: 6,
+    shiftFromStart: true,
+    replaceSelectionTo: '',
+
+    isDefaultCommand: true,
+    isFavorite: true,
+    formatter: 'simpleFormatter',
+  },
+];
