@@ -19,6 +19,7 @@ import {
 } from './SidePanelControlView';
 import plugin from 'rollup-plugin-import-css';
 import { CodeSuggestionModal } from './CommandListView';
+import { CalloutsSuggestionModal } from './CalloutsListView';
 
 interface RegionSetting {
   name: string;
@@ -44,6 +45,7 @@ const DEFAULT_SETTINGS: PluginSettings = {
     'latex',
     'greekLetters',
     'colors',
+    'callouts',
   ],
   regionSettings: [
     { name: 'textEdit', active: true, visible: false },
@@ -52,6 +54,7 @@ const DEFAULT_SETTINGS: PluginSettings = {
     { name: 'latex', active: true, visible: false },
     { name: 'greekLetters', active: true, visible: false },
     { name: 'colors', active: true, visible: false },
+    { name: 'callouts', active: true, visible: false },
   ],
 };
 
@@ -80,6 +83,15 @@ export default class MarkdownAutocompletePlugin extends Plugin {
       hotkeys: [{ modifiers: ['Alt'], key: 'q' }],
       editorCallback: (editor: Editor, view: MarkdownView) => {
         CodeSuggestionModal.display(this.app, editor);
+      },
+    });
+
+    this.addCommand({
+      id: 'open-callouts-selector',
+      name: 'Open Callouts Selector',
+      hotkeys: [{ modifiers: ['Alt'], key: 'c' }],
+      editorCallback: (editor: Editor, view: MarkdownView) => {
+        CalloutsSuggestionModal.display(this.app, editor);
       },
     });
 
@@ -300,6 +312,20 @@ class SettingsTab extends PluginSettingTab {
               );
             }
           });
+        });
+      });
+
+      new Setting(containerEl)
+      .setName('Toggle Callouts Section')
+      .setDesc(
+        'Activate or deactivate the Callouts section. (restart required)',
+      )
+      .addToggle((comp) => {
+        comp.setValue(getRegion('callouts').active).onChange(async (e) => {
+          const region = getRegion('callouts');
+
+          region.active = e;
+          await this.plugin.saveSettings();
         });
       });
   }

@@ -37,9 +37,15 @@ It is possible to change the order of the sections according to the personal wis
 
 ![](assets/Panel_Overview_Greek_Letters.png)
 
+### Callouts Section
+
+![](assets/calloutsMenu.jpg)
+
 ## Suggestion Window with Shortcut
 
-This plugin does have a default shortcut `ALT+Q` which opens a Suggestion Window with all commands of this plugin (except colors). Once you get used to it, you want never miss it again. Furthermore, this way there is no need to ever leave your keyboard!
+This plugin does have a default shortcut `ALT+Q` which opens a Suggestion Window with all commands of this plugin (except colors and callouts). Once you get used to it, you want never miss it again. Furthermore, this way there is no need to ever leave your keyboard!
+
+With the default shortcut `ALT-C` a Suggestion Window for Callouts is opened with the same functionality like the common Suggestion Window.
 
 ### How it works
 Just press the shortcut/hotkey `ALT+Q` on any place. It doesn't matter if you are on a specific position or selected some text you want to change. Then enter the name of the command you want to apply. After a few letters your wished command should be suggested in the top 5.
@@ -103,6 +109,8 @@ For a even easier handling you can select additional options to what should be a
   - Manages the saved colors. Colors can be added, deleted, edited. The order is also considered.
 
 ## Changelog
+- Version: 0.4.1
+  - Added Callouts-Support
 - Version: 0.4.0
   - Updated the plugin to the new Obsidian API 0.15.x
   - Replace command language with a suggestion window triggered by a hotkey
