@@ -34,16 +34,18 @@ export class CalloutsSuggestionModal extends SuggestModal<calloutsFormatterSetti
     iconDiv.classList.add('command-list-view-icon');
 
     const cell2 = row.createDiv();
-
     cell2.classList.add('command-list-view-text');
     cell2.setText(calloutsFormatterSetting.des);
+    cell2.style.color = 'var(--text-muted)';
 
     const spanIcon = document.createElement('span');
     spanIcon.style.verticalAlign = 'middle';
     spanIcon.style.color = calloutsFormatterSetting.color;
+    //iconDiv.style.backgroundColor = calloutsFormatterSetting.bgColor;
 
     setIcon(spanIcon, calloutsFormatterSetting.icon);
     iconDiv.appendChild(spanIcon);
+    row.style.backgroundColor = calloutsFormatterSetting.bgColor;
   }
 
   // Perform action on the selected suggestion.
@@ -53,8 +55,6 @@ export class CalloutsSuggestionModal extends SuggestModal<calloutsFormatterSetti
   ) {
     // @ts-ignore
     const item = calloutsFormatterSetting;
-
-    console.log(calloutsFormatterSetting);
     calloutsFormatter(this.editor, item);
 
     // new Notice(`Selected ${calloutsFormatterSetting.des}`);
