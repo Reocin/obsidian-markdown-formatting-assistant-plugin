@@ -1,4 +1,5 @@
 import { svgToElement } from './icons';
+import { setIcon } from "obsidian";
 import { iconFormatter, formatSettings, formatterSetting } from './formatter';
 import {
   htmlFormatter,
@@ -16,6 +17,11 @@ import {
   latexFormatterSettings,
   latexFormatterSetting,
 } from './latexFormatter';
+import {
+  calloutsFormatter,
+  calloutsFormatterSettings,
+  calloutsFormatterSetting,
+} from './calloutsFormatter';
 import { colorFormatter } from '../formatters/colorFormatter';
 import {
   ButtonComponent,
@@ -201,6 +207,15 @@ export class SidePanelControlView extends ItemView {
       this.addColorBody(content);
     };
 
+    // --------------
+    // Callouts
+    // --------------
+
+    const addCalloutsSection = () => {
+      let content = this.addSelectableHeader(mainDiv, 'callouts', 'Callouts');
+      this.addCalloutsButtons(content);
+    };
+
     const regions = {
       textEdit: addTextEditSection,
       tables: addTabelsSection,
@@ -208,6 +223,7 @@ export class SidePanelControlView extends ItemView {
       latex: addLatexSection,
       greekLetters: addGreekLettersSection,
       colors: addColorsSection,
+      callouts: addCalloutsSection,
     };
 
     this.plugin.settings.regionSettings.map((item) => {
@@ -249,6 +265,51 @@ export class SidePanelControlView extends ItemView {
         button.appendText(item.des);
       },
     );
+  }
+//xxxxx
+  private addCalloutsButtons(mainDiv: HTMLElement) {
+    const addClickEvent = (btn: HTMLElement, type: string) => {
+      btn.onClickEvent(() => {
+        // @ts-ignore
+        const formatterSetting = calloutsFormatterSettings[type];
+
+        const leaf = this.app.workspace.getMostRecentLeaf();
+        let editor = null;
+        if (checkIfMarkdownSource(leaf)) {
+          // @ts-ignore
+          editor = leaf.view.sourceMode.cmEditor;
+          calloutsFormatter(editor, formatterSetting);
+        }
+      });
+    };
+
+    const numberOfCols = 5;
+    let row: HTMLElement = null;
+
+    R.keys(calloutsFormatterSettings).forEach((key, index) => {
+      // @ts-ignore
+      const item = calloutsFormatterSettings[key];
+      if (index === 0 || item.newLine) {
+        row = mainDiv.createDiv({ cls: 'nav-buttons-container' });
+      }
+
+      let button = row.createDiv({ cls: 'nav-action-text-button' });
+      // @ts-ignore
+      button.style.textJustify = 'center';
+      button.style.textAlign = 'center';
+      button.style.backgroundColor = item.bgColor;
+      addClickEvent(button, key);
+      
+      const spanText = document.createElement('span');
+      spanText.innerHTML = ' '+item.text;
+      const spanIcon = document.createElement('span');
+      setIcon(spanIcon, item.icon);
+      spanIcon.style.verticalAlign = 'middle';
+      spanIcon.style.color = item.color;
+      button.appendChild(spanIcon);
+      button.appendChild(spanText);
+      
+    });
   }
 
   private addLatexButtons(mainDiv: HTMLElement) {
