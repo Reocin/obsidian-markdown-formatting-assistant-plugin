@@ -1,3 +1,9 @@
+> # PLUGIN NOT MAINTAINED anymore
+> If you want to takover the plugin, write me!
+
+
+
+----
 # Obsidian Markdown Formatting Assistant
 
 > This Plugin provides easy to use snippets for Markdown, HTML and Latex and a color picker which shows the history of last used colors. Furthermore, it is possible to save any color you want.
