@@ -98,6 +98,9 @@ For a even easier handling you can select additional options to what should be a
 - Add tag: "style={your color}
   - This option is only helpful, if you also select one of both of the other options like:
   - ex. `style="background-color: #ff0000"`
+- Add HTML: "`<font color={your color}>{selected text}</font>`"
+  - Useful for quickly coloring text.
+  - ex. `<font color="#ffffff">Hello World</font>`
 
 ![](assets/Color_Picker.png)
 

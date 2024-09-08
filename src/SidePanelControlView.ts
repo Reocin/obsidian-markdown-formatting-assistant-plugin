@@ -531,6 +531,9 @@ export class SidePanelControlView extends ItemView {
         const addStyle =
           // @ts-ignore
           document.getElementById('inputStyleTagCheckBox').checked;
+        const addHtml =
+          // @ts-ignore
+          document.getElementById('inputHtmlTagCheckBox').checked;
 
         let res = color;
         if (addColor) res = `color: ${color}`;
@@ -540,6 +543,7 @@ export class SidePanelControlView extends ItemView {
         if (addStyle) res = `style="${res}"`;
         // @ts-ignore
         editor = leaf.view.sourceMode.cmEditor;
+        if (addHtml) res = `<font color="${res}">${editor.getSelection()}</font>`;
         colorFormatter(editor, res);
         editor.focus();
       }
@@ -727,6 +731,7 @@ export class SidePanelControlView extends ItemView {
       ' Add "background-color: {your color}"',
     );
     addCheckbox('inputStyleTagCheckBox', ' Add tag: "style={your color}"');
+    addCheckbox('inputHtmlTagCheckBox', ' Add HTML: "<font color={your color}>{selected text}</font>"');
 
     const lastSelectedColorsTitle = colorSection.createEl('p');
     lastSelectedColorsTitle.appendText('Last used colors:');
