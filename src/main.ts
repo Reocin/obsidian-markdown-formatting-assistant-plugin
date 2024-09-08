@@ -274,7 +274,7 @@ class SettingsTab extends PluginSettingTab {
     new Setting(containerEl)
       .setName('Saved Colors')
       .setDesc(
-        'Colors which are saved vie the color picker. The order will be also considered. Requiers a restart of obsidian.',
+        'Colors which are saved via the color picker. The order will be also considered. Requiers a restart of obsidian.',
       )
       .addTextArea((text) => {
         text.inputEl.style.minHeight = '400px';
