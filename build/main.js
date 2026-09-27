@@ -5412,7 +5412,10 @@ function shortLabel(name) {
 }
 
 var SidePanelControlViewType = 'side-panel-control-view';
-var ISSUES_URL = 'https://github.com/Mark-Karte/obsidian-markdown-formatting-assistant-plugin/issues';
+// The repository the community catalogue installs from, so the one whose
+// tracker is open. The fork this was maintained in has issues turned off.
+var REPOSITORY_URL = 'https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin';
+var ISSUES_URL = "".concat(REPOSITORY_URL, "/issues");
 var SidePanelControlView = /** @class */ (function (_super) {
     __extends(SidePanelControlView, _super);
     function SidePanelControlView(leaf, plugin) {
@@ -6024,7 +6027,7 @@ var SidePanelControlView = /** @class */ (function (_super) {
         });
         lastSavedColors.id = 'mfa-saved-colors';
         drawLastSavedColorIcons(lastSavedColors);
-        this.addNote(colorSection, t('colors.help'), 'https://github.com/Mark-Karte/obsidian-markdown-formatting-assistant-plugin#color-picker');
+        this.addNote(colorSection, t('colors.help'), "".concat(REPOSITORY_URL, "#color-picker"));
     };
     SidePanelControlView.prototype.addSelectableHeader = function (mainDiv, regionName) {
         var _this = this;

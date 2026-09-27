@@ -42,8 +42,11 @@ import { commandName } from './commandNames';
 
 export const SidePanelControlViewType = 'side-panel-control-view';
 
-const ISSUES_URL =
-  'https://github.com/Mark-Karte/obsidian-markdown-formatting-assistant-plugin/issues';
+// The repository the community catalogue installs from, so the one whose
+// tracker is open. The fork this was maintained in has issues turned off.
+const REPOSITORY_URL =
+  'https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin';
+const ISSUES_URL = `${REPOSITORY_URL}/issues`;
 
 export class SidePanelControlView extends ItemView {
   private static lastColors: Array<string> = ['#ff0000'];
@@ -810,7 +813,7 @@ export class SidePanelControlView extends ItemView {
     this.addNote(
       colorSection,
       t('colors.help'),
-      'https://github.com/Mark-Karte/obsidian-markdown-formatting-assistant-plugin#color-picker',
+      `${REPOSITORY_URL}#color-picker`,
     );
   }
 
