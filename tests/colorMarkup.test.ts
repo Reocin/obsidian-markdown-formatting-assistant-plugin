@@ -1,5 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import { colorCode, wrapWithColor } from '../src/colorMarkup.ts';
 
@@ -147,5 +150,38 @@ test('every combination produces balanced quotes', () => {
         `an attribute closed early in ${produced}`,
       );
     }
+  }
+});
+
+// ---------------------------------------------------------------------------
+// What the checkbox says
+// ---------------------------------------------------------------------------
+
+test('the html checkbox label shows what the click writes, in every language', () => {
+  // Since 0.9.0 the checkbox only applies with nothing selected, and then it
+  // writes an empty tag. The label went on promising {selected text} inside
+  // the tag until 0.10.0, which is the one case the checkbox does not handle.
+  const dir = path.join(
+    path.dirname(fileURLToPath(import.meta.url)),
+    '..',
+    'src',
+    'locales',
+  );
+  const written = colorCode('#ff0000', { ...none, html: true });
+
+  assert.equal(written, '<font color="#ff0000"></font>');
+
+  const locales = fs
+    .readdirSync(dir)
+    .filter((file) => file.endsWith('.ts') && file !== 'index.ts');
+
+  assert.equal(locales.length, 12);
+  for (const file of locales) {
+    const source = fs.readFileSync(path.join(dir, file), 'utf8');
+    const label = source.match(/'colors\.optionHtmlTag':\s*'([^']*)'/);
+
+    assert.ok(label, `${file} has no html option label`);
+    assert.ok(label[1].includes('></font>'), `${file}: ${label[1]}`);
+    assert.ok(!label[1].includes('{selected text}'), `${file}: ${label[1]}`);
   }
 });

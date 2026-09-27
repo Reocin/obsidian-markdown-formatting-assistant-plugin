@@ -34,7 +34,7 @@ export const ja: LocaleDictionary = {
   'colors.optionBackgroundColor': ' "background-color: {your color}" を追加',
   'colors.optionStyleTag': ' 属性を追加: "style={your color}"',
   'colors.optionHtmlTag':
-    ' HTML を追加: "<font color={your color}>{selected text}</font>"',
+    ' HTML を追加: "<font color={your color}></font>"',
   'colors.lastUsed': '最近使った色:',
   'colors.saved': '保存した色:',
   'colors.editInSettings': '保存した色は設定から直接編集できます。',
@@ -49,6 +49,9 @@ export const ja: LocaleDictionary = {
   'settings.sidePaneSide.name': 'サイドパネルの位置',
   'settings.sidePaneSide.desc': 'サイドパネルを表示する側を選びます。',
   'settings.sidePaneSide.placeholder': 'left または right を入力',
+  'settings.panelAlign.name': 'パネルのボタンの配置',
+  'settings.panelAlign.desc':
+    'サイドパネルの各セクションでボタンを寄せる位置です。',
   'settings.toggleSection.name': '「{section}」セクション',
   'settings.toggleSection.desc':
     '「{section}」セクションを有効または無効にします。（再起動が必要）',
@@ -94,9 +97,9 @@ export const ja: LocaleDictionary = {
   'settings.toolbar.pick': 'すべてのコマンドを検索',
   'settings.toolbar.align.name': 'ボタンの配置',
   'settings.toolbar.align.desc': '行の中でボタンを寄せる位置です。',
-  'settings.toolbar.align.left': '左寄せ',
-  'settings.toolbar.align.center': '中央',
-  'settings.toolbar.align.right': '右寄せ',
+  'settings.align.left': '左寄せ',
+  'settings.align.center': '中央',
+  'settings.align.right': '右寄せ',
   'settings.calloutTitles.name': 'コールアウトの見出しを書き込む',
   'settings.calloutTitles.desc': 'コールアウト名を見出しとして挿入し、ノートで選択した言語のまま表示されるようにします。[!note] の中のキーワードは常に英語のままです。Obsidian はそれで種類を判別します。',
 };

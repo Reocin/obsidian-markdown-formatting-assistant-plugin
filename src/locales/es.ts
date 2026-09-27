@@ -33,7 +33,7 @@ export const es: LocaleDictionary = {
   'colors.optionBackgroundColor': ' Añadir "background-color: {your color}"',
   'colors.optionStyleTag': ' Añadir atributo: "style={your color}"',
   'colors.optionHtmlTag':
-    ' Añadir HTML: "<font color={your color}>{selected text}</font>"',
+    ' Añadir HTML: "<font color={your color}></font>"',
   'colors.lastUsed': 'Colores recientes:',
   'colors.saved': 'Colores guardados:',
   'colors.editInSettings':
@@ -50,6 +50,9 @@ export const es: LocaleDictionary = {
   'settings.sidePaneSide.name': 'Lado del panel lateral',
   'settings.sidePaneSide.desc': 'Elige en qué lado aparece el panel lateral.',
   'settings.sidePaneSide.placeholder': 'Introduce left o right',
+  'settings.panelAlign.name': 'Alineación de los botones del panel',
+  'settings.panelAlign.desc':
+    'Dónde se colocan los botones en las secciones del panel lateral.',
   'settings.toggleSection.name': 'Sección «{section}»',
   'settings.toggleSection.desc':
     'Activar o desactivar la sección «{section}». (requiere reiniciar)',
@@ -95,9 +98,9 @@ export const es: LocaleDictionary = {
   'settings.toolbar.pick': 'Buscar en todos los comandos',
   'settings.toolbar.align.name': 'Alineación de los botones',
   'settings.toolbar.align.desc': 'Dónde se colocan los botones en la fila.',
-  'settings.toolbar.align.left': 'Izquierda',
-  'settings.toolbar.align.center': 'Centro',
-  'settings.toolbar.align.right': 'Derecha',
+  'settings.align.left': 'Izquierda',
+  'settings.align.center': 'Centro',
+  'settings.align.right': 'Derecha',
   'settings.calloutTitles.name': 'Escribir el título de la llamada',
   'settings.calloutTitles.desc': 'Insertar el nombre de la llamada como título, para que la nota lo muestre en tu idioma. La palabra clave dentro de [!note] siempre queda en inglés: es la que reconoce Obsidian.',
 };

@@ -29,6 +29,12 @@ import {
   normaliseToolbarCommands,
   toolbarSetting,
 } from './toolbarSettings';
+import {
+  DEFAULT_PANEL_ALIGNMENT,
+  PANEL_ALIGNMENTS,
+  normalisePanelAlignment,
+  panelAlignment,
+} from './panelSettings';
 import { moveItem } from './reorder';
 import type { tableAlignment } from './tableFormatter';
 import {
@@ -52,6 +58,7 @@ interface RegionSetting {
 export interface PluginSettings {
   language: LocaleSetting;
   sidePaneSideLeft: Boolean;
+  panelAlignment: panelAlignment;
   savedColors: string[];
   regionSettings: Array<RegionSetting>;
   tableAlignment: tableAlignment;
@@ -65,6 +72,7 @@ const DEFAULT_PICKER_COLOR = '#448aff';
 const DEFAULT_SETTINGS: PluginSettings = {
   language: AUTO_LOCALE,
   sidePaneSideLeft: false,
+  panelAlignment: DEFAULT_PANEL_ALIGNMENT,
   savedColors: ['#ff0000'],
   regionSettings: [
     { name: 'textEdit', active: true, visible: false },
@@ -193,6 +201,10 @@ export default class MarkdownAutocompletePlugin extends Plugin {
         : DEFAULT_SETTINGS.savedColors
     ).filter((color) => typeof color === 'string');
 
+    this.settings.panelAlignment = normalisePanelAlignment(
+      this.settings.panelAlignment,
+    );
+
     const stored = this.settings.toolbar;
 
     this.settings.toolbar = {
@@ -204,6 +216,19 @@ export default class MarkdownAutocompletePlugin extends Plugin {
 
   async saveSettings() {
     await this.saveData(this.settings);
+  }
+
+  /** Every open panel, so the alignment changes without reopening it. */
+  applyPanelAlignment(): void {
+    this.app.workspace
+      .getLeavesOfType(SidePanelControlViewType)
+      .forEach((leaf) => {
+        // A leaf restored from the saved layout but not yet shown holds a
+        // placeholder view; it draws with the current setting when revealed.
+        if (leaf.view instanceof SidePanelControlView) {
+          leaf.view.applyAlignment();
+        }
+      });
   }
 
   private readonly toggleSidePanelControlView = async (): Promise<void> => {
@@ -311,6 +336,23 @@ class SettingsTab extends PluginSettingTab {
       );
 
     new Setting(containerEl)
+      .setName(t('settings.panelAlign.name'))
+      .setDesc(t('settings.panelAlign.desc'))
+      .addDropdown((dropdown) => {
+        PANEL_ALIGNMENTS.forEach((option) =>
+          dropdown.addOption(option, t(`settings.align.${option}`)),
+        );
+
+        dropdown
+          .setValue(this.plugin.settings.panelAlignment)
+          .onChange(async (value) => {
+            this.plugin.settings.panelAlignment = normalisePanelAlignment(value);
+            this.plugin.applyPanelAlignment();
+            await this.plugin.saveSettings();
+          });
+      });
+
+    new Setting(containerEl)
       .setName(t('settings.calloutTitles.name'))
       .setDesc(t('settings.calloutTitles.desc'))
       .addToggle((comp) => {
@@ -384,7 +426,7 @@ class SettingsTab extends PluginSettingTab {
       .setDesc(t('settings.toolbar.align.desc'))
       .addDropdown((dropdown) => {
         TOOLBAR_ALIGNMENTS.forEach((option) =>
-          dropdown.addOption(option, t(`settings.toolbar.align.${option}`)),
+          dropdown.addOption(option, t(`settings.align.${option}`)),
         );
 
         dropdown.setValue(toolbar.alignment).onChange(async (value) => {

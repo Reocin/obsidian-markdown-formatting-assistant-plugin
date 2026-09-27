@@ -33,7 +33,7 @@ export const be: LocaleDictionary = {
   'colors.optionBackgroundColor': ' Дадаць "background-color: {your color}"',
   'colors.optionStyleTag': ' Дадаць атрыбут: "style={your color}"',
   'colors.optionHtmlTag':
-    ' Дадаць HTML: "<font color={your color}>{selected text}</font>"',
+    ' Дадаць HTML: "<font color={your color}></font>"',
   'colors.lastUsed': 'Апошнія колеры:',
   'colors.saved': 'Захаваныя колеры:',
   'colors.editInSettings':
@@ -50,6 +50,9 @@ export const be: LocaleDictionary = {
   'settings.sidePaneSide.name': 'Бок панэлі',
   'settings.sidePaneSide.desc': 'З якога боку адкрываецца бакавая панэль.',
   'settings.sidePaneSide.placeholder': 'Увядзіце left або right',
+  'settings.panelAlign.name': 'Выраўноўванне кнопак панэлі',
+  'settings.panelAlign.desc':
+    'Дзе стаяць кнопкі ў секцыях бакавой панэлі.',
   'settings.toggleSection.name': 'Секцыя «{section}»',
   'settings.toggleSection.desc':
     'Уключыць або выключыць секцыю «{section}». (патрэбны перазапуск)',
@@ -95,9 +98,9 @@ export const be: LocaleDictionary = {
   'settings.toolbar.pick': 'Пошук па ўсіх камандах',
   'settings.toolbar.align.name': 'Выраўноўванне кнопак',
   'settings.toolbar.align.desc': 'Дзе кнопкі стаяць у радзе.',
-  'settings.toolbar.align.left': 'Па левым краі',
-  'settings.toolbar.align.center': 'Па цэнтры',
-  'settings.toolbar.align.right': 'Па правым краі',
+  'settings.align.left': 'Па левым краі',
+  'settings.align.center': 'Па цэнтры',
+  'settings.align.right': 'Па правым краі',
   'settings.calloutTitles.name': 'Пісаць загаловак выноскі',
   'settings.calloutTitles.desc': 'Устаўляць назву выноскі як загаловак, каб у нататцы яна адлюстроўвалася на вашай мове. Ключавое слова ўнутры [!note] заўсёды застаецца англійскім — менавіта па ім Obsidian вызначае тып.',
 };
