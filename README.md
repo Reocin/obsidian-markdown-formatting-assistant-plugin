@@ -2,7 +2,7 @@
 
 An Obsidian plugin that puts formatting one click or one keystroke away: a side panel of buttons for Markdown, tables, HTML, LaTeX, Greek letters, callouts and colours, a search window over all of them, a hotkey for every action, and — if you want one — a toolbar of your own above the note.
 
-- **Side panel** with seven sections you can reorder, fold and switch off.
+- **Side panel** with seven sections you can reorder, fold and switch off, its buttons lined up left, centre or right.
 - **`Alt+Q`** searches about 160 snippets by name, in your language or in English. **`Alt+C`** does the same for the 26 callouts.
 - **Hotkeys** for every Text Edit action and every callout, bound wherever you like.
 - **Toolbar above the note**, off by default: any command in your vault, in the order you choose.
@@ -25,6 +25,8 @@ To install by hand, download `main.js`, `manifest.json` and `styles.css` from th
 Open it with the ribbon icon on the left, or with the command *Open Markdown Formatting Assistant*, which can be given a hotkey like any other. It opens in the right sidebar; `Side Pane Side` in the settings moves it to the left — press the ribbon icon again after changing it.
 
 The panel follows the width of its pane, so the button grid reflows when you drag the pane wider or narrower. It works on mobile too.
+
+The buttons are centred unless you choose otherwise: `Panel button alignment` in the settings lines them up on the left or the right instead — the swatches, the table picker and the links under each section with them. An open panel changes straight away.
 
 With text selected, formatting buttons — bold, a tag, a callout and the like — wrap it rather than replace it. With nothing selected, they insert at the cursor.
 
@@ -68,7 +70,7 @@ Two things that are not tags but are written as HTML because Obsidian has no Mar
 
 > Like LaTeX, Greek letters only work inside an equation.
 
-![The Greek Letters section of the side panel](assets/Panel_Overview_Greek_Letters.png)
+![The Greek Letters section of the side panel](assets/panel-greek.png)
 
 ### Callouts
 
@@ -132,6 +134,8 @@ Desktop only. On mobile Obsidian already puts a toolbar above the keyboard, and 
 
 Click any swatch to use that colour again. Right-click a swatch to remove it, and drag saved colours to change their order.
 
+![The Colors section of the side panel, with recent and saved colours](assets/panel-colors.png)
+
 ### Colouring selected text
 
 Select some text and click a colour — recent, saved, or freshly picked — and the selection is wrapped so it takes that colour. One click, no options to tick first.
@@ -169,6 +173,7 @@ Translations other than English and Russian have not been reviewed by native spe
 
 - **Language** — default: same as Obsidian. Any of the 12 supported languages. Takes effect after a restart.
 - **Side Pane Side** — default: right. Which sidebar the panel opens in.
+- **Panel button alignment** — default: center. Left, center or right: where the buttons in the panel's sections sit, together with the swatches, the table picker and the links under each section. Takes effect at once.
 - **Write callout headings** — default: on. Writes the callout's name as its heading, in your language. The keyword inside `[!note]` stays English either way.
 - **Toggle *section* Section** — default: all on. Every section of the side panel can be switched off. Takes effect after a restart.
 - **Toolbar above the note** — default: off. Which commands appear on it, in what order, and whether they sit left, centre or right. Desktop only.
