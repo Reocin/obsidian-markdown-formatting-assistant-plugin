@@ -10,6 +10,8 @@ An Obsidian plugin that puts formatting one click or one keystroke away: a side 
 - **12 languages**, following Obsidian's own by default.
 - **Works from the keyboard** and with screen readers.
 
+![Obsidian with the side panel open on the right and the toolbar above the note](assets/overview.png)
+
 Written by [Reocin](https://github.com/Reocin), who handed maintenance over in 2026; versions from 0.5.0 on are maintained by Mark Karte and Claude, in this same repository.
 
 ## Installation
@@ -30,7 +32,7 @@ With text selected, formatting buttons — bold, a tag, a callout and the like �
 
 Drag a section by its header to move it, and click the arrow to fold it. The order and the folding are remembered. A section you never use can be switched off in the settings.
 
-![](assets/OrderableAndExpandableRows.gif)
+![Dragging a section header to a new position in the side panel](assets/OrderableAndExpandableRows.gif)
 
 ### Text Edit
 
@@ -44,11 +46,15 @@ Pick a size from the grid — up to 6 rows by 6 columns, counting the header —
 
 A table dropped in the middle of a line moves onto a line of its own, and whatever followed the cursor is pushed below it rather than glued onto the last row.
 
+![The Text Edit and Tables sections of the side panel](assets/panel-text-edit-tables.png)
+
 ### HTML
 
 `<a>` `<abbr>` `<b>` `<br/>` `<center>` `<details>` `<dfn>` `<div>` `<em>` `<font>` `<hr/>` `<i>` `<img>` `<kbd>` `<mark>` `<p>` `<pre>` `<span>` `<strong>` `<sub>` `<summary>` `<sup>` `<table>` `<tbody>` `<td>` `<tfoot>` `<th>` `<thead>` `<tr>` `<u>`
 
 Two things that are not tags but are written as HTML because Obsidian has no Markdown for them: a **page break** for PDF export, and **text alignment** — left, center, right and justify.
+
+![The HTML section of the side panel](assets/panel-html.png)
 
 ### Latex
 
@@ -56,11 +62,13 @@ Two things that are not tags but are written as HTML because Obsidian has no Mar
 
 69 operators. The 33 on the panel are the everyday ones: fractions, powers and indices, `\sqrt`, `\sum`, `\int`, `\prod`, `\lim`, `\partial`, `\infty`, trigonometric functions and brackets. The other 36 — relations, set and logic symbols, arrows, `\nabla`, `\binom`, `\overline`, blackboard bold and so on — are only in the `Alt+Q` window, where they can be found by name. A panel showing all of them would be a wall of symbols to read through every time.
 
+![The Latex section of the side panel](assets/panel-latex.png)
+
 ### Greek Letters
 
 > Like LaTeX, Greek letters only work inside an equation.
 
-![](assets/Panel_Overview_Greek_Letters.png)
+![The Greek Letters section of the side panel](assets/Panel_Overview_Greek_Letters.png)
 
 ### Callouts
 
@@ -70,6 +78,8 @@ The heading is written in your interface language, so a note reads `> [!note] И
 
 Selected text becomes the body of the callout, and a selection spanning several paragraphs stays inside it: the quote marker is repeated on every line.
 
+![The Callouts section of the side panel](assets/panel-callouts.png)
+
 ## Search windows
 
 `Alt+Q` opens a search over every snippet in the Text Edit, HTML, LaTeX and Greek sections — about 160 of them. Type a few letters of the name and press Enter; it works wherever the cursor is and whether or not text is selected, so your hands never leave the keyboard. Names match in your interface language and in English alike, so `warning` and `Предупреждение` find the same thing.
@@ -78,11 +88,11 @@ Selected text becomes the body of the callout, and a selection spanning several 
 
 Tables and colours are on the panel only.
 
-![](assets/Suggestion_Window_How_to_use_with_hotkey.gif)
+![Typing a few letters in the Alt+Q window and inserting the suggestion](assets/Suggestion_Window_How_to_use_with_hotkey.gif)
 
 Both keys can be changed under `Settings → Hotkeys`: search for *Open Command Selector* or *Open Callouts Selector*.
 
-![](assets/Suggestion_Window_change_hot_key.gif)
+![Changing the Alt+Q hotkey in Obsidian's hotkey settings](assets/Suggestion_Window_change_hot_key.gif)
 
 ## Hotkeys for individual commands
 
@@ -103,6 +113,8 @@ A button is an Obsidian command and nothing else. That is what makes the row wor
 It starts with everyday formatting: headings, bold, italic, strikethrough, highlight, inline code, quote, the three list kinds and a link. Nothing about that set is special; clear it out and build your own.
 
 The buttons can sit at the left of the row, in the middle, or at the right — whichever suits where your eyes already are.
+
+![The toolbar settings: the list of commands on it, their alignment, and the button to add more](assets/settings-toolbar.png)
 
 The bar appears only while you are editing, since every button writes to the note, and it wraps rather than scrolls, so a narrow pane costs a row of height instead of hiding half the buttons.
 
@@ -161,6 +173,8 @@ Translations other than English and Russian have not been reviewed by native spe
 - **Toggle *section* Section** — default: all on. Every section of the side panel can be switched off. Takes effect after a restart.
 - **Toolbar above the note** — default: off. Which commands appear on it, in what order, and whether they sit left, centre or right. Desktop only.
 - **Saved Colors** — the saved colours as swatches next to a colour picker. Pick a colour to add it, click a swatch to remove it. The order is the one the panel shows them in.
+
+![The plugin's settings tab](assets/settings.png)
 
 ## Feedback
 
