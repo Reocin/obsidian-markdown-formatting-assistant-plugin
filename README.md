@@ -1,11 +1,11 @@
 # Obsidian Markdown Formatting Assistant
 
 > This Plugin provides easy to use snippets for Markdown, HTML and Latex and a color picker which shows the history of last used colors. Furthermore, it is possible to save any color you want.
-> Version 0.9.0
+> Version 0.9.1
 
-> If you find a Bug or have a feature request: https://github.com/Mark-Karte/obsidian-markdown-formatting-assistant-plugin/issues
+> If you find a Bug or have a feature request: https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin/issues
 
-This is a maintained fork of [Reocin/obsidian-markdown-formatting-assistant-plugin](https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin), which the original author stopped maintaining. It is MIT licensed — the original declared MIT in its `package.json` from its first commit but never shipped the licence text, so [LICENSE](LICENSE) states it explicitly and credits both.
+Written by [Reocin](https://github.com/Reocin), who handed maintenance over in 2026; versions from 0.5.0 on are maintained by Mark Karte and Claude, in this same repository. It is MIT licensed — the plugin declared MIT in its `package.json` from its first commit but never shipped the licence text, so [LICENSE](LICENSE) states it explicitly and credits both.
 
 ![](assets/Obsidian_Overview.png)
 
@@ -222,6 +222,11 @@ Run `npm run typecheck` as well as the build. Rollup reports a clean build for c
 Originally written by [Reocin](https://github.com/Reocin). Maintained since version 0.5.0 by Mark Karte and Claude.
 
 ## Changelog
+
+- Version: 0.9.1
+
+  - **Fixed**
+    - The links in the side panel for reporting a missing tag or function, and the one to the color picker's help, led to a copy of the repository with its issue tracker turned off. They lead here now, as does the bug report link at the top of this page.
 
 - Version: 0.9.0
 
