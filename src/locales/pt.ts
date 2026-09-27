@@ -34,7 +34,7 @@ export const pt: LocaleDictionary = {
     ' Adicionar "background-color: {your color}"',
   'colors.optionStyleTag': ' Adicionar atributo: "style={your color}"',
   'colors.optionHtmlTag':
-    ' Adicionar HTML: "<font color={your color}>{selected text}</font>"',
+    ' Adicionar HTML: "<font color={your color}></font>"',
   'colors.lastUsed': 'Cores recentes:',
   'colors.saved': 'Cores salvas:',
   'colors.editInSettings':
@@ -51,6 +51,9 @@ export const pt: LocaleDictionary = {
   'settings.sidePaneSide.name': 'Lado do painel lateral',
   'settings.sidePaneSide.desc': 'Escolha de que lado o painel lateral aparece.',
   'settings.sidePaneSide.placeholder': 'Digite left ou right',
+  'settings.panelAlign.name': 'Alinhamento dos botões do painel',
+  'settings.panelAlign.desc':
+    'Onde os botões ficam nas seções do painel lateral.',
   'settings.toggleSection.name': 'Seção «{section}»',
   'settings.toggleSection.desc':
     'Ativar ou desativar a seção «{section}». (requer reinício)',
@@ -96,9 +99,9 @@ export const pt: LocaleDictionary = {
   'settings.toolbar.pick': 'Procurar em todos os comandos',
   'settings.toolbar.align.name': 'Alinhamento dos botões',
   'settings.toolbar.align.desc': 'Onde os botões ficam na linha.',
-  'settings.toolbar.align.left': 'Esquerda',
-  'settings.toolbar.align.center': 'Centro',
-  'settings.toolbar.align.right': 'Direita',
+  'settings.align.left': 'Esquerda',
+  'settings.align.center': 'Centro',
+  'settings.align.right': 'Direita',
   'settings.calloutTitles.name': 'Escrever o título do destaque',
   'settings.calloutTitles.desc': 'Inserir o nome do destaque como título, para que a nota o mostre no seu idioma. A palavra-chave dentro de [!note] permanece sempre em inglês - é por ela que o Obsidian identifica o tipo.',
 };

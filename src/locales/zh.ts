@@ -34,7 +34,7 @@ export const zh: LocaleDictionary = {
   'colors.optionBackgroundColor': ' 添加 "background-color: {your color}"',
   'colors.optionStyleTag': ' 添加属性："style={your color}"',
   'colors.optionHtmlTag':
-    ' 添加 HTML："<font color={your color}>{selected text}</font>"',
+    ' 添加 HTML："<font color={your color}></font>"',
   'colors.lastUsed': '最近使用的颜色：',
   'colors.saved': '已保存的颜色：',
   'colors.editInSettings': '已保存的颜色可以直接在设置中编辑。',
@@ -49,6 +49,9 @@ export const zh: LocaleDictionary = {
   'settings.sidePaneSide.name': '侧边栏位置',
   'settings.sidePaneSide.desc': '选择侧边栏出现在哪一侧。',
   'settings.sidePaneSide.placeholder': '输入 left 或 right',
+  'settings.panelAlign.name': '面板按钮对齐',
+  'settings.panelAlign.desc':
+    '按钮在侧边栏各板块中的位置。',
   'settings.toggleSection.name': '「{section}」板块',
   'settings.toggleSection.desc': '启用或禁用「{section}」板块。（需要重启）',
   'settings.savedColors.name': '已保存的颜色',
@@ -93,9 +96,9 @@ export const zh: LocaleDictionary = {
   'settings.toolbar.pick': '搜索全部命令',
   'settings.toolbar.align.name': '按钮对齐',
   'settings.toolbar.align.desc': '按钮在这一行中的位置。',
-  'settings.toolbar.align.left': '左对齐',
-  'settings.toolbar.align.center': '居中',
-  'settings.toolbar.align.right': '右对齐',
+  'settings.align.left': '左对齐',
+  'settings.align.center': '居中',
+  'settings.align.right': '右对齐',
   'settings.calloutTitles.name': '写入标注标题',
   'settings.calloutTitles.desc': '把标注名称作为标题插入，这样笔记中就会显示你所选语言的名称。[!note] 中的关键字始终保持英文，Obsidian 依靠它识别类型。',
 };

@@ -76,11 +76,19 @@ body.is-mobile .markdown-formatting-assistant-panel .nav-buttons-container {
   border-radius: 4px;
 }
 
-/* Colour swatches reflow with their container instead of sitting in fixed rows. */
+/* Colour swatches reflow with their container instead of sitting in fixed rows.
+   Where a row starts is decided where it lives: in the side panel by the
+   alignment setting further down, in the settings tab by the rule below. */
 .mfa-color-swatches {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+}
+
+/* In the settings tab they sit beside the colour picker at the right edge of
+   the row, like every other control there. This used to be the rule for all
+   swatches, and it pushed the side panel's to the right edge as well. */
+.setting-item-control .mfa-color-swatches {
   justify-content: flex-end;
 }
 
@@ -223,20 +231,71 @@ body.is-mobile .markdown-formatting-assistant-panel .nav-buttons-container {
   display: none;
 }
 
-/* The small centred link that closes several sections. */
-.mfa-note {
+/*
+ * Where everything in a section sits: the rows of buttons, the swatches, the
+ * table picker, and the lines of text that go with them - so a right-aligned
+ * panel does not keep a centred link under right-aligned buttons. The colour
+ * checkboxes stay on the left in every case; a list of options is read from
+ * its start.
+ *
+ * Buttons sit in Obsidian's own .nav-buttons-container, which centres them.
+ * These selectors outrank that rule, and each alignment is spelled out rather
+ * than one left to it, so the setting reads the same here as in the dialog.
+ * Issue #94.
+ */
+.markdown-formatting-assistant-panel.is-align-left .nav-buttons-container,
+.markdown-formatting-assistant-panel.is-align-left .mfa-color-swatches {
+  justify-content: flex-start;
+}
+
+.markdown-formatting-assistant-panel.is-align-left .mfa-table-grid {
+  align-items: flex-start;
+}
+
+.markdown-formatting-assistant-panel.is-align-left
+  :is(.mfa-note, .mfa-subheading, .mfa-table-label, .mfa-swatches-title, .mfa-swatches-hint) {
+  text-align: left;
+}
+
+.markdown-formatting-assistant-panel.is-align-center .nav-buttons-container,
+.markdown-formatting-assistant-panel.is-align-center .mfa-color-swatches {
+  justify-content: center;
+}
+
+.markdown-formatting-assistant-panel.is-align-center .mfa-table-grid {
+  align-items: center;
+}
+
+.markdown-formatting-assistant-panel.is-align-center
+  :is(.mfa-note, .mfa-subheading, .mfa-table-label, .mfa-swatches-title, .mfa-swatches-hint) {
   text-align: center;
+}
+
+.markdown-formatting-assistant-panel.is-align-right .nav-buttons-container,
+.markdown-formatting-assistant-panel.is-align-right .mfa-color-swatches {
+  justify-content: flex-end;
+}
+
+.markdown-formatting-assistant-panel.is-align-right .mfa-table-grid {
+  align-items: flex-end;
+}
+
+.markdown-formatting-assistant-panel.is-align-right
+  :is(.mfa-note, .mfa-subheading, .mfa-table-label, .mfa-swatches-title, .mfa-swatches-hint) {
+  text-align: right;
+}
+
+/* The small link that closes several sections. */
+.mfa-note {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 .mfa-note-link {
   font-size: 10px;
-  text-align: center;
 }
 
 .mfa-subheading {
-  text-align: center;
   margin-top: 10px;
   margin-bottom: 5px;
 }
@@ -281,7 +340,6 @@ body.is-mobile .markdown-formatting-assistant-panel .nav-buttons-container {
 }
 
 .mfa-swatches-hint {
-  text-align: left;
   font-size: 10px;
   margin-top: 0;
 }
@@ -309,7 +367,6 @@ body.is-mobile .markdown-formatting-assistant-panel .nav-buttons-container {
 /* ------------------------------------------------------------------------ */
 
 .mfa-table-label {
-  text-align: center;
   margin: 4px 0;
   font-size: 12px;
 }
@@ -317,7 +374,6 @@ body.is-mobile .markdown-formatting-assistant-panel .nav-buttons-container {
 .mfa-table-grid {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 2px;
 }
 

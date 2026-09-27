@@ -1,5 +1,13 @@
 # Changelog
 
+- Version: 0.10.0
+
+  - **Added**
+    - A setting for where the side panel's buttons sit: left, centre or right. The rows of buttons, the table picker, the colour swatches and the links under each section all follow it, and an open panel changes straight away. Centred stays the default, so nothing moves unless you ask. Requested in [#94](https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin/issues/94).
+  - **Fixed**
+    - The recent and saved colours in the side panel hugged its right edge since 0.6.0. A rule meant for the settings tab, where the swatches sit beside the colour picker, applied to the panel as well. They follow the panel's alignment now, and so do their titles — with the default, centred like the rest of the panel.
+    - The HTML checkbox in the Colors section promised `<font color=…>{selected text}</font>`. Since 0.9.0 it applies only with nothing selected, and then writes an empty tag, so that is what its label shows now.
+
 - Version: 0.9.1
 
   - **Fixed**

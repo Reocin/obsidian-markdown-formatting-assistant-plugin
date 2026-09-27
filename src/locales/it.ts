@@ -33,7 +33,7 @@ export const it: LocaleDictionary = {
   'colors.optionBackgroundColor': ' Aggiungi "background-color: {your color}"',
   'colors.optionStyleTag': ' Aggiungi attributo: "style={your color}"',
   'colors.optionHtmlTag':
-    ' Aggiungi HTML: "<font color={your color}>{selected text}</font>"',
+    ' Aggiungi HTML: "<font color={your color}></font>"',
   'colors.lastUsed': 'Colori recenti:',
   'colors.saved': 'Colori salvati:',
   'colors.editInSettings':
@@ -51,6 +51,9 @@ export const it: LocaleDictionary = {
   'settings.sidePaneSide.desc':
     'Scegli su quale lato compare il pannello laterale.',
   'settings.sidePaneSide.placeholder': 'Inserisci left o right',
+  'settings.panelAlign.name': 'Allineamento dei pulsanti del pannello',
+  'settings.panelAlign.desc':
+    'Dove stanno i pulsanti nelle sezioni del pannello laterale.',
   'settings.toggleSection.name': 'Sezione «{section}»',
   'settings.toggleSection.desc':
     'Attiva o disattiva la sezione «{section}». (riavvio necessario)',
@@ -96,9 +99,9 @@ export const it: LocaleDictionary = {
   'settings.toolbar.pick': 'Cerca fra tutti i comandi',
   'settings.toolbar.align.name': 'Allineamento dei pulsanti',
   'settings.toolbar.align.desc': 'Dove stanno i pulsanti nella riga.',
-  'settings.toolbar.align.left': 'Sinistra',
-  'settings.toolbar.align.center': 'Centro',
-  'settings.toolbar.align.right': 'Destra',
+  'settings.align.left': 'Sinistra',
+  'settings.align.center': 'Centro',
+  'settings.align.right': 'Destra',
   'settings.calloutTitles.name': 'Scrivere il titolo del riquadro',
   'settings.calloutTitles.desc': 'Inserire il nome del riquadro come titolo, così la nota lo mostra nella tua lingua. La parola chiave dentro [!note] resta sempre in inglese: è quella che Obsidian riconosce.',
 };

@@ -4142,6 +4142,27 @@ function moveItem(items, from, to) {
 }
 
 /**
+ * Where the side panel's buttons sit. A leaf module with no imports, so the
+ * tests can reach it - see the note in textPlacement.ts.
+ *
+ * The same three choices as the toolbar's, and deliberately so: they share
+ * their labels in the translation files and their naming in the stylesheet,
+ * and a test holds the two lists together. They stay separate values because
+ * the defaults differ - the toolbar starts on the left, where the text starts,
+ * and the panel stays centred, as it has always been drawn.
+ */
+var PANEL_ALIGNMENTS = ['left', 'center', 'right'];
+// Centred, so nobody's panel changes under them on update. Issue #94 asked for
+// the choice, not for a different default.
+var DEFAULT_PANEL_ALIGNMENT = 'center';
+/** Anything unrecognised falls back to the default rather than to no layout. */
+function normalisePanelAlignment(value) {
+    return PANEL_ALIGNMENTS.includes(value)
+        ? value
+        : DEFAULT_PANEL_ALIGNMENT;
+}
+
+/**
  * English is the base dictionary: its keys define the translation key type, and
  * every other locale falls back to it for anything it leaves out.
  */
@@ -4180,7 +4201,7 @@ var en = {
     'colors.optionColor': ' Add "color: {your color}"',
     'colors.optionBackgroundColor': ' Add "background-color: {your color}"',
     'colors.optionStyleTag': ' Add tag: "style={your color}"',
-    'colors.optionHtmlTag': ' Add HTML: "<font color={your color}>{selected text}</font>"',
+    'colors.optionHtmlTag': ' Add HTML: "<font color={your color}></font>"',
     'colors.lastUsed': 'Last used colors:',
     'colors.saved': 'Saved Colors:',
     'colors.editInSettings': 'Saved colors can be directly edited in the settings.',
@@ -4195,6 +4216,8 @@ var en = {
     'settings.sidePaneSide.name': 'Side Pane Side',
     'settings.sidePaneSide.desc': 'Choose on which side the Side Pane appears.',
     'settings.sidePaneSide.placeholder': 'Enter left or right',
+    'settings.panelAlign.name': 'Panel button alignment',
+    'settings.panelAlign.desc': 'Where the buttons sit in the sections of the side panel.',
     'settings.toggleSection.name': 'Toggle {section} Section',
     'settings.toggleSection.desc': 'Activate or deactivate the {section} section. (restart required)',
     'settings.calloutTitles.name': 'Write callout headings',
@@ -4213,9 +4236,10 @@ var en = {
     'settings.toolbar.pick': 'Search every command',
     'settings.toolbar.align.name': 'Button alignment',
     'settings.toolbar.align.desc': 'Where the buttons sit in the row.',
-    'settings.toolbar.align.left': 'Left',
-    'settings.toolbar.align.center': 'Center',
-    'settings.toolbar.align.right': 'Right',
+    // Shared by the toolbar's alignment and the side panel's.
+    'settings.align.left': 'Left',
+    'settings.align.center': 'Center',
+    'settings.align.right': 'Right',
     // Callout button labels. Only the label is translated - the callout type
     // inside '> [!note]' is a keyword Obsidian matches in English.
     'callout.note': 'Note',
@@ -4275,7 +4299,7 @@ var be = {
     'colors.optionColor': ' Дадаць "color: {your color}"',
     'colors.optionBackgroundColor': ' Дадаць "background-color: {your color}"',
     'colors.optionStyleTag': ' Дадаць атрыбут: "style={your color}"',
-    'colors.optionHtmlTag': ' Дадаць HTML: "<font color={your color}>{selected text}</font>"',
+    'colors.optionHtmlTag': ' Дадаць HTML: "<font color={your color}></font>"',
     'colors.lastUsed': 'Апошнія колеры:',
     'colors.saved': 'Захаваныя колеры:',
     'colors.editInSettings': 'Захаваныя колеры можна рэдагаваць проста ў наладах.',
@@ -4289,6 +4313,8 @@ var be = {
     'settings.sidePaneSide.name': 'Бок панэлі',
     'settings.sidePaneSide.desc': 'З якога боку адкрываецца бакавая панэль.',
     'settings.sidePaneSide.placeholder': 'Увядзіце left або right',
+    'settings.panelAlign.name': 'Выраўноўванне кнопак панэлі',
+    'settings.panelAlign.desc': 'Дзе стаяць кнопкі ў секцыях бакавой панэлі.',
     'settings.toggleSection.name': 'Секцыя «{section}»',
     'settings.toggleSection.desc': 'Уключыць або выключыць секцыю «{section}». (патрэбны перазапуск)',
     'settings.savedColors.name': 'Захаваныя колеры',
@@ -4331,9 +4357,9 @@ var be = {
     'settings.toolbar.pick': 'Пошук па ўсіх камандах',
     'settings.toolbar.align.name': 'Выраўноўванне кнопак',
     'settings.toolbar.align.desc': 'Дзе кнопкі стаяць у радзе.',
-    'settings.toolbar.align.left': 'Па левым краі',
-    'settings.toolbar.align.center': 'Па цэнтры',
-    'settings.toolbar.align.right': 'Па правым краі',
+    'settings.align.left': 'Па левым краі',
+    'settings.align.center': 'Па цэнтры',
+    'settings.align.right': 'Па правым краі',
     'settings.calloutTitles.name': 'Пісаць загаловак выноскі',
     'settings.calloutTitles.desc': 'Устаўляць назву выноскі як загаловак, каб у нататцы яна адлюстроўвалася на вашай мове. Ключавое слова ўнутры [!note] заўсёды застаецца англійскім — менавіта па ім Obsidian вызначае тып.',
 };
@@ -4367,7 +4393,7 @@ var de = {
     'colors.optionColor': ' "color: {your color}" hinzufügen',
     'colors.optionBackgroundColor': ' "background-color: {your color}" hinzufügen',
     'colors.optionStyleTag': ' Attribut hinzufügen: "style={your color}"',
-    'colors.optionHtmlTag': ' HTML hinzufügen: "<font color={your color}>{selected text}</font>"',
+    'colors.optionHtmlTag': ' HTML hinzufügen: "<font color={your color}></font>"',
     'colors.lastUsed': 'Zuletzt verwendete Farben:',
     'colors.saved': 'Gespeicherte Farben:',
     'colors.editInSettings': 'Gespeicherte Farben lassen sich direkt in den Einstellungen bearbeiten.',
@@ -4381,6 +4407,8 @@ var de = {
     'settings.sidePaneSide.name': 'Seite der Seitenleiste',
     'settings.sidePaneSide.desc': 'Lege fest, auf welcher Seite die Seitenleiste erscheint.',
     'settings.sidePaneSide.placeholder': 'left oder right eingeben',
+    'settings.panelAlign.name': 'Ausrichtung der Schaltflächen in der Seitenleiste',
+    'settings.panelAlign.desc': 'Wo die Schaltflächen in den Bereichen der Seitenleiste sitzen.',
     'settings.toggleSection.name': 'Bereich „{section}“',
     'settings.toggleSection.desc': 'Bereich „{section}“ aktivieren oder deaktivieren. (Neustart erforderlich)',
     'settings.savedColors.name': 'Gespeicherte Farben',
@@ -4423,9 +4451,9 @@ var de = {
     'settings.toolbar.pick': 'Alle Befehle durchsuchen',
     'settings.toolbar.align.name': 'Ausrichtung der Schaltflächen',
     'settings.toolbar.align.desc': 'Wo die Schaltflächen in der Reihe sitzen.',
-    'settings.toolbar.align.left': 'Links',
-    'settings.toolbar.align.center': 'Mittig',
-    'settings.toolbar.align.right': 'Rechts',
+    'settings.align.left': 'Links',
+    'settings.align.center': 'Mittig',
+    'settings.align.right': 'Rechts',
     'settings.calloutTitles.name': 'Callout-Überschrift schreiben',
     'settings.calloutTitles.desc': 'Den Namen des Callouts als Überschrift einfügen, damit die Notiz ihn in deiner Sprache zeigt. Das Schlüsselwort in [!note] bleibt immer englisch - daran erkennt Obsidian den Typ.',
 };
@@ -4459,7 +4487,7 @@ var es = {
     'colors.optionColor': ' Añadir "color: {your color}"',
     'colors.optionBackgroundColor': ' Añadir "background-color: {your color}"',
     'colors.optionStyleTag': ' Añadir atributo: "style={your color}"',
-    'colors.optionHtmlTag': ' Añadir HTML: "<font color={your color}>{selected text}</font>"',
+    'colors.optionHtmlTag': ' Añadir HTML: "<font color={your color}></font>"',
     'colors.lastUsed': 'Colores recientes:',
     'colors.saved': 'Colores guardados:',
     'colors.editInSettings': 'Los colores guardados se pueden editar directamente en los ajustes.',
@@ -4473,6 +4501,8 @@ var es = {
     'settings.sidePaneSide.name': 'Lado del panel lateral',
     'settings.sidePaneSide.desc': 'Elige en qué lado aparece el panel lateral.',
     'settings.sidePaneSide.placeholder': 'Introduce left o right',
+    'settings.panelAlign.name': 'Alineación de los botones del panel',
+    'settings.panelAlign.desc': 'Dónde se colocan los botones en las secciones del panel lateral.',
     'settings.toggleSection.name': 'Sección «{section}»',
     'settings.toggleSection.desc': 'Activar o desactivar la sección «{section}». (requiere reiniciar)',
     'settings.savedColors.name': 'Colores guardados',
@@ -4515,9 +4545,9 @@ var es = {
     'settings.toolbar.pick': 'Buscar en todos los comandos',
     'settings.toolbar.align.name': 'Alineación de los botones',
     'settings.toolbar.align.desc': 'Dónde se colocan los botones en la fila.',
-    'settings.toolbar.align.left': 'Izquierda',
-    'settings.toolbar.align.center': 'Centro',
-    'settings.toolbar.align.right': 'Derecha',
+    'settings.align.left': 'Izquierda',
+    'settings.align.center': 'Centro',
+    'settings.align.right': 'Derecha',
     'settings.calloutTitles.name': 'Escribir el título de la llamada',
     'settings.calloutTitles.desc': 'Insertar el nombre de la llamada como título, para que la nota lo muestre en tu idioma. La palabra clave dentro de [!note] siempre queda en inglés: es la que reconoce Obsidian.',
 };
@@ -4551,7 +4581,7 @@ var fr = {
     'colors.optionColor': ' Ajouter "color: {your color}"',
     'colors.optionBackgroundColor': ' Ajouter "background-color: {your color}"',
     'colors.optionStyleTag': ' Ajouter l’attribut : "style={your color}"',
-    'colors.optionHtmlTag': ' Ajouter du HTML : "<font color={your color}>{selected text}</font>"',
+    'colors.optionHtmlTag': ' Ajouter du HTML : "<font color={your color}></font>"',
     'colors.lastUsed': 'Couleurs récentes :',
     'colors.saved': 'Couleurs enregistrées :',
     'colors.editInSettings': 'Les couleurs enregistrées se modifient directement dans les paramètres.',
@@ -4565,6 +4595,8 @@ var fr = {
     'settings.sidePaneSide.name': 'Côté du volet latéral',
     'settings.sidePaneSide.desc': 'Choisissez de quel côté apparaît le volet latéral.',
     'settings.sidePaneSide.placeholder': 'Saisissez left ou right',
+    'settings.panelAlign.name': 'Alignement des boutons du volet',
+    'settings.panelAlign.desc': 'Où les boutons se placent dans les sections du volet latéral.',
     'settings.toggleSection.name': 'Section « {section} »',
     'settings.toggleSection.desc': 'Activer ou désactiver la section « {section} ». (redémarrage requis)',
     'settings.savedColors.name': 'Couleurs enregistrées',
@@ -4607,9 +4639,9 @@ var fr = {
     'settings.toolbar.pick': 'Rechercher parmi toutes les commandes',
     'settings.toolbar.align.name': 'Alignement des boutons',
     'settings.toolbar.align.desc': 'Où les boutons se placent dans la rangée.',
-    'settings.toolbar.align.left': 'Gauche',
-    'settings.toolbar.align.center': 'Centre',
-    'settings.toolbar.align.right': 'Droite',
+    'settings.align.left': 'Gauche',
+    'settings.align.center': 'Centre',
+    'settings.align.right': 'Droite',
     'settings.calloutTitles.name': 'Écrire le titre de l’encadré',
     'settings.calloutTitles.desc': 'Insérer le nom de l’encadré comme titre, afin que la note l’affiche dans votre langue. Le mot-clé dans [!note] reste toujours en anglais : c’est lui qu’Obsidian reconnaît.',
 };
@@ -4643,7 +4675,7 @@ var it = {
     'colors.optionColor': ' Aggiungi "color: {your color}"',
     'colors.optionBackgroundColor': ' Aggiungi "background-color: {your color}"',
     'colors.optionStyleTag': ' Aggiungi attributo: "style={your color}"',
-    'colors.optionHtmlTag': ' Aggiungi HTML: "<font color={your color}>{selected text}</font>"',
+    'colors.optionHtmlTag': ' Aggiungi HTML: "<font color={your color}></font>"',
     'colors.lastUsed': 'Colori recenti:',
     'colors.saved': 'Colori salvati:',
     'colors.editInSettings': 'I colori salvati si possono modificare direttamente nelle impostazioni.',
@@ -4657,6 +4689,8 @@ var it = {
     'settings.sidePaneSide.name': 'Lato del pannello laterale',
     'settings.sidePaneSide.desc': 'Scegli su quale lato compare il pannello laterale.',
     'settings.sidePaneSide.placeholder': 'Inserisci left o right',
+    'settings.panelAlign.name': 'Allineamento dei pulsanti del pannello',
+    'settings.panelAlign.desc': 'Dove stanno i pulsanti nelle sezioni del pannello laterale.',
     'settings.toggleSection.name': 'Sezione «{section}»',
     'settings.toggleSection.desc': 'Attiva o disattiva la sezione «{section}». (riavvio necessario)',
     'settings.savedColors.name': 'Colori salvati',
@@ -4699,9 +4733,9 @@ var it = {
     'settings.toolbar.pick': 'Cerca fra tutti i comandi',
     'settings.toolbar.align.name': 'Allineamento dei pulsanti',
     'settings.toolbar.align.desc': 'Dove stanno i pulsanti nella riga.',
-    'settings.toolbar.align.left': 'Sinistra',
-    'settings.toolbar.align.center': 'Centro',
-    'settings.toolbar.align.right': 'Destra',
+    'settings.align.left': 'Sinistra',
+    'settings.align.center': 'Centro',
+    'settings.align.right': 'Destra',
     'settings.calloutTitles.name': 'Scrivere il titolo del riquadro',
     'settings.calloutTitles.desc': 'Inserire il nome del riquadro come titolo, così la nota lo mostra nella tua lingua. La parola chiave dentro [!note] resta sempre in inglese: è quella che Obsidian riconosce.',
 };
@@ -4735,7 +4769,7 @@ var ja = {
     'colors.optionColor': ' "color: {your color}" を追加',
     'colors.optionBackgroundColor': ' "background-color: {your color}" を追加',
     'colors.optionStyleTag': ' 属性を追加: "style={your color}"',
-    'colors.optionHtmlTag': ' HTML を追加: "<font color={your color}>{selected text}</font>"',
+    'colors.optionHtmlTag': ' HTML を追加: "<font color={your color}></font>"',
     'colors.lastUsed': '最近使った色:',
     'colors.saved': '保存した色:',
     'colors.editInSettings': '保存した色は設定から直接編集できます。',
@@ -4749,6 +4783,8 @@ var ja = {
     'settings.sidePaneSide.name': 'サイドパネルの位置',
     'settings.sidePaneSide.desc': 'サイドパネルを表示する側を選びます。',
     'settings.sidePaneSide.placeholder': 'left または right を入力',
+    'settings.panelAlign.name': 'パネルのボタンの配置',
+    'settings.panelAlign.desc': 'サイドパネルの各セクションでボタンを寄せる位置です。',
     'settings.toggleSection.name': '「{section}」セクション',
     'settings.toggleSection.desc': '「{section}」セクションを有効または無効にします。（再起動が必要）',
     'settings.savedColors.name': '保存した色',
@@ -4791,9 +4827,9 @@ var ja = {
     'settings.toolbar.pick': 'すべてのコマンドを検索',
     'settings.toolbar.align.name': 'ボタンの配置',
     'settings.toolbar.align.desc': '行の中でボタンを寄せる位置です。',
-    'settings.toolbar.align.left': '左寄せ',
-    'settings.toolbar.align.center': '中央',
-    'settings.toolbar.align.right': '右寄せ',
+    'settings.align.left': '左寄せ',
+    'settings.align.center': '中央',
+    'settings.align.right': '右寄せ',
     'settings.calloutTitles.name': 'コールアウトの見出しを書き込む',
     'settings.calloutTitles.desc': 'コールアウト名を見出しとして挿入し、ノートで選択した言語のまま表示されるようにします。[!note] の中のキーワードは常に英語のままです。Obsidian はそれで種類を判別します。',
 };
@@ -4827,7 +4863,7 @@ var ko = {
     'colors.optionColor': ' "color: {your color}" 추가',
     'colors.optionBackgroundColor': ' "background-color: {your color}" 추가',
     'colors.optionStyleTag': ' 속성 추가: "style={your color}"',
-    'colors.optionHtmlTag': ' HTML 추가: "<font color={your color}>{selected text}</font>"',
+    'colors.optionHtmlTag': ' HTML 추가: "<font color={your color}></font>"',
     'colors.lastUsed': '최근 사용한 색상:',
     'colors.saved': '저장한 색상:',
     'colors.editInSettings': '저장한 색상은 설정에서 바로 편집할 수 있습니다.',
@@ -4841,6 +4877,8 @@ var ko = {
     'settings.sidePaneSide.name': '사이드 패널 위치',
     'settings.sidePaneSide.desc': '사이드 패널이 나타날 쪽을 선택하세요.',
     'settings.sidePaneSide.placeholder': 'left 또는 right 입력',
+    'settings.panelAlign.name': '패널 버튼 정렬',
+    'settings.panelAlign.desc': '사이드 패널의 각 섹션에서 버튼이 놓이는 위치입니다.',
     'settings.toggleSection.name': '「{section}」 섹션',
     'settings.toggleSection.desc': '「{section}」 섹션을 켜거나 끕니다. (재시작 필요)',
     'settings.savedColors.name': '저장한 색상',
@@ -4883,9 +4921,9 @@ var ko = {
     'settings.toolbar.pick': '모든 명령 검색',
     'settings.toolbar.align.name': '버튼 정렬',
     'settings.toolbar.align.desc': '버튼이 줄에서 놓이는 위치입니다.',
-    'settings.toolbar.align.left': '왼쪽',
-    'settings.toolbar.align.center': '가운데',
-    'settings.toolbar.align.right': '오른쪽',
+    'settings.align.left': '왼쪽',
+    'settings.align.center': '가운데',
+    'settings.align.right': '오른쪽',
     'settings.calloutTitles.name': '콜아웃 제목 삽입',
     'settings.calloutTitles.desc': '콜아웃 이름을 제목으로 넣어 노트에 선택한 언어로 표시되게 합니다. [!note] 안의 키워드는 항상 영어로 유지되며, Obsidian 은 그것으로 종류를 판별합니다.',
 };
@@ -4919,7 +4957,7 @@ var pt = {
     'colors.optionColor': ' Adicionar "color: {your color}"',
     'colors.optionBackgroundColor': ' Adicionar "background-color: {your color}"',
     'colors.optionStyleTag': ' Adicionar atributo: "style={your color}"',
-    'colors.optionHtmlTag': ' Adicionar HTML: "<font color={your color}>{selected text}</font>"',
+    'colors.optionHtmlTag': ' Adicionar HTML: "<font color={your color}></font>"',
     'colors.lastUsed': 'Cores recentes:',
     'colors.saved': 'Cores salvas:',
     'colors.editInSettings': 'As cores salvas podem ser editadas diretamente nas configurações.',
@@ -4933,6 +4971,8 @@ var pt = {
     'settings.sidePaneSide.name': 'Lado do painel lateral',
     'settings.sidePaneSide.desc': 'Escolha de que lado o painel lateral aparece.',
     'settings.sidePaneSide.placeholder': 'Digite left ou right',
+    'settings.panelAlign.name': 'Alinhamento dos botões do painel',
+    'settings.panelAlign.desc': 'Onde os botões ficam nas seções do painel lateral.',
     'settings.toggleSection.name': 'Seção «{section}»',
     'settings.toggleSection.desc': 'Ativar ou desativar a seção «{section}». (requer reinício)',
     'settings.savedColors.name': 'Cores salvas',
@@ -4975,9 +5015,9 @@ var pt = {
     'settings.toolbar.pick': 'Procurar em todos os comandos',
     'settings.toolbar.align.name': 'Alinhamento dos botões',
     'settings.toolbar.align.desc': 'Onde os botões ficam na linha.',
-    'settings.toolbar.align.left': 'Esquerda',
-    'settings.toolbar.align.center': 'Centro',
-    'settings.toolbar.align.right': 'Direita',
+    'settings.align.left': 'Esquerda',
+    'settings.align.center': 'Centro',
+    'settings.align.right': 'Direita',
     'settings.calloutTitles.name': 'Escrever o título do destaque',
     'settings.calloutTitles.desc': 'Inserir o nome do destaque como título, para que a nota o mostre no seu idioma. A palavra-chave dentro de [!note] permanece sempre em inglês - é por ela que o Obsidian identifica o tipo.',
 };
@@ -5012,7 +5052,7 @@ var ru = {
     'colors.optionColor': ' Добавить "color: {your color}"',
     'colors.optionBackgroundColor': ' Добавить "background-color: {your color}"',
     'colors.optionStyleTag': ' Добавить атрибут: "style={your color}"',
-    'colors.optionHtmlTag': ' Добавить HTML: "<font color={your color}>{selected text}</font>"',
+    'colors.optionHtmlTag': ' Добавить HTML: "<font color={your color}></font>"',
     'colors.lastUsed': 'Последние цвета:',
     'colors.saved': 'Сохранённые цвета:',
     'colors.editInSettings': 'Сохранённые цвета можно править прямо в настройках.',
@@ -5028,6 +5068,8 @@ var ru = {
     // 'left' and 'right' are the literal values this field accepts, so they are
     // not translated.
     'settings.sidePaneSide.placeholder': 'Введите left или right',
+    'settings.panelAlign.name': 'Выравнивание кнопок панели',
+    'settings.panelAlign.desc': 'Где стоят кнопки в секциях боковой панели.',
     'settings.toggleSection.name': 'Секция «{section}»',
     'settings.toggleSection.desc': 'Включить или выключить секцию «{section}». (требуется перезапуск)',
     'settings.savedColors.name': 'Сохранённые цвета',
@@ -5070,9 +5112,9 @@ var ru = {
     'settings.toolbar.pick': 'Поиск по всем командам',
     'settings.toolbar.align.name': 'Выравнивание кнопок',
     'settings.toolbar.align.desc': 'Где кнопки стоят в ряду.',
-    'settings.toolbar.align.left': 'По левому краю',
-    'settings.toolbar.align.center': 'По центру',
-    'settings.toolbar.align.right': 'По правому краю',
+    'settings.align.left': 'По левому краю',
+    'settings.align.center': 'По центру',
+    'settings.align.right': 'По правому краю',
     'settings.calloutTitles.name': 'Писать заголовок коллаута',
     'settings.calloutTitles.desc': 'Вставлять название коллаута как заголовок, чтобы в заметке оно отображалось на вашем языке. Ключевое слово внутри [!note] всегда остаётся английским — именно по нему Obsidian опознаёт тип.',
 };
@@ -5106,7 +5148,7 @@ var uk = {
     'colors.optionColor': ' Додати "color: {your color}"',
     'colors.optionBackgroundColor': ' Додати "background-color: {your color}"',
     'colors.optionStyleTag': ' Додати атрибут: "style={your color}"',
-    'colors.optionHtmlTag': ' Додати HTML: "<font color={your color}>{selected text}</font>"',
+    'colors.optionHtmlTag': ' Додати HTML: "<font color={your color}></font>"',
     'colors.lastUsed': 'Останні кольори:',
     'colors.saved': 'Збережені кольори:',
     'colors.editInSettings': 'Збережені кольори можна редагувати просто в налаштуваннях.',
@@ -5120,6 +5162,8 @@ var uk = {
     'settings.sidePaneSide.name': 'Сторона панелі',
     'settings.sidePaneSide.desc': 'З якого боку відкривається бічна панель.',
     'settings.sidePaneSide.placeholder': 'Введіть left або right',
+    'settings.panelAlign.name': 'Вирівнювання кнопок панелі',
+    'settings.panelAlign.desc': 'Де стоять кнопки в секціях бічної панелі.',
     'settings.toggleSection.name': 'Секція «{section}»',
     'settings.toggleSection.desc': 'Увімкнути або вимкнути секцію «{section}». (потрібен перезапуск)',
     'settings.savedColors.name': 'Збережені кольори',
@@ -5162,9 +5206,9 @@ var uk = {
     'settings.toolbar.pick': 'Пошук за всіма командами',
     'settings.toolbar.align.name': 'Вирівнювання кнопок',
     'settings.toolbar.align.desc': 'Де кнопки стоять у ряду.',
-    'settings.toolbar.align.left': 'За лівим краєм',
-    'settings.toolbar.align.center': 'По центру',
-    'settings.toolbar.align.right': 'За правим краєм',
+    'settings.align.left': 'За лівим краєм',
+    'settings.align.center': 'По центру',
+    'settings.align.right': 'За правим краєм',
     'settings.calloutTitles.name': 'Писати заголовок виноски',
     'settings.calloutTitles.desc': 'Вставляти назву виноски як заголовок, щоб у нотатці вона відображалася вашою мовою. Ключове слово всередині [!note] завжди залишається англійським — саме за ним Obsidian розпізнає тип.',
 };
@@ -5199,7 +5243,7 @@ var zh = {
     'colors.optionColor': ' 添加 "color: {your color}"',
     'colors.optionBackgroundColor': ' 添加 "background-color: {your color}"',
     'colors.optionStyleTag': ' 添加属性："style={your color}"',
-    'colors.optionHtmlTag': ' 添加 HTML："<font color={your color}>{selected text}</font>"',
+    'colors.optionHtmlTag': ' 添加 HTML："<font color={your color}></font>"',
     'colors.lastUsed': '最近使用的颜色：',
     'colors.saved': '已保存的颜色：',
     'colors.editInSettings': '已保存的颜色可以直接在设置中编辑。',
@@ -5213,6 +5257,8 @@ var zh = {
     'settings.sidePaneSide.name': '侧边栏位置',
     'settings.sidePaneSide.desc': '选择侧边栏出现在哪一侧。',
     'settings.sidePaneSide.placeholder': '输入 left 或 right',
+    'settings.panelAlign.name': '面板按钮对齐',
+    'settings.panelAlign.desc': '按钮在侧边栏各板块中的位置。',
     'settings.toggleSection.name': '「{section}」板块',
     'settings.toggleSection.desc': '启用或禁用「{section}」板块。（需要重启）',
     'settings.savedColors.name': '已保存的颜色',
@@ -5255,9 +5301,9 @@ var zh = {
     'settings.toolbar.pick': '搜索全部命令',
     'settings.toolbar.align.name': '按钮对齐',
     'settings.toolbar.align.desc': '按钮在这一行中的位置。',
-    'settings.toolbar.align.left': '左对齐',
-    'settings.toolbar.align.center': '居中',
-    'settings.toolbar.align.right': '右对齐',
+    'settings.align.left': '左对齐',
+    'settings.align.center': '居中',
+    'settings.align.right': '右对齐',
     'settings.calloutTitles.name': '写入标注标题',
     'settings.calloutTitles.desc': '把标注名称作为标题插入，这样笔记中就会显示你所选语言的名称。[!note] 中的关键字始终保持英文，Obsidian 依靠它识别类型。',
 };
@@ -5444,6 +5490,21 @@ var SidePanelControlView = /** @class */ (function (_super) {
         container.empty();
         container.appendChild(rootEl);
     };
+    /**
+     * Where the buttons sit, as a class the stylesheet reads. The panel is drawn
+     * with it; this moves it when the setting changes, so an open panel follows
+     * the dropdown without being rebuilt - which would throw away its scroll
+     * position and the keyboard focus.
+     */
+    SidePanelControlView.prototype.applyAlignment = function () {
+        var panel = this.containerEl.querySelector('.markdown-formatting-assistant-panel');
+        if (!(panel instanceof HTMLElement))
+            return;
+        var wanted = this.plugin.settings.panelAlignment;
+        PANEL_ALIGNMENTS.forEach(function (alignment) {
+            return panel.toggleClass("is-align-".concat(alignment), alignment === wanted);
+        });
+    };
     SidePanelControlView.prototype.drawContentOfRootElement = function (rootEl) {
         var _this = this;
         if (rootEl === void 0) { rootEl = null; }
@@ -5456,7 +5517,7 @@ var SidePanelControlView = /** @class */ (function (_super) {
         // Width is left to the stylesheet - the leaf is user-resizable, so nothing
         // in here may pin a fixed width.
         var mainDiv = rootEl.createDiv({
-            cls: 'nav-header markdown-formatting-assistant-panel mfa-scope',
+            cls: "nav-header markdown-formatting-assistant-panel mfa-scope is-align-".concat(this.plugin.settings.panelAlignment),
         });
         // --------------
         // Text Edit Section
@@ -6641,6 +6702,7 @@ var DEFAULT_PICKER_COLOR = '#448aff';
 var DEFAULT_SETTINGS = {
     language: AUTO_LOCALE,
     sidePaneSideLeft: false,
+    panelAlignment: DEFAULT_PANEL_ALIGNMENT,
     savedColors: ['#ff0000'],
     regionSettings: [
         { name: 'textEdit', active: true, visible: false },
@@ -6787,6 +6849,7 @@ var MarkdownAutocompletePlugin = /** @class */ (function (_super) {
                         this.settings.savedColors = (Array.isArray(this.settings.savedColors)
                             ? this.settings.savedColors
                             : DEFAULT_SETTINGS.savedColors).filter(function (color) { return typeof color === 'string'; });
+                        this.settings.panelAlignment = normalisePanelAlignment(this.settings.panelAlignment);
                         stored = this.settings.toolbar;
                         this.settings.toolbar = {
                             enabled: Boolean(stored && stored.enabled),
@@ -6808,6 +6871,18 @@ var MarkdownAutocompletePlugin = /** @class */ (function (_super) {
                         return [2 /*return*/];
                 }
             });
+        });
+    };
+    /** Every open panel, so the alignment changes without reopening it. */
+    MarkdownAutocompletePlugin.prototype.applyPanelAlignment = function () {
+        this.app.workspace
+            .getLeavesOfType(SidePanelControlViewType)
+            .forEach(function (leaf) {
+            // A leaf restored from the saved layout but not yet shown holds a
+            // placeholder view; it draws with the current setting when revealed.
+            if (leaf.view instanceof SidePanelControlView) {
+                leaf.view.applyAlignment();
+            }
         });
     };
     return MarkdownAutocompletePlugin;
@@ -6884,6 +6959,29 @@ var SettingsTab = /** @class */ (function (_super) {
                     value === 'left' ? true : false;
                 _this.saveSoon();
             });
+        });
+        new obsidian.Setting(containerEl)
+            .setName(t('settings.panelAlign.name'))
+            .setDesc(t('settings.panelAlign.desc'))
+            .addDropdown(function (dropdown) {
+            PANEL_ALIGNMENTS.forEach(function (option) {
+                return dropdown.addOption(option, t("settings.align.".concat(option)));
+            });
+            dropdown
+                .setValue(_this.plugin.settings.panelAlignment)
+                .onChange(function (value) { return __awaiter(_this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            this.plugin.settings.panelAlignment = normalisePanelAlignment(value);
+                            this.plugin.applyPanelAlignment();
+                            return [4 /*yield*/, this.plugin.saveSettings()];
+                        case 1:
+                            _a.sent();
+                            return [2 /*return*/];
+                    }
+                });
+            }); });
         });
         new obsidian.Setting(containerEl)
             .setName(t('settings.calloutTitles.name'))
@@ -6974,7 +7072,7 @@ var SettingsTab = /** @class */ (function (_super) {
             .setDesc(t('settings.toolbar.align.desc'))
             .addDropdown(function (dropdown) {
             TOOLBAR_ALIGNMENTS.forEach(function (option) {
-                return dropdown.addOption(option, t("settings.toolbar.align.".concat(option)));
+                return dropdown.addOption(option, t("settings.align.".concat(option)));
             });
             dropdown.setValue(toolbar.alignment).onChange(function (value) { return __awaiter(_this, void 0, void 0, function () {
                 return __generator(this, function (_a) {

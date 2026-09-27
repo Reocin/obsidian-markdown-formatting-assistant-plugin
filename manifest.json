@@ -1,7 +1,7 @@
 {
   "id": "obsidian-markdown-formatting-assistant-plugin",
   "name": "Markdown Formatting Assistant",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "minAppVersion": "1.0.0",
   "description": "Formatting buttons and a searchable command window for Markdown, HTML, LaTeX, tables and callouts, plus a colour picker that remembers what you used. Interface available in 12 languages.",
   "author": "Mark Karte and Claude",

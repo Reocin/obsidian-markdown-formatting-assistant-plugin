@@ -33,7 +33,7 @@ export const uk: LocaleDictionary = {
   'colors.optionBackgroundColor': ' Додати "background-color: {your color}"',
   'colors.optionStyleTag': ' Додати атрибут: "style={your color}"',
   'colors.optionHtmlTag':
-    ' Додати HTML: "<font color={your color}>{selected text}</font>"',
+    ' Додати HTML: "<font color={your color}></font>"',
   'colors.lastUsed': 'Останні кольори:',
   'colors.saved': 'Збережені кольори:',
   'colors.editInSettings':
@@ -50,6 +50,9 @@ export const uk: LocaleDictionary = {
   'settings.sidePaneSide.name': 'Сторона панелі',
   'settings.sidePaneSide.desc': 'З якого боку відкривається бічна панель.',
   'settings.sidePaneSide.placeholder': 'Введіть left або right',
+  'settings.panelAlign.name': 'Вирівнювання кнопок панелі',
+  'settings.panelAlign.desc':
+    'Де стоять кнопки в секціях бічної панелі.',
   'settings.toggleSection.name': 'Секція «{section}»',
   'settings.toggleSection.desc':
     'Увімкнути або вимкнути секцію «{section}». (потрібен перезапуск)',
@@ -95,9 +98,9 @@ export const uk: LocaleDictionary = {
   'settings.toolbar.pick': 'Пошук за всіма командами',
   'settings.toolbar.align.name': 'Вирівнювання кнопок',
   'settings.toolbar.align.desc': 'Де кнопки стоять у ряду.',
-  'settings.toolbar.align.left': 'За лівим краєм',
-  'settings.toolbar.align.center': 'По центру',
-  'settings.toolbar.align.right': 'За правим краєм',
+  'settings.align.left': 'За лівим краєм',
+  'settings.align.center': 'По центру',
+  'settings.align.right': 'За правим краєм',
   'settings.calloutTitles.name': 'Писати заголовок виноски',
   'settings.calloutTitles.desc': 'Вставляти назву виноски як заголовок, щоб у нотатці вона відображалася вашою мовою. Ключове слово всередині [!note] завжди залишається англійським — саме за ним Obsidian розпізнає тип.',
 };

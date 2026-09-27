@@ -34,7 +34,7 @@ export const fr: LocaleDictionary = {
   'colors.optionBackgroundColor': ' Ajouter "background-color: {your color}"',
   'colors.optionStyleTag': ' Ajouter l’attribut : "style={your color}"',
   'colors.optionHtmlTag':
-    ' Ajouter du HTML : "<font color={your color}>{selected text}</font>"',
+    ' Ajouter du HTML : "<font color={your color}></font>"',
   'colors.lastUsed': 'Couleurs récentes :',
   'colors.saved': 'Couleurs enregistrées :',
   'colors.editInSettings':
@@ -53,6 +53,9 @@ export const fr: LocaleDictionary = {
   'settings.sidePaneSide.desc':
     'Choisissez de quel côté apparaît le volet latéral.',
   'settings.sidePaneSide.placeholder': 'Saisissez left ou right',
+  'settings.panelAlign.name': 'Alignement des boutons du volet',
+  'settings.panelAlign.desc':
+    'Où les boutons se placent dans les sections du volet latéral.',
   'settings.toggleSection.name': 'Section « {section} »',
   'settings.toggleSection.desc':
     'Activer ou désactiver la section « {section} ». (redémarrage requis)',
@@ -98,9 +101,9 @@ export const fr: LocaleDictionary = {
   'settings.toolbar.pick': 'Rechercher parmi toutes les commandes',
   'settings.toolbar.align.name': 'Alignement des boutons',
   'settings.toolbar.align.desc': 'Où les boutons se placent dans la rangée.',
-  'settings.toolbar.align.left': 'Gauche',
-  'settings.toolbar.align.center': 'Centre',
-  'settings.toolbar.align.right': 'Droite',
+  'settings.align.left': 'Gauche',
+  'settings.align.center': 'Centre',
+  'settings.align.right': 'Droite',
   'settings.calloutTitles.name': 'Écrire le titre de l’encadré',
   'settings.calloutTitles.desc': 'Insérer le nom de l’encadré comme titre, afin que la note l’affiche dans votre langue. Le mot-clé dans [!note] reste toujours en anglais : c’est lui qu’Obsidian reconnaît.',
 };

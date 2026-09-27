@@ -34,7 +34,7 @@ export const de: LocaleDictionary = {
     ' "background-color: {your color}" hinzufügen',
   'colors.optionStyleTag': ' Attribut hinzufügen: "style={your color}"',
   'colors.optionHtmlTag':
-    ' HTML hinzufügen: "<font color={your color}>{selected text}</font>"',
+    ' HTML hinzufügen: "<font color={your color}></font>"',
   'colors.lastUsed': 'Zuletzt verwendete Farben:',
   'colors.saved': 'Gespeicherte Farben:',
   'colors.editInSettings':
@@ -52,6 +52,9 @@ export const de: LocaleDictionary = {
   'settings.sidePaneSide.desc':
     'Lege fest, auf welcher Seite die Seitenleiste erscheint.',
   'settings.sidePaneSide.placeholder': 'left oder right eingeben',
+  'settings.panelAlign.name': 'Ausrichtung der Schaltflächen in der Seitenleiste',
+  'settings.panelAlign.desc':
+    'Wo die Schaltflächen in den Bereichen der Seitenleiste sitzen.',
   'settings.toggleSection.name': 'Bereich „{section}“',
   'settings.toggleSection.desc':
     'Bereich „{section}“ aktivieren oder deaktivieren. (Neustart erforderlich)',
@@ -97,9 +100,9 @@ export const de: LocaleDictionary = {
   'settings.toolbar.pick': 'Alle Befehle durchsuchen',
   'settings.toolbar.align.name': 'Ausrichtung der Schaltflächen',
   'settings.toolbar.align.desc': 'Wo die Schaltflächen in der Reihe sitzen.',
-  'settings.toolbar.align.left': 'Links',
-  'settings.toolbar.align.center': 'Mittig',
-  'settings.toolbar.align.right': 'Rechts',
+  'settings.align.left': 'Links',
+  'settings.align.center': 'Mittig',
+  'settings.align.right': 'Rechts',
   'settings.calloutTitles.name': 'Callout-Überschrift schreiben',
   'settings.calloutTitles.desc': 'Den Namen des Callouts als Überschrift einfügen, damit die Notiz ihn in deiner Sprache zeigt. Das Schlüsselwort in [!note] bleibt immer englisch - daran erkennt Obsidian den Typ.',
 };

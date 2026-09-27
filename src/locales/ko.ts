@@ -33,7 +33,7 @@ export const ko: LocaleDictionary = {
   'colors.optionBackgroundColor': ' "background-color: {your color}" 추가',
   'colors.optionStyleTag': ' 속성 추가: "style={your color}"',
   'colors.optionHtmlTag':
-    ' HTML 추가: "<font color={your color}>{selected text}</font>"',
+    ' HTML 추가: "<font color={your color}></font>"',
   'colors.lastUsed': '최근 사용한 색상:',
   'colors.saved': '저장한 색상:',
   'colors.editInSettings': '저장한 색상은 설정에서 바로 편집할 수 있습니다.',
@@ -48,6 +48,9 @@ export const ko: LocaleDictionary = {
   'settings.sidePaneSide.name': '사이드 패널 위치',
   'settings.sidePaneSide.desc': '사이드 패널이 나타날 쪽을 선택하세요.',
   'settings.sidePaneSide.placeholder': 'left 또는 right 입력',
+  'settings.panelAlign.name': '패널 버튼 정렬',
+  'settings.panelAlign.desc':
+    '사이드 패널의 각 섹션에서 버튼이 놓이는 위치입니다.',
   'settings.toggleSection.name': '「{section}」 섹션',
   'settings.toggleSection.desc':
     '「{section}」 섹션을 켜거나 끕니다. (재시작 필요)',
@@ -93,9 +96,9 @@ export const ko: LocaleDictionary = {
   'settings.toolbar.pick': '모든 명령 검색',
   'settings.toolbar.align.name': '버튼 정렬',
   'settings.toolbar.align.desc': '버튼이 줄에서 놓이는 위치입니다.',
-  'settings.toolbar.align.left': '왼쪽',
-  'settings.toolbar.align.center': '가운데',
-  'settings.toolbar.align.right': '오른쪽',
+  'settings.align.left': '왼쪽',
+  'settings.align.center': '가운데',
+  'settings.align.right': '오른쪽',
   'settings.calloutTitles.name': '콜아웃 제목 삽입',
   'settings.calloutTitles.desc': '콜아웃 이름을 제목으로 넣어 노트에 선택한 언어로 표시되게 합니다. [!note] 안의 키워드는 항상 영어로 유지되며, Obsidian 은 그것으로 종류를 판별합니다.',
 };

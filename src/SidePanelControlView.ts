@@ -37,6 +37,7 @@ import * as R from 'ramda';
 import MarkdownAutocompletePlugin from './main';
 import { getTargetEditor } from './generalFunctions';
 import { moveItem } from './reorder';
+import { PANEL_ALIGNMENTS } from './panelSettings';
 import { calloutLabel, sectionLabel, t } from './i18n';
 import { commandName } from './commandNames';
 
@@ -87,6 +88,24 @@ export class SidePanelControlView extends ItemView {
     container.appendChild(rootEl);
   }
 
+  /**
+   * Where the buttons sit, as a class the stylesheet reads. The panel is drawn
+   * with it; this moves it when the setting changes, so an open panel follows
+   * the dropdown without being rebuilt - which would throw away its scroll
+   * position and the keyboard focus.
+   */
+  public applyAlignment(): void {
+    const panel = this.containerEl.querySelector(
+      '.markdown-formatting-assistant-panel',
+    );
+    if (!(panel instanceof HTMLElement)) return;
+
+    const wanted = this.plugin.settings.panelAlignment;
+    PANEL_ALIGNMENTS.forEach((alignment) =>
+      panel.toggleClass(`is-align-${alignment}`, alignment === wanted),
+    );
+  }
+
   private drawContentOfRootElement(rootEl: HTMLElement = null): void {
     if (!rootEl) rootEl = document.getElementById('mfa-panel-root');
     rootEl.textContent = '';
@@ -100,7 +119,7 @@ export class SidePanelControlView extends ItemView {
     // Width is left to the stylesheet - the leaf is user-resizable, so nothing
     // in here may pin a fixed width.
     const mainDiv = rootEl.createDiv({
-      cls: 'nav-header markdown-formatting-assistant-panel mfa-scope',
+      cls: `nav-header markdown-formatting-assistant-panel mfa-scope is-align-${this.plugin.settings.panelAlignment}`,
     });
 
     // --------------

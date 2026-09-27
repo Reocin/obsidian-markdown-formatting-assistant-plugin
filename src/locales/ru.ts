@@ -34,7 +34,7 @@ export const ru: LocaleDictionary = {
   'colors.optionBackgroundColor': ' Добавить "background-color: {your color}"',
   'colors.optionStyleTag': ' Добавить атрибут: "style={your color}"',
   'colors.optionHtmlTag':
-    ' Добавить HTML: "<font color={your color}>{selected text}</font>"',
+    ' Добавить HTML: "<font color={your color}></font>"',
   'colors.lastUsed': 'Последние цвета:',
   'colors.saved': 'Сохранённые цвета:',
   'colors.editInSettings':
@@ -52,6 +52,9 @@ export const ru: LocaleDictionary = {
   // 'left' and 'right' are the literal values this field accepts, so they are
   // not translated.
   'settings.sidePaneSide.placeholder': 'Введите left или right',
+  'settings.panelAlign.name': 'Выравнивание кнопок панели',
+  'settings.panelAlign.desc':
+    'Где стоят кнопки в секциях боковой панели.',
   'settings.toggleSection.name': 'Секция «{section}»',
   'settings.toggleSection.desc':
     'Включить или выключить секцию «{section}». (требуется перезапуск)',
@@ -97,9 +100,9 @@ export const ru: LocaleDictionary = {
   'settings.toolbar.pick': 'Поиск по всем командам',
   'settings.toolbar.align.name': 'Выравнивание кнопок',
   'settings.toolbar.align.desc': 'Где кнопки стоят в ряду.',
-  'settings.toolbar.align.left': 'По левому краю',
-  'settings.toolbar.align.center': 'По центру',
-  'settings.toolbar.align.right': 'По правому краю',
+  'settings.align.left': 'По левому краю',
+  'settings.align.center': 'По центру',
+  'settings.align.right': 'По правому краю',
   'settings.calloutTitles.name': 'Писать заголовок коллаута',
   'settings.calloutTitles.desc': 'Вставлять название коллаута как заголовок, чтобы в заметке оно отображалось на вашем языке. Ключевое слово внутри [!note] всегда остаётся английским — именно по нему Obsidian опознаёт тип.',
 };

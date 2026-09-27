@@ -199,7 +199,7 @@ test('every alignment has a translation and a rule', () => {
 
   for (const alignment of TOOLBAR_ALIGNMENTS) {
     assert.ok(
-      en.includes(`'settings.toolbar.align.${alignment}'`),
+      en.includes(`'settings.align.${alignment}'`),
       `${alignment} has no label`,
     );
     assert.ok(

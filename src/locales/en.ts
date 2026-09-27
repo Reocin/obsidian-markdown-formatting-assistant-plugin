@@ -42,7 +42,7 @@ export const en = {
   'colors.optionBackgroundColor': ' Add "background-color: {your color}"',
   'colors.optionStyleTag': ' Add tag: "style={your color}"',
   'colors.optionHtmlTag':
-    ' Add HTML: "<font color={your color}>{selected text}</font>"',
+    ' Add HTML: "<font color={your color}></font>"',
   'colors.lastUsed': 'Last used colors:',
   'colors.saved': 'Saved Colors:',
   'colors.editInSettings': 'Saved colors can be directly edited in the settings.',
@@ -59,6 +59,9 @@ export const en = {
   'settings.sidePaneSide.name': 'Side Pane Side',
   'settings.sidePaneSide.desc': 'Choose on which side the Side Pane appears.',
   'settings.sidePaneSide.placeholder': 'Enter left or right',
+  'settings.panelAlign.name': 'Panel button alignment',
+  'settings.panelAlign.desc':
+    'Where the buttons sit in the sections of the side panel.',
   'settings.toggleSection.name': 'Toggle {section} Section',
   'settings.toggleSection.desc':
     'Activate or deactivate the {section} section. (restart required)',
@@ -80,9 +83,10 @@ export const en = {
   'settings.toolbar.pick': 'Search every command',
   'settings.toolbar.align.name': 'Button alignment',
   'settings.toolbar.align.desc': 'Where the buttons sit in the row.',
-  'settings.toolbar.align.left': 'Left',
-  'settings.toolbar.align.center': 'Center',
-  'settings.toolbar.align.right': 'Right',
+  // Shared by the toolbar's alignment and the side panel's.
+  'settings.align.left': 'Left',
+  'settings.align.center': 'Center',
+  'settings.align.right': 'Right',
 
   // Callout button labels. Only the label is translated - the callout type
   // inside '> [!note]' is a keyword Obsidian matches in English.
