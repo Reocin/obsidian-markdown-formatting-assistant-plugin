@@ -2,96 +2,6 @@
 
 var obsidian = require('obsidian');
 
-/******************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-/* global Reflect, Promise */
-
-var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-    return extendStatics(d, b);
-};
-
-function __extends(d, b) {
-    if (typeof b !== "function" && b !== null)
-        throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-    extendStatics(d, b);
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-}
-
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-
-function __awaiter(thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-}
-
-function __generator(thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-}
-
-function __spreadArray(to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-}
-
 function _isPlaceholder(a) {
   return a != null && typeof a === 'object' && a['@@functional/placeholder'] === true;
 }
@@ -2029,9 +1939,9 @@ var mdiMarker = "M18.5,1.15C17.97,1.15 17.46,1.34 17.07,1.73L11.26,7.55L16.91,13
 var mdiMenu = "M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z";
 var mdiXml = "M12.89,3L14.85,3.4L11.11,21L9.15,20.6L12.89,3M19.59,12L16,8.41V5.58L22.42,12L16,18.41V15.58L19.59,12M1.58,12L8,5.58V8.41L4.41,12L8,15.58V18.41L1.58,12Z";
 
-var greek = {
+const greek = {
     alpha: 'M 14.401734,12.57328 13.755395,9.1800053 Q 13.094368,5.7132827 10.479636,5.6985932 8.5112431,5.6839037 7.6151835,7.3144385 6.4840918,9.3269003 6.4840918,12.015079 q 0,3.231691 1.1017126,4.774088 1.1164022,1.571777 2.8938316,1.571777 1.968394,0 3.026038,-3.128864 z m 1.513018,-4.4949874 1.454261,-4.3040242 h 2.409078 l -3.011348,8.9165276 0.58758,3.217001 q 0.132206,0.719786 0.646339,1.322056 0.602269,0.705096 1.072333,0.705096 h 1.292676 v 2.291562 h -1.615845 q -1.380813,0 -2.614731,-1.233918 -0.60227,-0.616959 -0.851991,-1.909635 -0.646338,1.571776 -2.056531,2.908521 -0.646338,0.616959 -2.746937,0.60227 -3.4373431,-0.02938 -5.1266359,-2.232805 -1.7186718,-2.291562 -1.7186718,-6.345865 0,-4.362782 1.8655668,-6.3458648 2.0712198,-2.2181148 4.9797409,-2.2621833 4.568436,-0.073448 5.435116,4.6712617 z',
-    Alpha: "M 12,5.0899277 8.5418087,14.467431 H 15.470813 Z M 10.561191,2.5783215 h 2.89024 L 20.632858,21.421678 H 17.98242 L 16.265945,16.587782 H 7.7719191 L 6.0554443,21.421678 H 3.3671424 Z",
+    Alpha: `M 12,5.0899277 8.5418087,14.467431 H 15.470813 Z M 10.561191,2.5783215 h 2.89024 L 20.632858,21.421678 H 17.98242 L 16.265945,16.587782 H 7.7719191 L 6.0554443,21.421678 H 3.3671424 Z`,
     Beta: 'm 7.8859735,12.420825 v 6.871367 h 4.0700605 q 2.047592,0 3.027421,-0.841648 0.992391,-0.85421 0.992391,-2.600316 0,-1.758668 -0.992391,-2.587755 -0.979829,-0.841648 -3.027421,-0.841648 z m 0,-7.7130155 v 5.6528615 h 3.7560125 q 1.859163,0 2.763621,-0.6909053 0.91702,-0.7034672 0.91702,-2.1355255 0,-1.4194963 -0.91702,-2.1229635 Q 13.501149,4.7078095 11.641986,4.7078095 Z M 5.3484667,2.6225317 h 6.4819483 q 2.901802,0 4.472041,1.2059437 1.570239,1.2059438 1.570239,3.4294027 0,1.7209823 -0.803962,2.7384974 -0.803963,1.0175155 -2.36164,1.2687535 1.871725,0.401981 2.901802,1.683296 1.042639,1.268754 1.042639,3.178165 0,2.512383 -1.70842,3.881631 -1.708421,1.369249 -4.861461,1.369249 H 5.3484667 Z',
     beta: 'm 9.2302992,16.654701 v 4.585227 H 7.5166283 V 6.9840389 q 0,-4.2239673 3.9460747,-4.2239673 4.001653,0 4.020179,3.5662882 0.02779,2.5380856 -1.59325,3.4643942 2.584401,0.833678 2.593664,3.306922 0.01853,4.399966 -4.464808,4.390703 -1.963774,-0.0093 -2.7881888,-0.833678 z m 0,-2.223141 q 1.0282028,1.611777 2.8530308,1.602514 2.667769,0 2.667769,-2.908609 0,-2.61219 -4.298072,-2.408402 V 9.142338 q 3.3625,0.055578 3.3625,-2.9641876 0,-2.0378789 -2.167562,-2.0286159 -2.4176658,0 -2.4176658,2.8900829 z',
     chi: 'M 13.641778,18.976096 11.900675,14.500644 8.3133019,21.044386 H 5.7776018 L 10.849002,11.789665 8.7222858,6.2859105 Q 8.1497084,4.8135685 6.3501792,4.8135685 H 5.7776018 V 2.9672983 l 0.8179678,0.02337 q 3.0147955,0.081797 3.7743374,2.0332342 l 1.729417,4.4754523 3.587373,-6.5437422 h 2.5357 l -5.0714,9.2547209 2.126716,5.503755 q 0.572578,1.472342 2.372107,1.472342 h 0.572577 v 1.84627 l -0.817967,-0.02337 q -3.014796,-0.0818 -3.762652,-2.033235 z',
@@ -2083,12 +1993,12 @@ var greek = {
     zeta: 'm 13.354145,15.871523 q 1.172112,0.0089 1.873604,0.674853 0.74589,0.701491 0.74589,1.767048 0,1.021158 -0.657094,1.731529 -0.710371,0.772529 -2.157752,0.772529 0,-0.665973 0,-1.340826 0.612695,0.0444 0.98564,-0.346306 0.284148,-0.310787 0.284148,-0.639334 0,-0.470621 -0.284148,-0.861325 -0.275269,-0.372944 -0.790288,-0.372944 -5.3810606,0 -5.3899402,-4.999237 0,-4.3687818 5.0702732,-7.432257 H 8.3105107 V 3.1825199 H 16.035796 V 4.825253 q -6.4288581,3.2321883 -6.4288581,7.432257 0,3.614013 3.7472071,3.614013 z',
     Zeta: 'M 5.1680194,3.3042234 H 18.83198 V 5.0981279 L 7.8355786,18.715494 H 19.099901 v 1.980284 H 4.9000986 V 18.901873 L 15.8965,5.2845076 H 5.1680194 Z',
 };
-var latex = {};
+const latex = {};
 
 var iconPaths = /*#__PURE__*/Object.freeze({
-    __proto__: null,
-    greek: greek,
-    latex: latex
+  __proto__: null,
+  greek: greek,
+  latex: latex
 });
 
 /**
@@ -2110,11 +2020,11 @@ var iconPaths = /*#__PURE__*/Object.freeze({
  * than executing it.
  */
 function splitMarkup(label) {
-    var source = label || '';
-    var parts = [];
-    var tags = /<(sup|sub)>([\s\S]*?)<\/\1>/g;
-    var copied = 0;
-    for (var match = tags.exec(source); match; match = tags.exec(source)) {
+    const source = label || '';
+    const parts = [];
+    const tags = /<(sup|sub)>([\s\S]*?)<\/\1>/g;
+    let copied = 0;
+    for (let match = tags.exec(source); match; match = tags.exec(source)) {
         if (match.index > copied) {
             parts.push({ tag: 'text', value: source.slice(copied, match.index) });
         }
@@ -2131,19 +2041,51 @@ function pathToSvg(icon) {
     // The size comes from the stylesheet rather than from a style attribute
     // written here - this was the last place the plugin set a fixed style from
     // JavaScript, which Obsidian's guidelines ask plugins not to do.
-    return "\n    <svg class=\"mfa-icon-svg\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path fill=\"currentColor\" d=\"".concat(icon, "\" />\n    </svg>");
+    return `
+    <svg class="mfa-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path fill="currentColor" d="${icon}" />
+    </svg>`;
 }
 function importIconPaths() {
-    var res = {};
-    forEachObjIndexed(function (value, key, obj) {
+    let res = {};
+    forEachObjIndexed((value, key, obj) => {
         // @ts-ignore
         res = mergeLeft(res, map(pathToSvg, value));
     }, iconPaths);
     return res;
 }
-var icons = __assign(__assign({}, importIconPaths()), { division: pathToSvg(mdiDivision), multiplication: pathToSvg(mdiCircleSmall), h1: pathToSvg(mdiFormatHeader1), h2: pathToSvg(mdiFormatHeader2), h3: pathToSvg(mdiFormatHeader3), h4: pathToSvg(mdiFormatHeader4), h5: pathToSvg(mdiFormatHeader5), h6: pathToSvg(mdiFormatHeader6), bold: pathToSvg(mdiFormatBold), italic: pathToSvg(mdiFormatItalic), strikethrough: pathToSvg(mdiFormatStrikethroughVariant), codeInline: pathToSvg(mdiCodeTags), codeBlock: pathToSvg(mdiXml), link: pathToSvg(mdiLinkVariant), mermaidBlock: pathToSvg(mdiGraph), fileLink: pathToSvg(mdiFileLink), image: pathToSvg(mdiImage), quote: pathToSvg(mdiFormatIndentIncrease), bulletList: pathToSvg(mdiFormatListBulleted), numberList: pathToSvg(mdiFormatListNumbered), checkList: pathToSvg(mdiFormatListBulletedSquare), viewIcon: pathToSvg(mdiLanguageMarkdown), underline: pathToSvg(mdiFormatUnderline), menu: pathToSvg(mdiMenu), expandArrowDown: pathToSvg(mdiChevronDown), expandArrowUp: pathToSvg(mdiChevronUp), highlight: pathToSvg(mdiMarker) });
-var addIcons = function () {
-    Object.keys(icons).forEach(function (key) {
+const icons = {
+    ...importIconPaths(),
+    division: pathToSvg(mdiDivision),
+    multiplication: pathToSvg(mdiCircleSmall),
+    h1: pathToSvg(mdiFormatHeader1),
+    h2: pathToSvg(mdiFormatHeader2),
+    h3: pathToSvg(mdiFormatHeader3),
+    h4: pathToSvg(mdiFormatHeader4),
+    h5: pathToSvg(mdiFormatHeader5),
+    h6: pathToSvg(mdiFormatHeader6),
+    bold: pathToSvg(mdiFormatBold),
+    italic: pathToSvg(mdiFormatItalic),
+    strikethrough: pathToSvg(mdiFormatStrikethroughVariant),
+    codeInline: pathToSvg(mdiCodeTags),
+    codeBlock: pathToSvg(mdiXml),
+    link: pathToSvg(mdiLinkVariant),
+    mermaidBlock: pathToSvg(mdiGraph),
+    fileLink: pathToSvg(mdiFileLink),
+    image: pathToSvg(mdiImage),
+    quote: pathToSvg(mdiFormatIndentIncrease),
+    bulletList: pathToSvg(mdiFormatListBulleted),
+    numberList: pathToSvg(mdiFormatListNumbered),
+    checkList: pathToSvg(mdiFormatListBulletedSquare),
+    viewIcon: pathToSvg(mdiLanguageMarkdown),
+    underline: pathToSvg(mdiFormatUnderline),
+    menu: pathToSvg(mdiMenu),
+    expandArrowDown: pathToSvg(mdiChevronDown),
+    expandArrowUp: pathToSvg(mdiChevronUp),
+    highlight: pathToSvg(mdiMarker),
+};
+const addIcons = () => {
+    Object.keys(icons).forEach((key) => {
         obsidian.addIcon(key, icons[key]);
     });
 };
@@ -2152,8 +2094,8 @@ var addIcons = function () {
  * automatic teardown does not cover it - without this the icons stay in the
  * app's global registry after the plugin is disabled.
  */
-var removeIcons = function () {
-    Object.keys(icons).forEach(function (key) {
+const removeIcons = () => {
+    Object.keys(icons).forEach((key) => {
         obsidian.removeIcon(key);
     });
 };
@@ -2162,15 +2104,15 @@ var removeIcons = function () {
  *
  * @param svgText svg image as a string
  */
-var svgToElement = function (key) {
+const svgToElement = (key) => {
     if (key.toString().includes('.svg')) {
-        var img = document.createElement('img');
+        const img = document.createElement('img');
         img.src = key.toString();
         img.addClass('mfa-icon-image');
         return img;
     }
     else {
-        var parser = new DOMParser();
+        const parser = new DOMParser();
         return parser.parseFromString(icons[key], 'text/xml').documentElement;
     }
 };
@@ -2180,8 +2122,8 @@ var svgToElement = function (key) {
  * Built node by node rather than handed to innerHTML: see the note in
  * markup.ts for why that matters even for the plugin's own constants.
  */
-var appendLabel = function (parent, label) {
-    splitMarkup(label).forEach(function (part) {
+const appendLabel = (parent, label) => {
+    splitMarkup(label).forEach((part) => {
         if (part.tag === 'text') {
             parent.appendText(part.value);
         }
@@ -2200,8 +2142,7 @@ var appendLabel = function (parent, label) {
  * mode is excluded because inserting into it would be discarded.
  */
 function getTargetEditor(workspace) {
-    var _a;
-    var view = (_a = workspace.getMostRecentLeaf()) === null || _a === void 0 ? void 0 : _a.view;
+    const view = workspace.getMostRecentLeaf()?.view;
     if (!(view instanceof obsidian.MarkdownView))
         return null;
     if (view.getMode() !== 'source')
@@ -2224,15 +2165,15 @@ function getTargetEditor(workspace) {
  * the entire line, or only part of it.
  */
 function surroundingText(editor) {
-    var from = editor.getCursor('from');
-    var to = editor.getCursor('to');
+    const from = editor.getCursor('from');
+    const to = editor.getCursor('to');
     return {
         before: editor.getLine(from.line).slice(0, from.ch),
         after: editor.getLine(to.line).slice(to.ch),
     };
 }
 function withIds(settings) {
-    Object.keys(settings).forEach(function (key) {
+    Object.keys(settings).forEach((key) => {
         // @ts-ignore - the mapped return type is what makes `id` visible
         settings[key].id = key;
     });
@@ -2259,9 +2200,9 @@ function withIds(settings) {
  * A quote marker has only indentation in front of it; it is the outermost
  * thing on the line by nature.
  */
-var lead = function (kind) { return (kind === 'quote' ? '\\s*' : '\\s*(?:>\\s*)*'); };
+const lead = (kind) => (kind === 'quote' ? '\\s*' : '\\s*(?:>\\s*)*');
 /** A line with nothing on it takes no marker - an empty bullet helps nobody. */
-var isBlank = function (line) { return line.trim() === ''; };
+const isBlank = (line) => line.trim() === '';
 /**
  * Adds the marker to every line, or removes it from every line if they all
  * have it already.
@@ -2274,19 +2215,17 @@ var isBlank = function (line) { return line.trim() === ''; };
 function toggleLineMarker(lines, symbol, kind) {
     // The symbol goes into a regex, so its own special characters have to be
     // escaped - '1. ' would otherwise let the dot match anything.
-    var escaped = symbol.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    var marker = new RegExp('^(' + lead(kind) + ')' + escaped);
-    var prefix = new RegExp('^(' + lead(kind) + ')');
-    var has = function (line) { return marker.test(line); };
-    var add = function (line) {
-        return kind === 'quote'
-            ? symbol + line
-            : line.replace(prefix, function (_full, before) { return before + symbol; });
-    };
-    var remove = function (line) { return line.replace(marker, '$1'); };
-    var written = lines.filter(function (line) { return !isBlank(line); });
-    var allMarked = written.length > 0 && written.every(has);
-    return lines.map(function (line) {
+    const escaped = symbol.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const marker = new RegExp('^(' + lead(kind) + ')' + escaped);
+    const prefix = new RegExp('^(' + lead(kind) + ')');
+    const has = (line) => marker.test(line);
+    const add = (line) => kind === 'quote'
+        ? symbol + line
+        : line.replace(prefix, (_full, before) => before + symbol);
+    const remove = (line) => line.replace(marker, '$1');
+    const written = lines.filter((line) => !isBlank(line));
+    const allMarked = written.length > 0 && written.every(has);
+    return lines.map((line) => {
         if (isBlank(line))
             return line;
         if (allMarked)
@@ -2295,7 +2234,7 @@ function toggleLineMarker(lines, symbol, kind) {
     });
 }
 
-var formatSettings = withIds({
+const formatSettings = withIds({
     h1: {
         des: 'h1',
         icon: 'h1',
@@ -2510,17 +2449,17 @@ var formatSettings = withIds({
 });
 function iconFormatter(editor, item) {
     if (editor) {
-        var isSelection = editor.somethingSelected();
-        var selection = editor.getSelection();
-        var curserStart = editor.getCursor('from');
-        var curserEnd = editor.getCursor('to');
-        var line = editor.getLine(curserStart.line);
+        const isSelection = editor.somethingSelected();
+        const selection = editor.getSelection();
+        const curserStart = editor.getCursor('from');
+        const curserEnd = editor.getCursor('to');
+        const line = editor.getLine(curserStart.line);
         editor.focus();
         if (['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(item.id)) {
-            var reStringExact = '^\\s*' + item.symbol + '+\\s*';
-            var reStringAny = '^\\s*#+\\s*';
-            var cleanedLine = line.replace(new RegExp(reStringAny, 'g'), '');
-            var replacement = item.symbol + cleanedLine;
+            const reStringExact = '^\\s*' + item.symbol + '+\\s*';
+            const reStringAny = '^\\s*#+\\s*';
+            const cleanedLine = line.replace(new RegExp(reStringAny, 'g'), '');
+            let replacement = item.symbol + cleanedLine;
             // To delete the headings if the same heading is clicked twice
             if (new RegExp(reStringExact, 'g').test(line)) {
                 replacement = cleanedLine;
@@ -2528,9 +2467,9 @@ function iconFormatter(editor, item) {
             // replace the hole line with the updated new line
             editor.replaceRange(replacement, { line: curserStart.line, ch: 0 }, { line: curserStart.line, ch: line.length });
             // Calculate the shift of the course depending on how many # are in the old and new line
-            var oldNumberOfHeadings = match(/([#])/g, line).length;
-            var newNumberOfHeadings = match(/([#])/g, replacement).length;
-            var courserCorrection = newNumberOfHeadings - oldNumberOfHeadings;
+            const oldNumberOfHeadings = match(/([#])/g, line).length;
+            const newNumberOfHeadings = match(/([#])/g, replacement).length;
+            let courserCorrection = newNumberOfHeadings - oldNumberOfHeadings;
             // If the old or the new line doesn't contain any heading than the course correction has to be corrected by the space after the # (### sdfsd)
             if (newNumberOfHeadings === 0)
                 courserCorrection -= 1;
@@ -2564,10 +2503,10 @@ function iconFormatter(editor, item) {
         else if (item.id === 'codeBlock' ||
             item.id === 'mermaidBlock') {
             if (isSelection) {
-                var re = new RegExp('^(```).*(```)$', 'gs');
-                var match$1 = selection.trim().match(re);
-                var replacment = selection.trim();
-                if (match$1) {
+                const re = new RegExp('^(```).*(```)$', 'gs');
+                const match = selection.trim().match(re);
+                let replacment = selection.trim();
+                if (match) {
                     replacment = editor
                         .getSelection()
                         .trim()
@@ -2586,12 +2525,12 @@ function iconFormatter(editor, item) {
             else {
                 // If the current line already holds text, the block is appended on a
                 // fresh line below it, otherwise it replaces the empty line in place.
-                var hasContent = line.trim().length > 0;
-                var pos = {
+                const hasContent = line.trim().length > 0;
+                const pos = {
                     line: curserStart.line,
                     ch: hasContent ? line.length : 0,
                 };
-                var replacement = hasContent ? '\n' + item.symbol : item.symbol;
+                const replacement = hasContent ? '\n' + item.symbol : item.symbol;
                 editor.replaceRange(replacement, pos);
                 // The opening fence always ends up on its own line, so the shift is
                 // counted from the start of that line - not from the old cursor.
@@ -2606,11 +2545,11 @@ function iconFormatter(editor, item) {
             //
             // A selection ending at column zero stops short of that line rather than
             // including it, which is what shift+down and a triple click produce.
-            var endsBeforeLastLine = curserEnd.ch === 0 && curserEnd.line > curserStart.line;
-            var lastLine = endsBeforeLastLine ? curserEnd.line - 1 : curserEnd.line;
-            var from = { line: curserStart.line, ch: 0 };
-            var to = { line: lastLine, ch: editor.getLine(lastLine).length };
-            var converted = toggleLineMarker(editor.getRange(from, to).split('\n'), item.symbol, item.id === 'blockquote' ? 'quote' : 'list');
+            const endsBeforeLastLine = curserEnd.ch === 0 && curserEnd.line > curserStart.line;
+            const lastLine = endsBeforeLastLine ? curserEnd.line - 1 : curserEnd.line;
+            const from = { line: curserStart.line, ch: 0 };
+            const to = { line: lastLine, ch: editor.getLine(lastLine).length };
+            const converted = toggleLineMarker(editor.getRange(from, to).split('\n'), item.symbol, item.id === 'blockquote' ? 'quote' : 'list');
             editor.replaceRange(converted.join('\n'), from, to);
         }
     }
@@ -2623,14 +2562,14 @@ function iconFormatter(editor, item) {
  * is not a length anyone should be working out by hand, and a wrong one puts
  * the caret in the middle of an attribute.
  */
-var wrapper = function (des, open, close) { return ({
-    des: des,
+const wrapper = (des, open, close) => ({
+    des,
     symbol: open + close,
     shift: open.length,
     selectionInput: open.length,
     objectType: 'htmlFormatterSetting',
-}); };
-var htmlFormatterSettings = withIds({
+});
+const htmlFormatterSettings = withIds({
     // Obsidian has no page break of its own, so this is the html people were
     // copying by hand - issues #49 and #35.
     pageBreak: wrapper('page break', '<div style="page-break-after: always;">', '</div>'),
@@ -2857,14 +2796,14 @@ var htmlFormatterSettings = withIds({
 });
 function htmlFormatter(editor, item) {
     if (editor) {
-        var isSelection = editor.somethingSelected();
-        var selection = editor.getSelection();
-        var curserStart = editor.getCursor('from');
+        const isSelection = editor.somethingSelected();
+        const selection = editor.getSelection();
+        const curserStart = editor.getCursor('from');
         editor.getCursor('to');
         editor.getLine(curserStart.line);
         editor.focus();
         if (isSelection) {
-            var replacment = selection.trim();
+            let replacment = selection.trim();
             editor.replaceSelection(item.symbol.substring(0, item.selectionInput) +
                 replacment +
                 item.symbol.substring(item.selectionInput));
@@ -2877,7 +2816,7 @@ function htmlFormatter(editor, item) {
     }
 }
 
-var greekLowerCaseFormatterSettings = withIds({
+const greekLowerCaseFormatterSettings = withIds({
     alpha: {
         des: 'alpha',
         icon: 'alpha',
@@ -3040,7 +2979,7 @@ var greekLowerCaseFormatterSettings = withIds({
         objectType: 'greekFormatterSetting',
     },
 });
-var greekUpperCaseFormatterSettings = withIds({
+const greekUpperCaseFormatterSettings = withIds({
     // Alpha: {
     //   des: 'Alpha',
     //   icon: 'Alpha',
@@ -3199,7 +3138,7 @@ var greekUpperCaseFormatterSettings = withIds({
 });
 function greekFormatter(editor, item) {
     if (editor) {
-        var curserStart = editor.getCursor('from');
+        const curserStart = editor.getCursor('from');
         editor.focus();
         editor.replaceRange(item.symbol, curserStart);
         editor.setCursor(curserStart.line, curserStart.ch + item.shift);
@@ -3217,36 +3156,30 @@ function greekFormatter(editor, item) {
  * is the right instinct: the useful set is far larger than a panel of buttons
  * can show without becoming a wall of symbols.
  */
-var operator = function (des, symbol, text, inPanel) {
-    if (inPanel === void 0) { inPanel = false; }
-    return ({
-        des: des,
-        text: text,
-        symbol: symbol,
-        shift: symbol.length,
-        selectionInput: symbol.length,
-        type: 'text',
-        newLine: false,
-        suggestOnly: !inPanel,
-        objectType: 'latexFormatterSetting',
-    });
-};
+const operator = (des, symbol, text, inPanel = false) => ({
+    des,
+    text,
+    symbol,
+    shift: symbol.length,
+    selectionInput: symbol.length,
+    type: 'text',
+    newLine: false,
+    suggestOnly: !inPanel,
+    objectType: 'latexFormatterSetting',
+});
 /** An operator with braces to fill in, with the caret inside the first pair. */
-var braced = function (des, before, after, text, inPanel) {
-    if (inPanel === void 0) { inPanel = false; }
-    return ({
-        des: des,
-        text: text,
-        symbol: before + after,
-        shift: before.length,
-        selectionInput: before.length,
-        type: 'text',
-        newLine: false,
-        suggestOnly: !inPanel,
-        objectType: 'latexFormatterSetting',
-    });
-};
-var latexFormatterSettings = withIds({
+const braced = (des, before, after, text, inPanel = false) => ({
+    des,
+    text,
+    symbol: before + after,
+    shift: before.length,
+    selectionInput: before.length,
+    type: 'text',
+    newLine: false,
+    suggestOnly: !inPanel,
+    objectType: 'latexFormatterSetting',
+});
+const latexFormatterSettings = withIds({
     inlineEquation: {
         des: 'inline equation',
         text: '$$x$$',
@@ -3586,14 +3519,14 @@ var latexFormatterSettings = withIds({
 });
 function latexFormatter(editor, item) {
     if (editor) {
-        var isSelection = editor.somethingSelected();
-        var selection = editor.getSelection();
-        var curserStart = editor.getCursor('from');
+        const isSelection = editor.somethingSelected();
+        const selection = editor.getSelection();
+        const curserStart = editor.getCursor('from');
         editor.getCursor('to');
         editor.getLine(curserStart.line);
         editor.focus();
         if (isSelection) {
-            var replacment = selection.trim();
+            let replacment = selection.trim();
             editor.replaceSelection(item.symbol.substring(0, item.selectionInput) +
                 replacment +
                 item.symbol.substring(item.selectionInput));
@@ -3615,8 +3548,8 @@ function latexFormatter(editor, item) {
  * leaf module sidesteps that entirely: the tests import this file and nothing
  * else, while the editor-facing wrappers around it stay untested but trivial.
  */
-var CURSOR_PLACEHOLDER = '{cursor}';
-var SELECTION_PLACEHOLDER = '{selection}';
+const CURSOR_PLACEHOLDER = '{cursor}';
+const SELECTION_PLACEHOLDER = '{selection}';
 /**
  * The markers a value has to carry onto its own continuation lines.
  *
@@ -3645,11 +3578,11 @@ function continuationPrefix(lineSoFar) {
  */
 function expandTemplate(template, selection) {
     // Kept in step with the exported placeholder constants above.
-    var tokens = /\{(cursor|selection)\}/g;
-    var text = '';
-    var cursorOffset = -1;
-    var copied = 0;
-    for (var token = tokens.exec(template); token; token = tokens.exec(template)) {
+    const tokens = /\{(cursor|selection)\}/g;
+    let text = '';
+    let cursorOffset = -1;
+    let copied = 0;
+    for (let token = tokens.exec(template); token; token = tokens.exec(template)) {
         text += template.slice(copied, token.index);
         copied = token.index + token[0].length;
         if (token[1] === 'cursor') {
@@ -3657,11 +3590,11 @@ function expandTemplate(template, selection) {
                 cursorOffset = text.length;
             continue;
         }
-        var prefix = continuationPrefix(text.slice(text.lastIndexOf('\n') + 1));
+        const prefix = continuationPrefix(text.slice(text.lastIndexOf('\n') + 1));
         text += prefix ? selection.split('\n').join('\n' + prefix) : selection;
     }
     text += template.slice(copied);
-    return { text: text, cursorOffset: cursorOffset < 0 ? text.length : cursorOffset };
+    return { text, cursorOffset: cursorOffset < 0 ? text.length : cursorOffset };
 }
 /**
  * Turns an offset inside inserted text into an editor position.
@@ -3671,8 +3604,8 @@ function expandTemplate(template, selection) {
  * beginning of the last line.
  */
 function resolveCursorPosition(text, cursorOffset, start) {
-    var before = text.slice(0, cursorOffset);
-    var lastBreak = before.lastIndexOf('\n');
+    const before = text.slice(0, cursorOffset);
+    const lastBreak = before.lastIndexOf('\n');
     if (lastBreak < 0) {
         return { line: start.line, ch: start.ch + before.length };
     }
@@ -3695,10 +3628,10 @@ function resolveCursorPosition(text, cursorOffset, start) {
  */
 function placeBlock(body, cursorOffset, textBefore, textAfter) {
     if (!body.includes('\n')) {
-        return { text: body, cursorOffset: cursorOffset };
+        return { text: body, cursorOffset };
     }
-    var lead = textBefore.trim() ? '\n' : '';
-    var trail = textAfter.trim() ? '\n' : '';
+    const lead = textBefore.trim() ? '\n' : '';
+    const trail = textAfter.trim() ? '\n' : '';
     return {
         text: lead + body + trail,
         cursorOffset: lead.length + cursorOffset,
@@ -3716,12 +3649,12 @@ function placeBlock(body, cursorOffset, textBefore, textAfter) {
  * already written. Without one it stops on the heading so it can be typed.
  */
 function buildCalloutTemplate(id, title) {
-    var heading = title.trim();
+    const heading = title.trim();
     return heading
-        ? "> [!".concat(id, "] ").concat(heading, "\n> ").concat(CURSOR_PLACEHOLDER).concat(SELECTION_PLACEHOLDER)
-        : "> [!".concat(id, "] ").concat(CURSOR_PLACEHOLDER, "\n> ").concat(SELECTION_PLACEHOLDER);
+        ? `> [!${id}] ${heading}\n> ${CURSOR_PLACEHOLDER}${SELECTION_PLACEHOLDER}`
+        : `> [!${id}] ${CURSOR_PLACEHOLDER}\n> ${SELECTION_PLACEHOLDER}`;
 }
-var TABLE_ALIGNMENTS = [
+const TABLE_ALIGNMENTS = [
     'default',
     'left',
     'center',
@@ -3731,17 +3664,17 @@ var TABLE_ALIGNMENTS = [
  * All four are three characters wide, so the columns of the generated source
  * line up whatever the alignment is.
  */
-var DELIMITERS = {
+const DELIMITERS = {
     default: '---',
     left: ':--',
     center: ':-:',
     right: '--:',
 };
-var CELL_WIDTH = 3;
-var MAX_TABLE_ROWS = 6;
-var MAX_TABLE_COLUMNS = 6;
+const CELL_WIDTH = 3;
+const MAX_TABLE_ROWS = 6;
+const MAX_TABLE_COLUMNS = 6;
 function tableRow(cells) {
-    return '|' + cells.map(function (cell) { return " ".concat(cell, " "); }).join('|') + '|';
+    return '|' + cells.map((cell) => ` ${cell} `).join('|') + '|';
 }
 /**
  * Builds the source of an empty markdown table.
@@ -3750,17 +3683,16 @@ function tableRow(cells) {
  * and what the top row of the size picker promises. The delimiter row is never
  * counted, it is structural.
  */
-function buildTable(rows, columns, alignment) {
-    if (alignment === void 0) { alignment = 'default'; }
-    var safeRows = Math.max(1, Math.floor(rows));
-    var safeColumns = Math.max(1, Math.floor(columns));
-    var empty = ' '.repeat(CELL_WIDTH);
-    var delimiter = DELIMITERS[alignment] || DELIMITERS.default;
-    var lines = [
+function buildTable(rows, columns, alignment = 'default') {
+    const safeRows = Math.max(1, Math.floor(rows));
+    const safeColumns = Math.max(1, Math.floor(columns));
+    const empty = ' '.repeat(CELL_WIDTH);
+    const delimiter = DELIMITERS[alignment] || DELIMITERS.default;
+    const lines = [
         tableRow(new Array(safeColumns).fill(empty)),
         tableRow(new Array(safeColumns).fill(delimiter)),
     ];
-    for (var line = 2; line < safeRows + 1; line++) {
+    for (let line = 2; line < safeRows + 1; line++) {
         lines.push(tableRow(new Array(safeColumns).fill(empty)));
     }
     return {
@@ -3770,7 +3702,7 @@ function buildTable(rows, columns, alignment) {
     };
 }
 
-var calloutsFormatterSettings = withIds({
+const calloutsFormatterSettings = withIds({
     note: {
         des: 'note',
         text: 'Note',
@@ -4015,17 +3947,16 @@ var calloutsFormatterSettings = withIds({
  * an empty string to keep the bare syntax and let the caret land on the
  * heading instead.
  */
-function calloutsFormatter(editor, item, title) {
-    if (title === void 0) { title = ''; }
+function calloutsFormatter(editor, item, title = '') {
     if (!editor)
         return;
-    var selection = editor.getSelection();
-    var start = editor.getCursor('from');
-    var _a = surroundingText(editor), before = _a.before, after = _a.after;
+    const selection = editor.getSelection();
+    const start = editor.getCursor('from');
+    const { before, after } = surroundingText(editor);
     editor.focus();
-    var expanded = expandTemplate(buildCalloutTemplate(item.id, title), selection.trim());
+    const expanded = expandTemplate(buildCalloutTemplate(item.id, title), selection.trim());
     // A callout is a block - it must not be glued into the middle of a sentence.
-    var _b = placeBlock(expanded.text, expanded.cursorOffset, before, after), text = _b.text, cursorOffset = _b.cursorOffset;
+    const { text, cursorOffset } = placeBlock(expanded.text, expanded.cursorOffset, before, after);
     editor.replaceSelection(text);
     editor.setCursor(resolveCursorPosition(text, cursorOffset, start));
 }
@@ -4033,7 +3964,7 @@ function calloutsFormatter(editor, item, title) {
 function colorFormatter(editor, color) {
     if (!editor)
         return;
-    var curserStart = editor.getCursor('from');
+    const curserStart = editor.getCursor('from');
     editor.focus();
     // Both paths land on the same result - replaceSelection inserts at the
     // cursor when nothing is selected.
@@ -4052,12 +3983,12 @@ function colorFormatter(editor, color) {
  */
 function declarations(color, options) {
     if (options.color && options.background) {
-        return "color: ".concat(color, "; background-color: ").concat(color);
+        return `color: ${color}; background-color: ${color}`;
     }
     if (options.background)
-        return "background-color: ".concat(color);
+        return `background-color: ${color}`;
     if (options.color)
-        return "color: ".concat(color);
+        return `color: ${color}`;
     return color;
 }
 /**
@@ -4069,9 +4000,9 @@ function declarations(color, options) {
  */
 function colorCode(color, options) {
     if (options.html)
-        return "<font color=\"".concat(color, "\"></font>");
-    var body = declarations(color, options);
-    return options.styleAttribute ? "style=\"".concat(body, "\"") : body;
+        return `<font color="${color}"></font>`;
+    const body = declarations(color, options);
+    return options.styleAttribute ? `style="${body}"` : body;
 }
 /**
  * How to colour text that is selected.
@@ -4087,19 +4018,19 @@ function colorCode(color, options) {
  */
 function wrapWithColor(color, selection, options) {
     if (options.background) {
-        return "<span style=\"".concat(declarations(color, options), "\">").concat(selection, "</span>");
+        return `<span style="${declarations(color, options)}">${selection}</span>`;
     }
-    return "<font color=\"".concat(color, "\">").concat(selection, "</font>");
+    return `<font color="${color}">${selection}</font>`;
 }
 
 function tableFormatter(editor, rows, columns, alignment) {
     if (!editor)
         return;
-    var start = editor.getCursor('from');
-    var _a = surroundingText(editor), before = _a.before, after = _a.after;
+    const start = editor.getCursor('from');
+    const { before, after } = surroundingText(editor);
     editor.focus();
-    var table = buildTable(rows, columns, alignment);
-    var _b = placeBlock(table.text, table.cursorOffset, before, after), text = _b.text, cursorOffset = _b.cursorOffset;
+    const table = buildTable(rows, columns, alignment);
+    const { text, cursorOffset } = placeBlock(table.text, table.cursorOffset, before, after);
     editor.replaceSelection(text);
     editor.setCursor(resolveCursorPosition(text, cursorOffset, start));
 }
@@ -4126,7 +4057,7 @@ function tableFormatter(editor, rows, columns, alignment) {
  * explorer, a stray text selection.
  */
 function moveItem(items, from, to) {
-    var next = __spreadArray([], items, true);
+    const next = [...items];
     if (!Number.isInteger(from) ||
         !Number.isInteger(to) ||
         from < 0 ||
@@ -4136,7 +4067,7 @@ function moveItem(items, from, to) {
         from === to) {
         return next;
     }
-    var moved = next.splice(from, 1)[0];
+    const [moved] = next.splice(from, 1);
     next.splice(to, 0, moved);
     return next;
 }
@@ -4151,10 +4082,10 @@ function moveItem(items, from, to) {
  * the defaults differ - the toolbar starts on the left, where the text starts,
  * and the panel stays centred, as it has always been drawn.
  */
-var PANEL_ALIGNMENTS = ['left', 'center', 'right'];
+const PANEL_ALIGNMENTS = ['left', 'center', 'right'];
 // Centred, so nobody's panel changes under them on update. Issue #94 asked for
 // the choice, not for a different default.
-var DEFAULT_PANEL_ALIGNMENT = 'center';
+const DEFAULT_PANEL_ALIGNMENT = 'center';
 /** Anything unrecognised falls back to the default rather than to no layout. */
 function normalisePanelAlignment(value) {
     return PANEL_ALIGNMENTS.includes(value)
@@ -4166,7 +4097,7 @@ function normalisePanelAlignment(value) {
  * English is the base dictionary: its keys define the translation key type, and
  * every other locale falls back to it for anything it leaves out.
  */
-var en = {
+const en = {
     // Product name. Locales normally leave this alone and inherit it.
     'view.displayName': 'Markdown Formatting Assistant',
     // Commands and ribbon
@@ -4270,7 +4201,7 @@ var en = {
     'callout.quote': 'Quote',
 };
 
-var be = {
+const be = {
     'command.openPanel': 'Адкрыць Markdown Formatting Assistant',
     'command.openCommandSelector': 'Адкрыць выбар каманд',
     'command.openCalloutsSelector': 'Адкрыць выбар выносак',
@@ -4364,7 +4295,7 @@ var be = {
     'settings.calloutTitles.desc': 'Устаўляць назву выноскі як загаловак, каб у нататцы яна адлюстроўвалася на вашай мове. Ключавое слова ўнутры [!note] заўсёды застаецца англійскім — менавіта па ім Obsidian вызначае тып.',
 };
 
-var de = {
+const de = {
     'command.openPanel': 'Markdown Formatting Assistant öffnen',
     'command.openCommandSelector': 'Befehlsauswahl öffnen',
     'command.openCalloutsSelector': 'Callout-Auswahl öffnen',
@@ -4458,7 +4389,7 @@ var de = {
     'settings.calloutTitles.desc': 'Den Namen des Callouts als Überschrift einfügen, damit die Notiz ihn in deiner Sprache zeigt. Das Schlüsselwort in [!note] bleibt immer englisch - daran erkennt Obsidian den Typ.',
 };
 
-var es = {
+const es = {
     'command.openPanel': 'Abrir Markdown Formatting Assistant',
     'command.openCommandSelector': 'Abrir selector de comandos',
     'command.openCalloutsSelector': 'Abrir selector de llamadas',
@@ -4552,7 +4483,7 @@ var es = {
     'settings.calloutTitles.desc': 'Insertar el nombre de la llamada como título, para que la nota lo muestre en tu idioma. La palabra clave dentro de [!note] siempre queda en inglés: es la que reconoce Obsidian.',
 };
 
-var fr = {
+const fr = {
     'command.openPanel': 'Ouvrir Markdown Formatting Assistant',
     'command.openCommandSelector': 'Ouvrir le sélecteur de commandes',
     'command.openCalloutsSelector': 'Ouvrir le sélecteur d’encadrés',
@@ -4646,7 +4577,7 @@ var fr = {
     'settings.calloutTitles.desc': 'Insérer le nom de l’encadré comme titre, afin que la note l’affiche dans votre langue. Le mot-clé dans [!note] reste toujours en anglais : c’est lui qu’Obsidian reconnaît.',
 };
 
-var it = {
+const it = {
     'command.openPanel': 'Apri Markdown Formatting Assistant',
     'command.openCommandSelector': 'Apri il selettore dei comandi',
     'command.openCalloutsSelector': 'Apri il selettore dei riquadri',
@@ -4740,7 +4671,7 @@ var it = {
     'settings.calloutTitles.desc': 'Inserire il nome del riquadro come titolo, così la nota lo mostra nella tua lingua. La parola chiave dentro [!note] resta sempre in inglese: è quella che Obsidian riconosce.',
 };
 
-var ja = {
+const ja = {
     'command.openPanel': 'Markdown Formatting Assistant を開く',
     'command.openCommandSelector': 'コマンド選択を開く',
     'command.openCalloutsSelector': 'コールアウト選択を開く',
@@ -4834,7 +4765,7 @@ var ja = {
     'settings.calloutTitles.desc': 'コールアウト名を見出しとして挿入し、ノートで選択した言語のまま表示されるようにします。[!note] の中のキーワードは常に英語のままです。Obsidian はそれで種類を判別します。',
 };
 
-var ko = {
+const ko = {
     'command.openPanel': 'Markdown Formatting Assistant 열기',
     'command.openCommandSelector': '명령 선택기 열기',
     'command.openCalloutsSelector': '콜아웃 선택기 열기',
@@ -4928,7 +4859,7 @@ var ko = {
     'settings.calloutTitles.desc': '콜아웃 이름을 제목으로 넣어 노트에 선택한 언어로 표시되게 합니다. [!note] 안의 키워드는 항상 영어로 유지되며, Obsidian 은 그것으로 종류를 판별합니다.',
 };
 
-var pt = {
+const pt = {
     'command.openPanel': 'Abrir Markdown Formatting Assistant',
     'command.openCommandSelector': 'Abrir seletor de comandos',
     'command.openCalloutsSelector': 'Abrir seletor de destaques',
@@ -5023,7 +4954,7 @@ var pt = {
 };
 
 /** 'view.displayName' is deliberately absent - the product name stays as is. */
-var ru = {
+const ru = {
     'command.openPanel': 'Открыть Markdown Formatting Assistant',
     'command.openCommandSelector': 'Открыть выбор команд',
     'command.openCalloutsSelector': 'Открыть выбор коллаутов',
@@ -5119,7 +5050,7 @@ var ru = {
     'settings.calloutTitles.desc': 'Вставлять название коллаута как заголовок, чтобы в заметке оно отображалось на вашем языке. Ключевое слово внутри [!note] всегда остаётся английским — именно по нему Obsidian опознаёт тип.',
 };
 
-var uk = {
+const uk = {
     'command.openPanel': 'Відкрити Markdown Formatting Assistant',
     'command.openCommandSelector': 'Відкрити вибір команд',
     'command.openCalloutsSelector': 'Відкрити вибір виносок',
@@ -5214,7 +5145,7 @@ var uk = {
 };
 
 /** Simplified Chinese. */
-var zh = {
+const zh = {
     'command.openPanel': '打开 Markdown Formatting Assistant',
     'command.openCommandSelector': '打开命令选择器',
     'command.openCalloutsSelector': '打开标注选择器',
@@ -5313,22 +5244,22 @@ var zh = {
  * `LocaleCode`, the settings dropdown and the detection all derive from this
  * object, so no other code changes.
  */
-var LOCALES = {
-    en: en,
-    be: be,
-    de: de,
-    es: es,
-    fr: fr,
-    it: it,
-    ja: ja,
-    ko: ko,
-    pt: pt,
-    ru: ru,
-    uk: uk,
-    zh: zh,
+const LOCALES = {
+    en,
+    be,
+    de,
+    es,
+    fr,
+    it,
+    ja,
+    ko,
+    pt,
+    ru,
+    uk,
+    zh,
 };
 /** Language names are shown in their own language, as language pickers do. */
-var LOCALE_NAMES = {
+const LOCALE_NAMES = {
     en: 'English',
     be: 'Беларуская',
     de: 'Deutsch',
@@ -5353,13 +5284,13 @@ var LOCALE_NAMES = {
  *
  * The dictionaries themselves live in ./locales, one file per language.
  */
-var AUTO_LOCALE = 'auto';
-var SUPPORTED_LOCALES = Object.keys(LOCALES);
+const AUTO_LOCALE = 'auto';
+const SUPPORTED_LOCALES = Object.keys(LOCALES);
 /**
  * Region names are persisted in the settings file, so they must never change.
  * This maps them to the label the user sees, for both the panel and settings.
  */
-var SECTION_LABEL_KEYS = {
+const SECTION_LABEL_KEYS = {
     textEdit: 'section.textEdit',
     tables: 'section.tables',
     html: 'section.html',
@@ -5368,7 +5299,7 @@ var SECTION_LABEL_KEYS = {
     colors: 'section.colors',
     callouts: 'section.callouts',
 };
-var activeLocale = 'en';
+let activeLocale = 'en';
 function isSupported(code) {
     return SUPPORTED_LOCALES.indexOf(code) >= 0;
 }
@@ -5381,7 +5312,7 @@ function isSupported(code) {
  * lands on the Simplified dictionary.
  */
 function detectLocale() {
-    var candidate = '';
+    let candidate = '';
     try {
         candidate = window.localStorage.getItem('language') || '';
     }
@@ -5390,7 +5321,7 @@ function detectLocale() {
     }
     if (!candidate)
         candidate = navigator.language || '';
-    var normalised = candidate.toLowerCase().split('-')[0];
+    const normalised = candidate.toLowerCase().split('-')[0];
     return isSupported(normalised) ? normalised : 'en';
 }
 function setLocale(setting) {
@@ -5407,13 +5338,13 @@ function setLocale(setting) {
  * such as the '{your color}' in the colour options - are left alone.
  */
 function t(key, vars) {
-    var template = LOCALES[activeLocale][key] || en[key];
+    const template = LOCALES[activeLocale][key] || en[key];
     if (!vars)
         return template;
-    return Object.keys(vars).reduce(function (text, name) { return text.split('{' + name + '}').join(String(vars[name])); }, template);
+    return Object.keys(vars).reduce((text, name) => text.split('{' + name + '}').join(String(vars[name])), template);
 }
 function sectionLabel(regionName) {
-    var key = SECTION_LABEL_KEYS[regionName];
+    const key = SECTION_LABEL_KEYS[regionName];
     return key ? t(key) : regionName;
 }
 /**
@@ -5421,7 +5352,7 @@ function sectionLabel(regionName) {
  * English forever. Only the button label goes through here.
  */
 function calloutLabel(calloutId) {
-    var key = ('callout.' + calloutId);
+    const key = ('callout.' + calloutId);
     return en[key] ? t(key) : calloutId;
 }
 
@@ -5436,7 +5367,7 @@ function calloutLabel(calloutId) {
  */
 /** Turns a panel label into the name shown in Obsidian's command list. */
 function commandName(label) {
-    var words = (label || '').trim().replace(/_/g, ' ');
+    const words = (label || '').trim().replace(/_/g, ' ');
     if (!words)
         return '';
     // 'h1' through 'h6' keep their shape on purpose: that is what the panel
@@ -5452,134 +5383,128 @@ function commandName(label) {
  * the tooltip either way.
  */
 function shortLabel(name) {
-    var parts = (name || '').split(':');
-    var tail = parts[parts.length - 1].trim();
+    const parts = (name || '').split(':');
+    const tail = parts[parts.length - 1].trim();
     return tail.slice(0, 2);
 }
 
-var SidePanelControlViewType = 'side-panel-control-view';
+const SidePanelControlViewType = 'side-panel-control-view';
 // The repository the community catalogue installs from, so the one whose
 // tracker is open. The fork this was maintained in has issues turned off.
-var REPOSITORY_URL = 'https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin';
-var ISSUES_URL = "".concat(REPOSITORY_URL, "/issues");
-var SidePanelControlView = /** @class */ (function (_super) {
-    __extends(SidePanelControlView, _super);
-    function SidePanelControlView(leaf, plugin) {
-        var _this = _super.call(this, leaf) || this;
-        _this.plugin = plugin;
-        return _this;
+const REPOSITORY_URL = 'https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin';
+const ISSUES_URL = `${REPOSITORY_URL}/issues`;
+class SidePanelControlView extends obsidian.ItemView {
+    constructor(leaf, plugin) {
+        super(leaf);
+        this.plugin = plugin;
     }
-    SidePanelControlView.prototype.getViewType = function () {
+    getViewType() {
         return SidePanelControlViewType;
-    };
-    SidePanelControlView.prototype.getDisplayText = function () {
+    }
+    getDisplayText() {
         return t('view.displayName');
-    };
-    SidePanelControlView.prototype.getIcon = function () {
+    }
+    getIcon() {
         return 'viewIcon';
-    };
-    SidePanelControlView.prototype.load = function () {
-        _super.prototype.load.call(this);
+    }
+    load() {
+        super.load();
         this.draw();
-    };
-    SidePanelControlView.prototype.draw = function () {
-        var container = this.containerEl.children[1];
-        var rootEl = document.createElement('div');
+    }
+    draw() {
+        const container = this.containerEl.children[1];
+        const rootEl = document.createElement('div');
         rootEl.id = 'mfa-panel-root';
         this.drawContentOfRootElement(rootEl);
         container.empty();
         container.appendChild(rootEl);
-    };
+    }
     /**
      * Where the buttons sit, as a class the stylesheet reads. The panel is drawn
      * with it; this moves it when the setting changes, so an open panel follows
      * the dropdown without being rebuilt - which would throw away its scroll
      * position and the keyboard focus.
      */
-    SidePanelControlView.prototype.applyAlignment = function () {
-        var panel = this.containerEl.querySelector('.markdown-formatting-assistant-panel');
+    applyAlignment() {
+        const panel = this.containerEl.querySelector('.markdown-formatting-assistant-panel');
         if (!(panel instanceof HTMLElement))
             return;
-        var wanted = this.plugin.settings.panelAlignment;
-        PANEL_ALIGNMENTS.forEach(function (alignment) {
-            return panel.toggleClass("is-align-".concat(alignment), alignment === wanted);
-        });
-    };
-    SidePanelControlView.prototype.drawContentOfRootElement = function (rootEl) {
-        var _this = this;
-        if (rootEl === void 0) { rootEl = null; }
+        const wanted = this.plugin.settings.panelAlignment;
+        PANEL_ALIGNMENTS.forEach((alignment) => panel.toggleClass(`is-align-${alignment}`, alignment === wanted));
+    }
+    drawContentOfRootElement(rootEl = null) {
         if (!rootEl)
             rootEl = document.getElementById('mfa-panel-root');
         rootEl.textContent = '';
-        var getRegion = function (name) {
-            return _this.plugin.settings.regionSettings.find(function (item) { return item.name === name; });
+        const getRegion = (name) => {
+            return this.plugin.settings.regionSettings.find((item) => item.name === name);
         };
         // Width is left to the stylesheet - the leaf is user-resizable, so nothing
         // in here may pin a fixed width.
-        var mainDiv = rootEl.createDiv({
-            cls: "nav-header markdown-formatting-assistant-panel mfa-scope is-align-".concat(this.plugin.settings.panelAlignment),
+        const mainDiv = rootEl.createDiv({
+            cls: `nav-header markdown-formatting-assistant-panel mfa-scope is-align-${this.plugin.settings.panelAlignment}`,
         });
         // --------------
         // Text Edit Section
         // --------------
-        var addTextEditSection = function () {
-            var content = _this.addSelectableHeader(mainDiv, 'textEdit');
-            _this.addTextEditButtons(content);
+        const addTextEditSection = () => {
+            let content = this.addSelectableHeader(mainDiv, 'textEdit');
+            this.addTextEditButtons(content);
         };
         // --------------
         // Table Section
         // --------------
-        var addTabelsSection = function () {
-            var content = _this.addSelectableHeader(mainDiv, 'tables');
-            _this.addTableBuilder(content);
+        const addTabelsSection = () => {
+            const content = this.addSelectableHeader(mainDiv, 'tables');
+            this.addTableBuilder(content);
         };
         // --------------
         // HTML Section
         // --------------
-        var addHtmlSection = function () {
-            var content = _this.addSelectableHeader(mainDiv, 'html');
-            _this.addHtmlButtons(content);
-            _this.addNote(content, t('html.reportMissingTag'), ISSUES_URL);
+        const addHtmlSection = () => {
+            const content = this.addSelectableHeader(mainDiv, 'html');
+            this.addHtmlButtons(content);
+            this.addNote(content, t('html.reportMissingTag'), ISSUES_URL);
         };
         // --------------
         // Latex Section
         // --------------
-        var addLatexSection = function () {
-            var content = _this.addSelectableHeader(mainDiv, 'latex');
-            _this.addLatexButtons(content);
-            _this.addNote(content, t('latex.introduction'), 'https://en.wikibooks.org/wiki/LaTeX/Mathematics');
-            _this.addNote(content, t('latex.reportMissingFunction'), ISSUES_URL);
+        const addLatexSection = () => {
+            const content = this.addSelectableHeader(mainDiv, 'latex');
+            this.addLatexButtons(content);
+            this.addNote(content, t('latex.introduction'), 'https://en.wikibooks.org/wiki/LaTeX/Mathematics');
+            this.addNote(content, t('latex.reportMissingFunction'), ISSUES_URL);
         };
         // --------------
         // Greek Section
         // --------------
-        var addGreekLettersSection = function () {
-            var content = _this.addSelectableHeader(mainDiv, 'greekLetters');
+        const addGreekLettersSection = () => {
+            const content = this.addSelectableHeader(mainDiv, 'greekLetters');
             content
                 .createEl('h5', { cls: 'mfa-subheading' })
                 .setText(t('greek.lowerCase'));
-            _this.addGreekLowerCaseLetters(content);
+            this.addGreekLowerCaseLetters(content);
             content
                 .createEl('h5', { cls: 'mfa-subheading' })
                 .setText(t('greek.upperCase'));
-            _this.addGreekUpperCaseLetters(content);
-            _this.addNote(content, t('greek.overview'), 'https://en.wikipedia.org/wiki/Greek_alphabet');
+            this.addGreekUpperCaseLetters(content);
+            this.addNote(content, t('greek.overview'), 'https://en.wikipedia.org/wiki/Greek_alphabet');
         };
         // --------------
         // Colors
         // --------------
-        var addColorsSection = function () {
-            var content = _this.addSelectableHeader(mainDiv, 'colors');
-            _this.addColorBody(content);
+        const addColorsSection = () => {
+            const content = this.addSelectableHeader(mainDiv, 'colors');
+            this.addColorBody(content);
         };
         // --------------
         // Callouts
         // --------------
-        var addCalloutsSection = function () {
-            var content = _this.addSelectableHeader(mainDiv, 'callouts');
-            _this.addCalloutsButtons(content);
+        const addCalloutsSection = () => {
+            let content = this.addSelectableHeader(mainDiv, 'callouts');
+            this.addCalloutsButtons(content);
         };
-        var regions = {
+        const regions = {
             textEdit: addTextEditSection,
             tables: addTabelsSection,
             html: addHtmlSection,
@@ -5588,13 +5513,13 @@ var SidePanelControlView = /** @class */ (function (_super) {
             colors: addColorsSection,
             callouts: addCalloutsSection,
         };
-        this.plugin.settings.regionSettings.map(function (item) {
+        this.plugin.settings.regionSettings.map((item) => {
             // @ts-ignore
-            var regionFunction = regions[item.name];
+            const regionFunction = regions[item.name];
             if (regionFunction && getRegion(item.name).active)
                 regionFunction();
         });
-    };
+    }
     /**
      * Turns one of the panel's divs into something a keyboard and a screen
      * reader can use.
@@ -5612,12 +5537,12 @@ var SidePanelControlView = /** @class */ (function (_super) {
      * a mislabelled button, no button at all. It also gives everyone else the
      * hover tooltip the panel never had.
      */
-    SidePanelControlView.prototype.asButton = function (element, label, activate) {
+    asButton(element, label, activate) {
         element.setAttribute('role', 'button');
         element.setAttribute('aria-label', label);
         element.tabIndex = 0;
-        element.onClickEvent(function () { return activate(); });
-        element.addEventListener('keydown', function (event) {
+        element.onClickEvent(() => activate());
+        element.addEventListener('keydown', (event) => {
             if (event.key !== 'Enter' && event.key !== ' ')
                 return;
             // Space scrolls the panel otherwise, which is the one thing a person
@@ -5625,172 +5550,162 @@ var SidePanelControlView = /** @class */ (function (_super) {
             event.preventDefault();
             activate();
         });
-    };
+    }
     /** The small centred link that closes several of the sections. */
-    SidePanelControlView.prototype.addNote = function (parent, text, href) {
+    addNote(parent, text, href) {
         parent
             .createEl('p', { cls: 'mfa-note' })
-            .createEl('a', { cls: 'mfa-note-link', href: href })
+            .createEl('a', { cls: 'mfa-note-link', href })
             .appendText(text);
-    };
+    }
     /**
      * A size picker for markdown tables: hovering the grid previews the table
      * that a click would insert, which is a lot less fiddly in a narrow pane than
      * two number inputs.
      */
-    SidePanelControlView.prototype.addTableBuilder = function (mainDiv) {
-        var _this = this;
-        var alignment = this.plugin.settings.tableAlignment;
-        var label = mainDiv.createEl('p', { cls: 'mfa-table-label' });
-        var idleLabel = function () { return t('tables.pick'); };
+    addTableBuilder(mainDiv) {
+        let alignment = this.plugin.settings.tableAlignment;
+        const label = mainDiv.createEl('p', { cls: 'mfa-table-label' });
+        const idleLabel = () => t('tables.pick');
         label.setText(idleLabel());
-        var grid = mainDiv.createDiv({ cls: 'mfa-table-grid' });
-        var cells = [];
-        var paint = function (rows, columns) {
-            cells.forEach(function (cellRow, rowIndex) {
-                return cellRow.forEach(function (cell, columnIndex) {
-                    cell.toggleClass('is-covered', rowIndex < rows && columnIndex < columns);
-                });
-            });
+        const grid = mainDiv.createDiv({ cls: 'mfa-table-grid' });
+        const cells = [];
+        const paint = (rows, columns) => {
+            cells.forEach((cellRow, rowIndex) => cellRow.forEach((cell, columnIndex) => {
+                cell.toggleClass('is-covered', rowIndex < rows && columnIndex < columns);
+            }));
         };
-        for (var rowIndex = 0; rowIndex < MAX_TABLE_ROWS; rowIndex++) {
-            var rowEl = grid.createDiv({ cls: 'mfa-table-grid-row' });
-            var rowCells = [];
-            var _loop_1 = function (columnIndex) {
-                var cell = rowEl.createDiv({ cls: 'mfa-table-cell' });
-                var rows = rowIndex + 1;
-                var columns = columnIndex + 1;
-                cell.addEventListener('mouseenter', function () {
+        for (let rowIndex = 0; rowIndex < MAX_TABLE_ROWS; rowIndex++) {
+            const rowEl = grid.createDiv({ cls: 'mfa-table-grid-row' });
+            const rowCells = [];
+            for (let columnIndex = 0; columnIndex < MAX_TABLE_COLUMNS; columnIndex++) {
+                const cell = rowEl.createDiv({ cls: 'mfa-table-cell' });
+                const rows = rowIndex + 1;
+                const columns = columnIndex + 1;
+                cell.addEventListener('mouseenter', () => {
                     paint(rows, columns);
-                    label.setText(t('tables.size', { rows: rows, columns: columns }));
+                    label.setText(t('tables.size', { rows, columns }));
                 });
                 // The grid is a picture of the table, so each cell says the size it
                 // would insert - the only way to use it without seeing it.
-                this_1.asButton(cell, t('tables.size', { rows: rows, columns: columns }), function () {
-                    var editor = getTargetEditor(_this.app.workspace);
+                this.asButton(cell, t('tables.size', { rows, columns }), () => {
+                    const editor = getTargetEditor(this.app.workspace);
                     if (editor)
                         tableFormatter(editor, rows, columns, alignment);
                 });
                 rowCells.push(cell);
-            };
-            var this_1 = this;
-            for (var columnIndex = 0; columnIndex < MAX_TABLE_COLUMNS; columnIndex++) {
-                _loop_1(columnIndex);
             }
             cells.push(rowCells);
         }
-        grid.addEventListener('mouseleave', function () {
+        grid.addEventListener('mouseleave', () => {
             paint(0, 0);
             label.setText(idleLabel());
         });
-        var alignmentRow = mainDiv.createDiv({
+        const alignmentRow = mainDiv.createDiv({
             cls: 'nav-buttons-container mfa-table-alignment',
         });
-        var alignmentButtons = [];
-        var highlightAlignment = function () {
-            alignmentButtons.forEach(function (button, index) {
+        const alignmentButtons = [];
+        const highlightAlignment = () => {
+            alignmentButtons.forEach((button, index) => {
                 button.toggleClass('is-active', TABLE_ALIGNMENTS[index] === alignment);
             });
         };
-        TABLE_ALIGNMENTS.forEach(function (option) {
-            var label = t("tables.align.".concat(option));
-            var button = alignmentRow.createDiv({ cls: 'nav-action-text-button' });
+        TABLE_ALIGNMENTS.forEach((option) => {
+            const label = t(`tables.align.${option}`);
+            const button = alignmentRow.createDiv({ cls: 'nav-action-text-button' });
             button.appendText(label);
-            _this.asButton(button, label, function () {
+            this.asButton(button, label, () => {
                 alignment = option;
-                _this.plugin.settings.tableAlignment = option;
+                this.plugin.settings.tableAlignment = option;
                 highlightAlignment();
-                void _this.plugin.saveSettings();
+                void this.plugin.saveSettings();
             });
             alignmentButtons.push(button);
         });
         highlightAlignment();
-    };
-    SidePanelControlView.prototype.addHtmlButtons = function (mainDiv) {
-        var _this = this;
-        var activate = function (type) {
+    }
+    addHtmlButtons(mainDiv) {
+        const activate = (type) => {
             // @ts-ignore
-            var formatterSetting = htmlFormatterSettings[type];
-            var editor = getTargetEditor(_this.app.workspace);
+            const formatterSetting = htmlFormatterSettings[type];
+            const editor = getTargetEditor(this.app.workspace);
             if (editor)
                 htmlFormatter(editor, formatterSetting);
         };
-        var numberOfCols = 3;
-        var row = null;
-        sortBy(identity, keys(htmlFormatterSettings)).forEach(function (key, index) {
+        const numberOfCols = 3;
+        let row = null;
+        sortBy(identity, keys(htmlFormatterSettings)).forEach((key, index) => {
             // @ts-ignore
-            var item = htmlFormatterSettings[key];
+            const item = htmlFormatterSettings[key];
             if (index % numberOfCols === 0) {
                 row = mainDiv.createDiv({ cls: 'nav-buttons-container' });
             }
-            var button = row.createDiv({ cls: 'nav-action-text-button' });
+            const button = row.createDiv({ cls: 'nav-action-text-button' });
             button.appendText(item.des);
-            _this.asButton(button, item.des, function () { return activate(key); });
+            this.asButton(button, item.des, () => activate(key));
         });
-    };
-    SidePanelControlView.prototype.addCalloutsButtons = function (mainDiv) {
-        var _this = this;
-        var activate = function (type) {
+    }
+    addCalloutsButtons(mainDiv) {
+        const activate = (type) => {
             // @ts-ignore
-            var formatterSetting = calloutsFormatterSettings[type];
-            var editor = getTargetEditor(_this.app.workspace);
+            const formatterSetting = calloutsFormatterSettings[type];
+            const editor = getTargetEditor(this.app.workspace);
             if (!editor)
                 return;
             // The heading is written into the note so it renders translated; the
             // keyword inside [!...] stays English either way.
-            calloutsFormatter(editor, formatterSetting, _this.plugin.settings.calloutTitles
+            calloutsFormatter(editor, formatterSetting, this.plugin.settings.calloutTitles
                 ? calloutLabel(formatterSetting.id)
                 : '');
         };
-        var row = null;
-        keys(calloutsFormatterSettings).forEach(function (key, index) {
+        let row = null;
+        keys(calloutsFormatterSettings).forEach((key, index) => {
             // @ts-ignore
-            var item = calloutsFormatterSettings[key];
+            const item = calloutsFormatterSettings[key];
             if (index === 0 || item.newLine) {
                 row = mainDiv.createDiv({ cls: 'nav-buttons-container' });
             }
-            var button = row.createDiv({
+            const button = row.createDiv({
                 cls: 'nav-action-text-button mfa-centered-button mfa-callout-button',
             });
             // Each callout carries its own colours as data, so the stylesheet takes
             // delivery of them through custom properties.
             button.style.setProperty('--mfa-callout-color', item.color);
             button.style.setProperty('--mfa-callout-background', item.bgColor);
-            _this.asButton(button, calloutLabel(item.id), function () { return activate(key); });
-            var spanIcon = button.createSpan({ cls: 'mfa-callout-icon' });
+            this.asButton(button, calloutLabel(item.id), () => activate(key));
+            const spanIcon = button.createSpan({ cls: 'mfa-callout-icon' });
             obsidian.setIcon(spanIcon, item.icon);
             button.createSpan().setText(' ' + calloutLabel(item.id));
         });
-    };
-    SidePanelControlView.prototype.addLatexButtons = function (mainDiv) {
-        var _this = this;
-        var activate = function (type) {
+    }
+    addLatexButtons(mainDiv) {
+        const activate = (type) => {
             // @ts-ignore
-            var formatterSetting = latexFormatterSettings[type];
-            var editor = getTargetEditor(_this.app.workspace);
+            const formatterSetting = latexFormatterSettings[type];
+            const editor = getTargetEditor(this.app.workspace);
             if (editor)
                 latexFormatter(editor, formatterSetting);
         };
-        var row = null;
+        let row = null;
         // The panel shows a chosen few; the rest are reachable through ALT+Q,
         // which is what issue #21 asked for. Filtered before the index is taken,
         // or a hidden entry would take its row break with it.
-        var shown = keys(latexFormatterSettings).filter(
+        const shown = keys(latexFormatterSettings).filter(
         // @ts-ignore
-        function (key) { return !latexFormatterSettings[key].suggestOnly; });
-        shown.forEach(function (key, index) {
+        (key) => !latexFormatterSettings[key].suggestOnly);
+        shown.forEach((key, index) => {
             // @ts-ignore
-            var item = latexFormatterSettings[key];
+            const item = latexFormatterSettings[key];
             if (index === 0 || item.newLine) {
                 row = mainDiv.createDiv({ cls: 'nav-buttons-container' });
             }
-            var button = row.createDiv({
+            const button = row.createDiv({
                 cls: 'nav-action-text-button mfa-centered-button',
             });
             // Half of these are drawn as an svg, so des is the only name they have.
-            _this.asButton(button, commandName(item.des), function () { return activate(key); });
+            this.asButton(button, commandName(item.des), () => activate(key));
             if (item.type === 'icon') {
-                var svg = svgToElement(item.text);
+                const svg = svgToElement(item.text);
                 svg.addClass('mfa-inline-svg');
                 button.appendChild(svg);
             }
@@ -5798,65 +5713,62 @@ var SidePanelControlView = /** @class */ (function (_super) {
                 appendLabel(button.createDiv(), item.text);
             }
         });
-    };
-    SidePanelControlView.prototype.addGreekLowerCaseLetters = function (mainDiv) {
-        var _this = this;
-        var activate = function (type) {
+    }
+    addGreekLowerCaseLetters(mainDiv) {
+        const activate = (type) => {
             // @ts-ignore
-            var formatterSetting = greekLowerCaseFormatterSettings[type];
-            var editor = getTargetEditor(_this.app.workspace);
+            const formatterSetting = greekLowerCaseFormatterSettings[type];
+            const editor = getTargetEditor(this.app.workspace);
             if (editor)
                 greekFormatter(editor, formatterSetting);
         };
-        var numberOfCols = 5;
-        var row = null;
-        keys(greekLowerCaseFormatterSettings).forEach(function (key, index) {
+        const numberOfCols = 5;
+        let row = null;
+        keys(greekLowerCaseFormatterSettings).forEach((key, index) => {
             // @ts-ignore
-            var item = greekLowerCaseFormatterSettings[key];
+            const item = greekLowerCaseFormatterSettings[key];
             if (index % numberOfCols === 0) {
                 row = mainDiv.createDiv({ cls: 'nav-buttons-container' });
             }
-            var button = row.createDiv({ cls: 'nav-action-button' });
+            const button = row.createDiv({ cls: 'nav-action-button' });
             // A letter drawn as an svg has no text at all, so 'Alpha' is the only
             // thing there is to announce or to show on hover.
-            _this.asButton(button, commandName(item.des), function () { return activate(key); });
+            this.asButton(button, commandName(item.des), () => activate(key));
             button.appendChild(svgToElement(item.icon));
         });
-    };
-    SidePanelControlView.prototype.addGreekUpperCaseLetters = function (mainDiv) {
-        var _this = this;
-        var activate = function (type) {
+    }
+    addGreekUpperCaseLetters(mainDiv) {
+        const activate = (type) => {
             // @ts-ignore
-            var formatterSetting = greekUpperCaseFormatterSettings[type];
-            var editor = getTargetEditor(_this.app.workspace);
+            const formatterSetting = greekUpperCaseFormatterSettings[type];
+            const editor = getTargetEditor(this.app.workspace);
             if (editor)
                 greekFormatter(editor, formatterSetting);
         };
-        var numberOfCols = 5;
-        var row = null;
-        keys(greekUpperCaseFormatterSettings).forEach(function (key, index) {
+        const numberOfCols = 5;
+        let row = null;
+        keys(greekUpperCaseFormatterSettings).forEach((key, index) => {
             // @ts-ignore
-            var item = greekUpperCaseFormatterSettings[key];
+            const item = greekUpperCaseFormatterSettings[key];
             if (index % numberOfCols === 0) {
                 row = mainDiv.createDiv({ cls: 'nav-buttons-container' });
             }
-            var button = row.createDiv({ cls: 'nav-action-button' });
+            const button = row.createDiv({ cls: 'nav-action-button' });
             // A letter drawn as an svg has no text at all, so 'Alpha' is the only
             // thing there is to announce or to show on hover.
-            _this.asButton(button, commandName(item.des), function () { return activate(key); });
+            this.asButton(button, commandName(item.des), () => activate(key));
             button.appendChild(svgToElement(item.icon));
         });
-    };
-    SidePanelControlView.prototype.addTextEditButtons = function (mainDiv) {
-        var _this = this;
-        var activate = function (type) {
+    }
+    addTextEditButtons(mainDiv) {
+        const activate = (type) => {
             // @ts-ignore
-            var formatterSetting = formatSettings[type];
-            var editor = getTargetEditor(_this.app.workspace);
+            const formatterSetting = formatSettings[type];
+            const editor = getTargetEditor(this.app.workspace);
             if (editor)
                 iconFormatter(editor, formatterSetting);
         };
-        var rows = [
+        const rows = [
             [
                 ['h1', 'h1'],
                 ['h2', 'h2'],
@@ -5887,37 +5799,33 @@ var SidePanelControlView = /** @class */ (function (_super) {
                 ['checkList', 'checkList'],
             ],
         ];
-        rows.forEach(function (actions) {
-            var row = mainDiv.createDiv({ cls: 'nav-buttons-container' });
-            actions.forEach(function (_a) {
-                var id = _a[0], icon = _a[1];
-                var button = row.createDiv({ cls: 'nav-action-button' });
+        rows.forEach((actions) => {
+            const row = mainDiv.createDiv({ cls: 'nav-buttons-container' });
+            actions.forEach(([id, icon]) => {
+                const button = row.createDiv({ cls: 'nav-action-button' });
                 // These buttons hold a drawing and nothing else, so the label is the
                 // only thing a screen reader has to go on.
-                _this.asButton(button, commandName(formatSettings[id].des), function () {
-                    return activate(id);
-                });
+                this.asButton(button, commandName(formatSettings[id].des), () => activate(id));
                 button.appendChild(svgToElement(icon));
             });
         });
-    };
-    SidePanelControlView.prototype.addColorBody = function (mainDiv) {
-        var _this = this;
-        var insertColor = function (color) {
-            var editor = getTargetEditor(_this.app.workspace);
+    }
+    addColorBody(mainDiv) {
+        const insertColor = (color) => {
+            const editor = getTargetEditor(this.app.workspace);
             if (!editor)
                 return;
-            var isChecked = function (id) {
-                var box = document.getElementById(id);
+            const isChecked = (id) => {
+                const box = document.getElementById(id);
                 return box ? box.checked : false;
             };
-            var options = {
+            const options = {
                 color: isChecked('mfa-option-color'),
                 background: isChecked('mfa-option-background'),
                 styleAttribute: isChecked('mfa-option-style'),
                 html: isChecked('mfa-option-html'),
             };
-            var selection = editor.getSelection();
+            const selection = editor.getSelection();
             // Selected text is coloured, not overwritten. Clicking a colour with a
             // word selected used to replace that word with '#ff0000' - three reports
             // on the tracker are people working around exactly this, two of them
@@ -5927,105 +5835,86 @@ var SidePanelControlView = /** @class */ (function (_super) {
                 : colorCode(color, options));
             editor.focus();
         };
-        var drawLastSelectedColorIcons = function (container) {
-            if (container === void 0) { container = null; }
+        const drawLastSelectedColorIcons = (container = null) => {
             if (!container)
                 container = document.getElementById('mfa-recent-colors');
             container.textContent = '';
-            reverse(SidePanelControlView.lastColors).forEach(function (color) {
-                var colorBox = container.createDiv({ cls: 'mfa-color-icon' });
+            reverse(SidePanelControlView.lastColors).forEach((color) => {
+                const colorBox = container.createDiv({ cls: 'mfa-color-icon' });
                 colorBox.style.setProperty('--mfa-swatch', color);
-                _this.asButton(colorBox, color, function () { return insertColor(color); });
+                this.asButton(colorBox, color, () => insertColor(color));
                 // onClickEvent binds 'click' and nothing else, so the removal branch
                 // this used to share with it could never run: right-clicking a colour
                 // simply inserted it. The README promised otherwise.
-                colorBox.oncontextmenu = function (event) {
+                colorBox.oncontextmenu = (event) => {
                     event.preventDefault();
                     SidePanelControlView.lastColors = without([color], SidePanelControlView.lastColors);
                     drawLastSelectedColorIcons();
                 };
             });
         };
-        var drawLastSavedColorIcons = function (container) {
-            if (container === void 0) { container = null; }
+        const drawLastSavedColorIcons = (container = null) => {
             if (!container)
                 container = document.getElementById('mfa-saved-colors');
             container.textContent = '';
-            reverse(_this.plugin.settings.savedColors).forEach(function (color) {
-                var colorBox = container.createDiv({ cls: 'mfa-color-icon' });
+            reverse(this.plugin.settings.savedColors).forEach((color) => {
+                const colorBox = container.createDiv({ cls: 'mfa-color-icon' });
                 colorBox.id = 'mfa-saved-colors' + color;
                 colorBox.style.setProperty('--mfa-swatch', color);
                 colorBox.draggable = true;
-                _this.asButton(colorBox, color, function () { return insertColor(color); });
+                this.asButton(colorBox, color, () => insertColor(color));
                 // Same dead branch as the last-used swatches above: 'click' was the
                 // only event ever bound, so a saved colour could not be removed here.
-                colorBox.oncontextmenu = function (event) { return __awaiter(_this, void 0, void 0, function () {
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0:
-                                event.preventDefault();
-                                this.plugin.settings.savedColors = without([color], this.plugin.settings.savedColors);
-                                return [4 /*yield*/, this.plugin.saveSettings()];
-                            case 1:
-                                _a.sent();
-                                drawLastSavedColorIcons();
-                                return [2 /*return*/];
-                        }
-                    });
-                }); };
-                colorBox.ondragstart = function (event) {
-                    // @ts-ignore
-                    _this.dragStartColor = event.target.id.replace('mfa-saved-colors', '');
+                colorBox.oncontextmenu = async (event) => {
+                    event.preventDefault();
+                    this.plugin.settings.savedColors = without([color], this.plugin.settings.savedColors);
+                    await this.plugin.saveSettings();
+                    drawLastSavedColorIcons();
                 };
-                colorBox.ondrop = function (event) { return __awaiter(_this, void 0, void 0, function () {
-                    var target, savedColors, startColor, endColor, startIndex, endIndex;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0:
-                                target = event.target;
-                                if (!target || !target.id)
-                                    return [2 /*return*/];
-                                savedColors = this.plugin.settings.savedColors;
-                                startColor = this.dragStartColor;
-                                endColor = target.id.replace('mfa-saved-colors', '');
-                                startIndex = indexOf(startColor, savedColors);
-                                endIndex = indexOf(endColor, savedColors);
-                                // The container carries the id 'mfa-saved-colors' itself, so a drop
-                                // into the empty space next to the swatches used to resolve to an
-                                // empty colour and index -1 - which then wrote junk into the list.
-                                if (startIndex < 0 || endIndex < 0 || startIndex === endIndex)
-                                    return [2 /*return*/];
-                                this.plugin.settings.savedColors = moveItem(savedColors, startIndex, endIndex);
-                                return [4 /*yield*/, this.plugin.saveSettings()];
-                            case 1:
-                                _a.sent();
-                                drawLastSavedColorIcons();
-                                return [2 /*return*/];
-                        }
-                    });
-                }); };
-                colorBox.ondragover = function (event) {
+                colorBox.ondragstart = (event) => {
+                    // @ts-ignore
+                    this.dragStartColor = event.target.id.replace('mfa-saved-colors', '');
+                };
+                colorBox.ondrop = async (event) => {
+                    const target = event.target;
+                    if (!target || !target.id)
+                        return;
+                    const savedColors = this.plugin.settings.savedColors;
+                    const startColor = this.dragStartColor;
+                    const endColor = target.id.replace('mfa-saved-colors', '');
+                    const startIndex = indexOf(startColor, savedColors);
+                    const endIndex = indexOf(endColor, savedColors);
+                    // The container carries the id 'mfa-saved-colors' itself, so a drop
+                    // into the empty space next to the swatches used to resolve to an
+                    // empty colour and index -1 - which then wrote junk into the list.
+                    if (startIndex < 0 || endIndex < 0 || startIndex === endIndex)
+                        return;
+                    this.plugin.settings.savedColors = moveItem(savedColors, startIndex, endIndex);
+                    await this.plugin.saveSettings();
+                    drawLastSavedColorIcons();
+                };
+                colorBox.ondragover = (event) => {
                     event.preventDefault();
                 };
             });
         };
-        var colorSection = mainDiv.createDiv();
-        var colorSelector = colorSection.createDiv({ cls: 'mfa-color-preview' });
+        const colorSection = mainDiv.createDiv();
+        const colorSelector = colorSection.createDiv({ cls: 'mfa-color-preview' });
         colorSelector.style.setProperty('--mfa-swatch', last(SidePanelControlView.lastColors));
-        var colorInput = colorSelector.createEl('input', {
+        const colorInput = colorSelector.createEl('input', {
             cls: 'mfa-color-input',
         });
         colorInput.id = 'mfa-color-input';
         colorInput.type = 'color';
         colorInput.value = last(SidePanelControlView.lastColors);
-        colorInput.addEventListener('input', function (ev) {
+        colorInput.addEventListener('input', (ev) => {
             // @ts-ignore
-            var color = ev.target.value;
+            const color = ev.target.value;
             colorSelector.style.setProperty('--mfa-swatch', color);
         });
-        colorInput.addEventListener('change', function (ev) {
+        colorInput.addEventListener('change', (ev) => {
             // @ts-ignore
-            var color = ev.target.value;
+            const color = ev.target.value;
             // @ts-ignore
             SidePanelControlView.lastColors = pipe(without([color]), append(color), takeLast(10))(SidePanelControlView.lastColors);
             drawLastSelectedColorIcons();
@@ -6035,33 +5924,33 @@ var SidePanelControlView = /** @class */ (function (_super) {
             // undefined there - reading .writeText would throw synchronously,
             // which a rejection handler does not catch.
             if (navigator.clipboard) {
-                navigator.clipboard.writeText(color).then(function () { return new obsidian.Notice(t('colors.copied', { color: color })); }, function () { return new obsidian.Notice(t('colors.copyFailed')); });
+                navigator.clipboard.writeText(color).then(() => new obsidian.Notice(t('colors.copied', { color })), () => new obsidian.Notice(t('colors.copyFailed')));
             }
         }, false);
-        var colorButton = colorSection.createEl('label', {
+        const colorButton = colorSection.createEl('label', {
             cls: 'nav-action-text-button mfa-block-button',
         });
         colorButton.appendText(t('colors.select'));
         colorButton.htmlFor = 'mfa-color-input';
-        var colorSaveButton = colorSection.createEl('div', {
+        const colorSaveButton = colorSection.createEl('div', {
             cls: 'nav-action-text-button mfa-block-button mfa-color-save',
         });
         colorSaveButton.appendText(t('colors.save'));
-        this.asButton(colorSaveButton, t('colors.save'), function () {
-            var color = last(SidePanelControlView.lastColors);
-            _this.plugin.settings.savedColors = pipe(without([color]), append(color))(_this.plugin.settings.savedColors);
+        this.asButton(colorSaveButton, t('colors.save'), () => {
+            const color = last(SidePanelControlView.lastColors);
+            this.plugin.settings.savedColors = pipe(without([color]), append(color))(this.plugin.settings.savedColors);
             drawLastSavedColorIcons();
-            void _this.plugin.saveSettings();
+            void this.plugin.saveSettings();
         });
-        var addCheckbox = function (id, text) {
-            var div = colorSection.createEl('div');
-            var input = div.createEl('input');
+        const addCheckbox = (id, text) => {
+            const div = colorSection.createEl('div');
+            const input = div.createEl('input');
             input.id = id;
             input.type = 'checkbox';
             input.name = id;
             // Tied to the input, which is what lets the words be clicked as well as
             // the box - and what a screen reader reads out instead of "checkbox".
-            var label = div.createEl('label', { cls: 'mfa-checkbox-label' });
+            const label = div.createEl('label', { cls: 'mfa-checkbox-label' });
             label.htmlFor = id;
             label.appendText(text);
         };
@@ -6072,7 +5961,7 @@ var SidePanelControlView = /** @class */ (function (_super) {
         colorSection
             .createEl('p', { cls: 'mfa-swatches-title' })
             .appendText(t('colors.lastUsed'));
-        var lastSelectedColors = colorSection.createEl('div', {
+        const lastSelectedColors = colorSection.createEl('div', {
             cls: 'mfa-color-swatches',
         });
         lastSelectedColors.id = 'mfa-recent-colors';
@@ -6083,147 +5972,129 @@ var SidePanelControlView = /** @class */ (function (_super) {
         colorSection
             .createEl('p', { cls: 'mfa-swatches-hint' })
             .appendText(t('colors.editInSettings'));
-        var lastSavedColors = colorSection.createEl('div', {
+        const lastSavedColors = colorSection.createEl('div', {
             cls: 'mfa-color-swatches',
         });
         lastSavedColors.id = 'mfa-saved-colors';
         drawLastSavedColorIcons(lastSavedColors);
-        this.addNote(colorSection, t('colors.help'), "".concat(REPOSITORY_URL, "#color-picker"));
-    };
-    SidePanelControlView.prototype.addSelectableHeader = function (mainDiv, regionName) {
-        var _this = this;
-        var sectionTitle = sectionLabel(regionName);
-        var getRegion = function (name) {
-            return _this.plugin.settings.regionSettings.find(function (item) { return item.name === name; });
+        this.addNote(colorSection, t('colors.help'), `${REPOSITORY_URL}#color-picker`);
+    }
+    addSelectableHeader(mainDiv, regionName) {
+        const sectionTitle = sectionLabel(regionName);
+        const getRegion = (name) => {
+            return this.plugin.settings.regionSettings.find((item) => item.name === name);
         };
-        var header = mainDiv.createEl('div', { cls: 'mfa-section-header' });
+        const header = mainDiv.createEl('div', { cls: 'mfa-section-header' });
         header.id = 'mfa-region-' + regionName;
         mainDiv.createEl('hr', { cls: 'mfa-section-rule' });
-        var title = header.createEl('h4', { cls: 'mfa-section-title' });
-        var arrowButton = header.createDiv({
+        const title = header.createEl('h4', { cls: 'mfa-section-title' });
+        const arrowButton = header.createDiv({
             cls: 'nav-action-button mfa-section-arrow',
         });
-        var content = mainDiv.createEl('div', { cls: 'mfa-section-content' });
+        const content = mainDiv.createEl('div', { cls: 'mfa-section-content' });
         header.draggable = true;
-        header.ondragstart = function (event) {
+        header.ondragstart = (event) => {
             // @ts-ignore
-            var sectionId = event.target.id.replace('mfa-region-', '');
+            const sectionId = event.target.id.replace('mfa-region-', '');
             event.dataTransfer.setData('sectionHeaderMoveId', sectionId);
         };
-        var onDrop = function (event) { return __awaiter(_this, void 0, void 0, function () {
-            var getDroppedRegionName, regions, start, end, startIndex, endIndex;
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        getDroppedRegionName = function (path) {
-                            var header = path.find(function (target) {
-                                return target instanceof HTMLElement &&
-                                    target.id.startsWith('mfa-region-');
-                            });
-                            return header
-                                ? header.id.replace('mfa-region-', '')
-                                : undefined;
-                        };
-                        event.preventDefault();
-                        regions = this.plugin.settings.regionSettings;
-                        start = (_a = event.dataTransfer) === null || _a === void 0 ? void 0 : _a.getData('sectionHeaderMoveId');
-                        end = getDroppedRegionName(event.composedPath());
-                        if (!start || !end || start === end)
-                            return [2 /*return*/];
-                        startIndex = regions.findIndex(function (region) { return region.name === start; });
-                        endIndex = regions.findIndex(function (region) { return region.name === end; });
-                        // Headers accept any drag - a note dropped from the file explorer lands
-                        // here too, with an empty payload. Both indices must resolve, or the move
-                        // below would write undefined into the array and persist it.
-                        if (startIndex < 0 || endIndex < 0)
-                            return [2 /*return*/];
-                        this.plugin.settings.regionSettings = moveItem(regions, startIndex, endIndex);
-                        return [4 /*yield*/, this.plugin.saveSettings()];
-                    case 1:
-                        _b.sent();
-                        this.drawContentOfRootElement();
-                        return [2 /*return*/];
-                }
-            });
-        }); };
-        header.ondragover = function (event) { return __awaiter(_this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                event.preventDefault();
-                return [2 /*return*/];
-            });
-        }); };
+        const onDrop = async (event) => {
+            // The drop can land on any descendant of a section header, so walk the
+            // event path up to the header that carries the region id. composedPath()
+            // also yields document and window, which have no id at all.
+            const getDroppedRegionName = (path) => {
+                const header = path.find((target) => target instanceof HTMLElement &&
+                    target.id.startsWith('mfa-region-'));
+                return header
+                    ? header.id.replace('mfa-region-', '')
+                    : undefined;
+            };
+            event.preventDefault();
+            const regions = this.plugin.settings.regionSettings;
+            const start = event.dataTransfer?.getData('sectionHeaderMoveId');
+            const end = getDroppedRegionName(event.composedPath());
+            if (!start || !end || start === end)
+                return;
+            const startIndex = regions.findIndex((region) => region.name === start);
+            const endIndex = regions.findIndex((region) => region.name === end);
+            // Headers accept any drag - a note dropped from the file explorer lands
+            // here too, with an empty payload. Both indices must resolve, or the move
+            // below would write undefined into the array and persist it.
+            if (startIndex < 0 || endIndex < 0)
+                return;
+            this.plugin.settings.regionSettings = moveItem(regions, startIndex, endIndex);
+            await this.plugin.saveSettings();
+            this.drawContentOfRootElement();
+        };
+        header.ondragover = async (event) => {
+            event.preventDefault();
+        };
         header.ondrop = onDrop;
         title.appendText(sectionTitle);
-        var region = getRegion(regionName);
+        const region = getRegion(regionName);
         /**
          * The arrow points the way the click will move the section: down to open
          * it, up to close it again. It used to be drawn as "down" unconditionally,
          * so a section that started open contradicted itself until it was clicked
          * twice.
          */
-        var drawArrow = function (expanded) {
+        const drawArrow = (expanded) => {
             arrowButton.empty();
             arrowButton.appendChild(svgToElement(expanded ? 'expandArrowUp' : 'expandArrowDown'));
         };
-        var expanded = Boolean(region && region.active && region.visible);
+        const expanded = Boolean(region && region.active && region.visible);
         content.toggleClass('is-collapsed', !expanded);
         drawArrow(expanded);
         // Announced as expanded or collapsed, and updated on every toggle - the
         // arrow itself is a drawing and says nothing.
         arrowButton.setAttribute('aria-expanded', String(expanded));
-        this.asButton(arrowButton, sectionTitle, function () {
-            var region = getRegion(regionName);
+        this.asButton(arrowButton, sectionTitle, () => {
+            const region = getRegion(regionName);
             if (!region || !region.active)
                 return;
             region.visible = !region.visible;
             content.toggleClass('is-collapsed', !region.visible);
             drawArrow(region.visible);
             arrowButton.setAttribute('aria-expanded', String(region.visible));
-            void _this.plugin.saveSettings();
+            void this.plugin.saveSettings();
         });
         return content;
-    };
-    SidePanelControlView.lastColors = ['#ff0000'];
-    return SidePanelControlView;
-}(obsidian.ItemView));
+    }
+}
+SidePanelControlView.lastColors = ['#ff0000'];
 
-var builtInSuggestions = values(formatSettings).concat(
+const builtInSuggestions = values(formatSettings).concat(
 // @ts-ignore
 values(htmlFormatterSettings), values(latexFormatterSettings), values(greekLowerCaseFormatterSettings), values(greekUpperCaseFormatterSettings));
-var CodeSuggestionModal = /** @class */ (function (_super) {
-    __extends(CodeSuggestionModal, _super);
-    function CodeSuggestionModal() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.setEditor = function (editor) {
-            _this.editor = editor;
+class CodeSuggestionModal extends obsidian.SuggestModal {
+    constructor() {
+        super(...arguments);
+        this.setEditor = (editor) => {
+            this.editor = editor;
         };
-        return _this;
     }
     // Returns all available suggestions.
-    CodeSuggestionModal.prototype.getSuggestions = function (query) {
+    getSuggestions(query) {
         // The tables are heterogeneous - only some entries carry an icon, a text or
         // a type - so they do not structurally satisfy baseFormatterSetting. Every
         // reader below branches on objectType before touching those fields, which
         // is what makes this safe in practice.
-        var suggestions = builtInSuggestions;
+        const suggestions = builtInSuggestions;
         // Matching the id as well as the label keeps every command reachable by
         // its English name once the labels get translated.
-        var needle = query.toLowerCase();
-        return suggestions.filter(function (setting) {
-            return setting.des.toLowerCase().includes(needle) ||
-                setting.id.toLowerCase().includes(needle);
-        });
-    };
+        const needle = query.toLowerCase();
+        return suggestions.filter((setting) => setting.des.toLowerCase().includes(needle) ||
+            setting.id.toLowerCase().includes(needle));
+    }
     // Renders each suggestion item.
-    CodeSuggestionModal.prototype.renderSuggestion = function (baseFormatterSetting, el) {
-        var row = el.createEl('div');
+    renderSuggestion(baseFormatterSetting, el) {
+        const row = el.createEl('div');
         row.classList.add('mfa-suggestion-row');
-        var iconContainer = row.createDiv();
+        const iconContainer = row.createDiv();
         iconContainer.classList.add('mfa-suggestion-icon-container');
-        var iconDiv = iconContainer.createDiv();
+        const iconDiv = iconContainer.createDiv();
         iconDiv.classList.add('mfa-suggestion-icon');
-        var cell2 = row.createDiv();
+        const cell2 = row.createDiv();
         cell2.classList.add('mfa-suggestion-text');
         cell2.setText(baseFormatterSetting.des);
         // The label is tinted by which table the entry came from, so the four
@@ -6243,9 +6114,9 @@ var CodeSuggestionModal = /** @class */ (function (_super) {
             cell2.addClass('mfa-suggestion-text--greek');
         }
         else if (baseFormatterSetting.objectType === 'latexFormatterSetting') {
-            var item = baseFormatterSetting;
+            const item = baseFormatterSetting;
             if (item.type === 'icon') {
-                var svg = svgToElement(item.text);
+                const svg = svgToElement(item.text);
                 svg.addClass('mfa-inline-svg');
                 iconDiv.appendChild(svg);
             }
@@ -6257,10 +6128,10 @@ var CodeSuggestionModal = /** @class */ (function (_super) {
         else {
             iconDiv.appendText('HTML');
         }
-    };
+    }
     // Perform action on the selected suggestion.
-    CodeSuggestionModal.prototype.onChooseSuggestion = function (baseFormatterSetting, evt) {
-        var item = baseFormatterSetting;
+    onChooseSuggestion(baseFormatterSetting, evt) {
+        const item = baseFormatterSetting;
         if (item.objectType === 'formatterSetting') {
             // @ts-ignore
             iconFormatter(this.editor, item);
@@ -6278,51 +6149,48 @@ var CodeSuggestionModal = /** @class */ (function (_super) {
             greekFormatter(this.editor, item);
         }
         // new Notice(`Selected ${baseFormatterSetting.des}`);
-    };
-    CodeSuggestionModal.display = function (app, editor) {
-        var modal = new CodeSuggestionModal(app);
-        modal.setEditor(editor);
-        modal.open();
-    };
-    return CodeSuggestionModal;
-}(obsidian.SuggestModal));
+    }
+}
+CodeSuggestionModal.display = (app, editor) => {
+    const modal = new CodeSuggestionModal(app);
+    modal.setEditor(editor);
+    modal.open();
+};
 
-var suggestions = values(calloutsFormatterSettings);
-var CalloutsSuggestionModal = /** @class */ (function (_super) {
-    __extends(CalloutsSuggestionModal, _super);
-    function CalloutsSuggestionModal() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
+const suggestions = values(calloutsFormatterSettings);
+class CalloutsSuggestionModal extends obsidian.SuggestModal {
+    constructor() {
+        super(...arguments);
         /** Whether to write the translated heading into the note. */
-        _this.useTitles = true;
-        _this.setEditor = function (editor) {
-            _this.editor = editor;
+        this.useTitles = true;
+        this.setEditor = (editor) => {
+            this.editor = editor;
         };
-        return _this;
     }
     // Returns all available suggestions.
-    CalloutsSuggestionModal.prototype.getSuggestions = function (query) {
+    getSuggestions(query) {
         // Matching the translated label as well as the id keeps callouts findable
         // both by their Russian name and by the English keyword.
-        var filterFunction = function (setting) {
-            var needle = query.toLowerCase();
+        const filterFunction = (setting) => {
+            const needle = query.toLowerCase();
             return (calloutLabel(setting.id).toLowerCase().includes(needle) ||
                 setting.id.toLowerCase().includes(needle));
         };
         // @ts-ignore
         return values(filter(filterFunction, suggestions));
-    };
+    }
     // Renders each suggestion item.
-    CalloutsSuggestionModal.prototype.renderSuggestion = function (calloutsFormatterSetting, el) {
-        var row = el.createEl('div');
+    renderSuggestion(calloutsFormatterSetting, el) {
+        const row = el.createEl('div');
         row.classList.add('mfa-suggestion-row');
-        var iconContainer = row.createDiv();
+        const iconContainer = row.createDiv();
         iconContainer.classList.add('mfa-suggestion-icon-container');
-        var iconDiv = iconContainer.createDiv();
+        const iconDiv = iconContainer.createDiv();
         iconDiv.classList.add('mfa-suggestion-icon');
-        var cell2 = row.createDiv();
+        const cell2 = row.createDiv();
         cell2.classList.add('mfa-suggestion-text', 'mfa-suggestion-text--muted');
         cell2.setText(calloutLabel(calloutsFormatterSetting.id));
-        var spanIcon = iconDiv.createSpan({ cls: 'mfa-callout-icon' });
+        const spanIcon = iconDiv.createSpan({ cls: 'mfa-callout-icon' });
         obsidian.setIcon(spanIcon, calloutsFormatterSetting.icon);
         // The colours belong to the callout type, so they arrive as data rather
         // than as anything the stylesheet could know in advance. Custom properties
@@ -6330,22 +6198,20 @@ var CalloutsSuggestionModal = /** @class */ (function (_super) {
         row.addClass('mfa-callout-row');
         row.style.setProperty('--mfa-callout-color', calloutsFormatterSetting.color);
         row.style.setProperty('--mfa-callout-background', calloutsFormatterSetting.bgColor);
-    };
+    }
     // Perform action on the selected suggestion.
-    CalloutsSuggestionModal.prototype.onChooseSuggestion = function (calloutsFormatterSetting, evt) {
-        var item = calloutsFormatterSetting;
+    onChooseSuggestion(calloutsFormatterSetting, evt) {
+        const item = calloutsFormatterSetting;
         calloutsFormatter(this.editor, item, this.useTitles ? calloutLabel(item.id) : '');
         // new Notice(`Selected ${calloutsFormatterSetting.des}`);
-    };
-    CalloutsSuggestionModal.display = function (app, editor, useTitles) {
-        if (useTitles === void 0) { useTitles = true; }
-        var modal = new CalloutsSuggestionModal(app);
-        modal.setEditor(editor);
-        modal.useTitles = useTitles;
-        modal.open();
-    };
-    return CalloutsSuggestionModal;
-}(obsidian.SuggestModal));
+    }
+}
+CalloutsSuggestionModal.display = (app, editor, useTitles = true) => {
+    const modal = new CalloutsSuggestionModal(app);
+    modal.setEditor(editor);
+    modal.useTitles = useTitles;
+    modal.open();
+};
 
 /**
  * Picks a command to put on the toolbar.
@@ -6356,20 +6222,18 @@ var CalloutsSuggestionModal = /** @class */ (function (_super) {
  * how someone actually writes rather than around what this plugin happens to
  * provide.
  */
-var CommandPickerModal = /** @class */ (function (_super) {
-    __extends(CommandPickerModal, _super);
-    function CommandPickerModal() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.choices = [];
-        _this.onPick = function () { };
-        return _this;
+class CommandPickerModal extends obsidian.FuzzySuggestModal {
+    constructor() {
+        super(...arguments);
+        this.choices = [];
+        this.onPick = () => { };
     }
-    CommandPickerModal.prototype.getItems = function () {
+    getItems() {
         return this.choices;
-    };
-    CommandPickerModal.prototype.getItemText = function (command) {
+    }
+    getItemText(command) {
         return command.name;
-    };
+    }
     /**
      * With nothing typed, keep the order the list arrived in - this plugin's
      * commands first.
@@ -6378,21 +6242,21 @@ var CommandPickerModal = /** @class */ (function (_super) {
      * order it returns rests on the sort being stable, which is not a promise
      * worth relying on for the one view every user sees before typing.
      */
-    CommandPickerModal.prototype.getSuggestions = function (query) {
+    getSuggestions(query) {
         if (query.trim())
-            return _super.prototype.getSuggestions.call(this, query);
+            return super.getSuggestions(query);
         // Nothing was searched for, so there is nothing to highlight.
-        var matches = [];
-        return this.choices.map(function (item) { return ({ item: item, match: { score: 0, matches: matches } }); });
-    };
-    CommandPickerModal.prototype.onChooseItem = function (command) {
+        const matches = [];
+        return this.choices.map((item) => ({ item, match: { score: 0, matches } }));
+    }
+    onChooseItem(command) {
         this.onPick(command.id);
-    };
-    CommandPickerModal.open = function (app, available, taken, placeholder, onPick) {
-        var modal = new CommandPickerModal(app);
+    }
+    static open(app, available, taken, placeholder, onPick) {
+        const modal = new CommandPickerModal(app);
         // Already on the toolbar means nothing to add: a second button would run
         // the same command, and removing one would appear to remove both.
-        modal.choices = available.filter(function (command) { return !taken.includes(command.id); });
+        modal.choices = available.filter((command) => !taken.includes(command.id));
         modal.onPick = onPick;
         modal.setPlaceholder(placeholder);
         // Well above the default, which is a screenful. This plugin's own commands
@@ -6400,9 +6264,8 @@ var CommandPickerModal = /** @class */ (function (_super) {
         // would show those and nothing else to browse past.
         modal.limit = 150;
         modal.open();
-    };
-    return CommandPickerModal;
-}(obsidian.FuzzySuggestModal));
+    }
+}
 
 /**
  * One Obsidian command per formatting action, so people can bind their own
@@ -6418,8 +6281,8 @@ function registerFormattingCommands(plugin, writeCalloutTitle) {
     // The table is heterogeneous for the suggestion window's benefit, so it does
     // not structurally satisfy the interface. Every entry in this one does carry
     // the fields iconFormatter reads.
-    var textEdit = values(formatSettings);
-    textEdit.forEach(function (item) {
+    const textEdit = values(formatSettings);
+    textEdit.forEach((item) => {
         plugin.addCommand({
             // The table key rather than the label, so a binding survives a rename.
             id: item.id,
@@ -6430,25 +6293,24 @@ function registerFormattingCommands(plugin, writeCalloutTitle) {
             icon: item.icon,
             // editorCallback rather than callback: these all write to a note, and
             // Obsidian then hides them when no editor has focus.
-            editorCallback: function (editor) { return iconFormatter(editor, item); },
+            editorCallback: (editor) => iconFormatter(editor, item),
         });
     });
-    var callouts = values(calloutsFormatterSettings);
-    callouts.forEach(function (item) {
+    const callouts = values(calloutsFormatterSettings);
+    callouts.forEach((item) => {
         plugin.addCommand({
             // Namespaced. The two tables happen not to share a key today, but they
             // are edited independently and both are plain English words - 'quote'
             // and 'image' would each be at home in either. Obsidian keeps one
             // command per id and drops the rest silently, so the day they do collide
             // nothing would say so.
-            id: "callout-".concat(item.id),
-            name: "".concat(t('section.callouts'), ": ").concat(calloutLabel(item.id)),
+            id: `callout-${item.id}`,
+            name: `${t('section.callouts')}: ${calloutLabel(item.id)}`,
             icon: item.icon,
-            editorCallback: function (editor) {
-                // Read when the command runs rather than when it is registered, so the
-                // setting takes effect without a restart.
-                return calloutsFormatter(editor, item, writeCalloutTitle() ? calloutLabel(item.id) : '');
-            },
+            editorCallback: (editor) => 
+            // Read when the command runs rather than when it is registered, so the
+            // setting takes effect without a restart.
+            calloutsFormatter(editor, item, writeCalloutTitle() ? calloutLabel(item.id) : ''),
         });
     });
 }
@@ -6466,15 +6328,15 @@ function registerFormattingCommands(plugin, writeCalloutTitle) {
  * it, so the default buttons below would resolve to nothing if the two drifted.
  * There is a test on exactly that.
  */
-var PLUGIN_ID = 'obsidian-markdown-formatting-assistant-plugin';
+const PLUGIN_ID = 'obsidian-markdown-formatting-assistant-plugin';
 /**
  * A ceiling rather than a design limit. The toolbar wraps, so a long list
  * costs the user their writing space rather than breaking anything - but a
  * settings file that somehow grew unbounded should not take the editor with it.
  */
-var MAX_TOOLBAR_COMMANDS = 40;
+const MAX_TOOLBAR_COMMANDS = 40;
 /** Everyday formatting, in the order a toolbar usually reads. */
-var DEFAULT_TOOLBAR_COMMANDS = [
+const DEFAULT_TOOLBAR_COMMANDS = [
     'h1',
     'h2',
     'h3',
@@ -6488,13 +6350,13 @@ var DEFAULT_TOOLBAR_COMMANDS = [
     'numberList',
     'checkList',
     'link',
-].map(function (id) { return "".concat(PLUGIN_ID, ":").concat(id); });
-var TOOLBAR_ALIGNMENTS = [
+].map((id) => `${PLUGIN_ID}:${id}`);
+const TOOLBAR_ALIGNMENTS = [
     'left',
     'center',
     'right',
 ];
-var DEFAULT_TOOLBAR = {
+const DEFAULT_TOOLBAR = {
     enabled: false,
     commands: DEFAULT_TOOLBAR_COMMANDS,
     // Left, because that is where the text starts.
@@ -6523,10 +6385,13 @@ function normaliseToolbarAlignment(value) {
  * anyone who scrolls.
  */
 function sortedCommands(commands) {
-    var all = Object.values(commands || {});
-    var byName = function (a, b) { return (a.name || '').localeCompare(b.name || ''); };
-    var isOwn = function (command) { return (command.id || '').startsWith("".concat(PLUGIN_ID, ":")); };
-    return __spreadArray(__spreadArray([], all.filter(isOwn).sort(byName), true), all.filter(function (command) { return !isOwn(command); }).sort(byName), true);
+    const all = Object.values(commands || {});
+    const byName = (a, b) => (a.name || '').localeCompare(b.name || '');
+    const isOwn = (command) => (command.id || '').startsWith(`${PLUGIN_ID}:`);
+    return [
+        ...all.filter(isOwn).sort(byName),
+        ...all.filter((command) => !isOwn(command)).sort(byName),
+    ];
 }
 /**
  * Rebuilds the stored list into something safe to render.
@@ -6538,14 +6403,13 @@ function sortedCommands(commands) {
  */
 function normaliseToolbarCommands(value) {
     if (!Array.isArray(value))
-        return __spreadArray([], DEFAULT_TOOLBAR_COMMANDS, true);
-    var seen = new Set();
-    var commands = [];
-    for (var _i = 0, value_1 = value; _i < value_1.length; _i++) {
-        var entry = value_1[_i];
+        return [...DEFAULT_TOOLBAR_COMMANDS];
+    const seen = new Set();
+    const commands = [];
+    for (const entry of value) {
         if (typeof entry !== 'string')
             continue;
-        var id = entry.trim();
+        const id = entry.trim();
         if (!id || seen.has(id))
             continue;
         seen.add(id);
@@ -6556,7 +6420,7 @@ function normaliseToolbarCommands(value) {
     return commands;
 }
 
-var TOOLBAR_CLASS = 'mfa-toolbar';
+const TOOLBAR_CLASS = 'mfa-toolbar';
 function getCommandRegistry(plugin) {
     // @ts-ignore - see the note above.
     return plugin.app.commands;
@@ -6577,8 +6441,8 @@ function allCommands(registry) {
  * Everything is torn down again in `detachAll`, called from the plugin's
  * onunload, because an element left behind would outlive the plugin.
  */
-var EditorToolbar = /** @class */ (function () {
-    function EditorToolbar(plugin, settings) {
+class EditorToolbar {
+    constructor(plugin, settings) {
         this.plugin = plugin;
         this.settings = settings;
         /**
@@ -6592,48 +6456,46 @@ var EditorToolbar = /** @class */ (function () {
         this.bars = new Set();
     }
     /** Starts watching for panes to decorate. */
-    EditorToolbar.prototype.start = function () {
-        var _this = this;
-        var workspace = this.plugin.app.workspace;
+    start() {
+        const { workspace } = this.plugin.app;
         // Both are needed: opening a tab is a layout change, moving between
         // existing tabs is not.
-        this.plugin.registerEvent(workspace.on('layout-change', function () { return _this.refresh(); }));
-        this.plugin.registerEvent(workspace.on('active-leaf-change', function () { return _this.refresh(); }));
-        workspace.onLayoutReady(function () { return _this.refresh(); });
-    };
+        this.plugin.registerEvent(workspace.on('layout-change', () => this.refresh()));
+        this.plugin.registerEvent(workspace.on('active-leaf-change', () => this.refresh()));
+        workspace.onLayoutReady(() => this.refresh());
+    }
     /** Brings every open markdown pane in line with the current settings. */
-    EditorToolbar.prototype.refresh = function () {
-        var _this = this;
-        var _a = this.settings(), enabled = _a.enabled, commands = _a.commands, alignment = _a.alignment;
-        this.plugin.app.workspace.getLeavesOfType('markdown').forEach(function (leaf) {
-            var view = leaf.view;
+    refresh() {
+        const { enabled, commands, alignment } = this.settings();
+        this.plugin.app.workspace.getLeavesOfType('markdown').forEach((leaf) => {
+            const view = leaf.view;
             if (!(view instanceof obsidian.MarkdownView))
                 return;
             // Reading mode has no editor to write to, and every button here writes.
-            var wanted = enabled && commands.length > 0 && view.getMode() === 'source';
-            _this.apply(leaf, view, wanted ? commands : [], alignment);
+            const wanted = enabled && commands.length > 0 && view.getMode() === 'source';
+            this.apply(leaf, view, wanted ? commands : [], alignment);
         });
-    };
+    }
     /** Removes every toolbar this plugin put on the page. */
-    EditorToolbar.prototype.detachAll = function () {
-        this.bars.forEach(function (bar) { return bar.remove(); });
+    detachAll() {
+        this.bars.forEach((bar) => bar.remove());
         this.bars.clear();
-    };
-    EditorToolbar.prototype.discard = function (bar) {
+    }
+    discard(bar) {
         if (!bar)
             return;
         this.bars.delete(bar);
         bar.remove();
-    };
-    EditorToolbar.prototype.apply = function (leaf, view, commands, alignment) {
-        var registry = getCommandRegistry(this.plugin);
-        var host = view.contentEl;
-        var existing = host.querySelector(":scope > .".concat(TOOLBAR_CLASS));
+    }
+    apply(leaf, view, commands, alignment) {
+        const registry = getCommandRegistry(this.plugin);
+        const host = view.contentEl;
+        const existing = host.querySelector(`:scope > .${TOOLBAR_CLASS}`);
         // What can actually be drawn. A command is missing while the plugin that
         // registered it is disabled, and that has to be part of the comparison
         // below: otherwise re-enabling that plugin leaves the button missing until
         // something else forces a rebuild.
-        var drawable = commands.filter(function (id) { return registry.commands[id]; });
+        const drawable = commands.filter((id) => registry.commands[id]);
         if (drawable.length === 0) {
             this.discard(existing);
             return;
@@ -6642,7 +6504,7 @@ var EditorToolbar = /** @class */ (function () {
         // focus ring mid-click, so what was rendered is stamped on the element and
         // compared first. The alignment is in the stamp too: it is a class on the
         // same element, and a change to it has to reach a pane already on screen.
-        var signature = __spreadArray([alignment], drawable, true).join('\n');
+        const signature = [alignment, ...drawable].join('\n');
         if (existing instanceof HTMLElement) {
             if (existing.dataset.signature === signature)
                 return;
@@ -6650,22 +6512,21 @@ var EditorToolbar = /** @class */ (function () {
         this.discard(existing);
         // Built through the host so it belongs to that pane's document - a popout
         // window has its own, and an element made here would be foreign to it.
-        var bar = host.createDiv({
-            cls: "".concat(TOOLBAR_CLASS, " is-align-").concat(alignment),
+        const bar = host.createDiv({
+            cls: `${TOOLBAR_CLASS} is-align-${alignment}`,
         });
         bar.dataset.signature = signature;
         this.fill(bar, leaf, view, drawable, registry);
         this.bars.add(bar);
         // createDiv appends; the bar belongs above the note, not below it.
         host.prepend(bar);
-    };
-    EditorToolbar.prototype.fill = function (bar, leaf, view, commands, registry) {
-        var _this = this;
-        commands.forEach(function (id) {
-            var command = registry.commands[id];
+    }
+    fill(bar, leaf, view, commands, registry) {
+        commands.forEach((id) => {
+            const command = registry.commands[id];
             if (!command)
                 return;
-            var button = bar.createEl('button', {
+            const button = bar.createEl('button', {
                 cls: 'mfa-toolbar-button clickable-icon',
             });
             button.setAttribute('aria-label', command.name);
@@ -6680,26 +6541,25 @@ var EditorToolbar = /** @class */ (function () {
             // the only place it can be stopped. Left alone the caret lands on the
             // button: the note stops receiving what is typed, and the next Space or
             // Enter activates the button again and undoes the command.
-            button.addEventListener('mousedown', function (event) { return event.preventDefault(); });
-            button.addEventListener('click', function () {
+            button.addEventListener('mousedown', (event) => event.preventDefault());
+            button.addEventListener('click', () => {
                 // Commands run against whatever Obsidian considers active, and with
                 // the focus steal suppressed a click no longer makes that this pane.
                 // With two notes side by side the button would otherwise write into
                 // the other one.
-                _this.plugin.app.workspace.setActiveLeaf(leaf, { focus: true });
+                this.plugin.app.workspace.setActiveLeaf(leaf, { focus: true });
                 view.editor.focus();
                 registry.executeCommandById(id);
             });
         });
-    };
-    return EditorToolbar;
-}());
+    }
+}
 
 /** The drag payload for reordering toolbar buttons. */
-var DRAG_PAYLOAD = 'toolbarButtonIndex';
+const DRAG_PAYLOAD = 'toolbarButtonIndex';
 /** Preselected in the saved-colours picker, so it never opens on black. */
-var DEFAULT_PICKER_COLOR = '#448aff';
-var DEFAULT_SETTINGS = {
+const DEFAULT_PICKER_COLOR = '#448aff';
+const DEFAULT_SETTINGS = {
     language: AUTO_LOCALE,
     sidePaneSideLeft: false,
     panelAlignment: DEFAULT_PANEL_ALIGNMENT,
@@ -6718,205 +6578,158 @@ var DEFAULT_SETTINGS = {
     toolbar: DEFAULT_TOOLBAR,
 };
 /** Order the section toggles appear in the settings tab. */
-var SECTION_ORDER = DEFAULT_SETTINGS.regionSettings.map(function (region) { return region.name; });
-var MarkdownAutocompletePlugin = /** @class */ (function (_super) {
-    __extends(MarkdownAutocompletePlugin, _super);
-    function MarkdownAutocompletePlugin() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.toggleSidePanelControlView = function () { return __awaiter(_this, void 0, void 0, function () {
-            var workspace, leaf;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        workspace = this.app.workspace;
-                        // Detaching first is what lets the ribbon icon move the panel to the other
-                        // side after the setting changes.
-                        workspace.detachLeavesOfType(SidePanelControlViewType);
-                        leaf = this.settings.sidePaneSideLeft
-                            ? workspace.getLeftLeaf(false)
-                            : workspace.getRightLeaf(false);
-                        if (!leaf) {
-                            new obsidian.Notice(t('panel.noLeaf'));
-                            return [2 /*return*/];
-                        }
-                        return [4 /*yield*/, leaf.setViewState({
-                                type: SidePanelControlViewType,
-                                active: true,
-                            })];
-                    case 1:
-                        _a.sent();
-                        return [4 /*yield*/, workspace.revealLeaf(leaf)];
-                    case 2:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
+const SECTION_ORDER = DEFAULT_SETTINGS.regionSettings.map((region) => region.name);
+class MarkdownAutocompletePlugin extends obsidian.Plugin {
+    constructor() {
+        super(...arguments);
+        this.toggleSidePanelControlView = async () => {
+            const { workspace } = this.app;
+            // Detaching first is what lets the ribbon icon move the panel to the other
+            // side after the setting changes.
+            workspace.detachLeavesOfType(SidePanelControlViewType);
+            // Both getters return null when the sidebar cannot host a leaf.
+            const leaf = this.settings.sidePaneSideLeft
+                ? workspace.getLeftLeaf(false)
+                : workspace.getRightLeaf(false);
+            if (!leaf) {
+                new obsidian.Notice(t('panel.noLeaf'));
+                return;
+            }
+            await leaf.setViewState({
+                type: SidePanelControlViewType,
+                active: true,
             });
-        }); };
-        return _this;
+            await workspace.revealLeaf(leaf);
+        };
     }
-    MarkdownAutocompletePlugin.prototype.onload = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.loadSettings()];
-                    case 1:
-                        _a.sent();
-                        // Has to happen before anything renders a label.
-                        setLocale(this.settings.language);
-                        addIcons();
-                        this.registerView(SidePanelControlViewType, function (leaf) { return new SidePanelControlView(leaf, _this); });
-                        this.addRibbonIcon('viewIcon', t('command.openPanel'), function () {
-                            _this.toggleSidePanelControlView();
-                        });
-                        this.addCommand({
-                            id: 'open-command-selector',
-                            name: t('command.openCommandSelector'),
-                            hotkeys: [{ modifiers: ['Alt'], key: 'q' }],
-                            editorCallback: function (editor, view) {
-                                CodeSuggestionModal.display(_this.app, editor);
-                            },
-                        });
-                        this.addCommand({
-                            id: 'open-callouts-selector',
-                            name: t('command.openCalloutsSelector'),
-                            hotkeys: [{ modifiers: ['Alt'], key: 'c' }],
-                            editorCallback: function (editor, view) {
-                                CalloutsSuggestionModal.display(_this.app, editor, _this.settings.calloutTitles);
-                            },
-                        });
-                        // The panel had only the ribbon icon, which is the one thing a keyboard
-                        // cannot reach.
-                        this.addCommand({
-                            id: 'toggle-side-panel',
-                            name: t('command.openPanel'),
-                            callback: function () {
-                                void _this.toggleSidePanelControlView();
-                            },
-                        });
-                        registerFormattingCommands(this, function () { return _this.settings.calloutTitles; });
-                        this.toolbar = new EditorToolbar(this, function () { return _this.settings.toolbar; });
-                        this.toolbar.start();
-                        this.addSettingTab(new SettingsTab(this.app, this));
-                        return [2 /*return*/];
-                }
-            });
+    async onload() {
+        await this.loadSettings();
+        // Has to happen before anything renders a label.
+        setLocale(this.settings.language);
+        addIcons();
+        this.registerView(SidePanelControlViewType, (leaf) => new SidePanelControlView(leaf, this));
+        this.addRibbonIcon('viewIcon', t('command.openPanel'), () => {
+            this.toggleSidePanelControlView();
         });
-    };
-    MarkdownAutocompletePlugin.prototype.onunload = function () {
-        var _a;
+        this.addCommand({
+            id: 'open-command-selector',
+            name: t('command.openCommandSelector'),
+            hotkeys: [{ modifiers: ['Alt'], key: 'q' }],
+            editorCallback: (editor, view) => {
+                CodeSuggestionModal.display(this.app, editor);
+            },
+        });
+        this.addCommand({
+            id: 'open-callouts-selector',
+            name: t('command.openCalloutsSelector'),
+            hotkeys: [{ modifiers: ['Alt'], key: 'c' }],
+            editorCallback: (editor, view) => {
+                CalloutsSuggestionModal.display(this.app, editor, this.settings.calloutTitles);
+            },
+        });
+        // The panel had only the ribbon icon, which is the one thing a keyboard
+        // cannot reach.
+        this.addCommand({
+            id: 'toggle-side-panel',
+            name: t('command.openPanel'),
+            callback: () => {
+                void this.toggleSidePanelControlView();
+            },
+        });
+        registerFormattingCommands(this, () => this.settings.calloutTitles);
+        this.toolbar = new EditorToolbar(this, () => this.settings.toolbar);
+        this.toolbar.start();
+        this.addSettingTab(new SettingsTab(this.app, this));
+    }
+    onunload() {
         // Views, commands, the ribbon icon and the settings tab are torn down by
         // Plugin itself. These two are the exception: addIcon is a module-level
         // function outside that lifecycle, and the toolbar lives in the markdown
         // view's own container rather than in anything the plugin owns.
         removeIcons();
-        (_a = this.toolbar) === null || _a === void 0 ? void 0 : _a.detachAll();
-    };
-    MarkdownAutocompletePlugin.prototype.loadSettings = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var _a, _b, _c, _d, storedRegions, known, stored;
-            var _this = this;
-            return __generator(this, function (_e) {
-                switch (_e.label) {
-                    case 0:
-                        // Merge into a fresh object - assigning onto DEFAULT_SETTINGS would
-                        // permanently overwrite the defaults for the rest of the session.
-                        _a = this;
-                        _c = (_b = Object).assign;
-                        _d = [{}, DEFAULT_SETTINGS];
-                        return [4 /*yield*/, this.loadData()];
-                    case 1:
-                        // Merge into a fresh object - assigning onto DEFAULT_SETTINGS would
-                        // permanently overwrite the defaults for the rest of the session.
-                        _a.settings = _c.apply(_b, _d.concat([_e.sent()]));
-                        storedRegions = Array.isArray(this.settings.regionSettings)
-                            ? this.settings.regionSettings
-                            : DEFAULT_SETTINGS.regionSettings;
-                        this.settings.regionSettings = storedRegions
-                            .filter(function (region) { return region && typeof region.name === 'string'; })
-                            // A section removed since the file was written has no renderer any more,
-                            // so keeping its entry would only leave a dead toggle behind.
-                            .filter(function (region) { return SECTION_ORDER.includes(region.name); })
-                            .map(function (region) { return ({
-                            name: region.name,
-                            active: region.active !== false,
-                            visible: region.visible === true,
-                        }); });
-                        known = this.settings.regionSettings.map(function (region) { return region.name; });
-                        DEFAULT_SETTINGS.regionSettings
-                            .filter(function (region) { return !known.includes(region.name); })
-                            .forEach(function (region) { return _this.settings.regionSettings.push(__assign({}, region)); });
-                        this.settings.savedColors = (Array.isArray(this.settings.savedColors)
-                            ? this.settings.savedColors
-                            : DEFAULT_SETTINGS.savedColors).filter(function (color) { return typeof color === 'string'; });
-                        this.settings.panelAlignment = normalisePanelAlignment(this.settings.panelAlignment);
-                        stored = this.settings.toolbar;
-                        this.settings.toolbar = {
-                            enabled: Boolean(stored && stored.enabled),
-                            commands: normaliseToolbarCommands(stored && stored.commands),
-                            alignment: normaliseToolbarAlignment(stored && stored.alignment),
-                        };
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    MarkdownAutocompletePlugin.prototype.saveSettings = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.saveData(this.settings)];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
+        this.toolbar?.detachAll();
+    }
+    async loadSettings() {
+        // Merge into a fresh object - assigning onto DEFAULT_SETTINGS would
+        // permanently overwrite the defaults for the rest of the session.
+        this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+        // The merge is shallow, so every array either comes straight off disk -
+        // where it may be anything at all - or IS the default array itself. Both
+        // need handling: a malformed value would throw here and take the whole
+        // plugin down with it, and mutating a default would poison it for the
+        // session. Rebuilding each one solves both at once.
+        const storedRegions = Array.isArray(this.settings.regionSettings)
+            ? this.settings.regionSettings
+            : DEFAULT_SETTINGS.regionSettings;
+        this.settings.regionSettings = storedRegions
+            .filter((region) => region && typeof region.name === 'string')
+            // A section removed since the file was written has no renderer any more,
+            // so keeping its entry would only leave a dead toggle behind.
+            .filter((region) => SECTION_ORDER.includes(region.name))
+            .map((region) => ({
+            name: region.name,
+            active: region.active !== false,
+            visible: region.visible === true,
+        }));
+        // A settings file written by an older version lacks sections added since.
+        const known = this.settings.regionSettings.map((region) => region.name);
+        DEFAULT_SETTINGS.regionSettings
+            .filter((region) => !known.includes(region.name))
+            .forEach((region) => this.settings.regionSettings.push({ ...region }));
+        this.settings.savedColors = (Array.isArray(this.settings.savedColors)
+            ? this.settings.savedColors
+            : DEFAULT_SETTINGS.savedColors).filter((color) => typeof color === 'string');
+        this.settings.panelAlignment = normalisePanelAlignment(this.settings.panelAlignment);
+        const stored = this.settings.toolbar;
+        this.settings.toolbar = {
+            enabled: Boolean(stored && stored.enabled),
+            commands: normaliseToolbarCommands(stored && stored.commands),
+            alignment: normaliseToolbarAlignment(stored && stored.alignment),
+        };
+    }
+    async saveSettings() {
+        await this.saveData(this.settings);
+    }
     /** Every open panel, so the alignment changes without reopening it. */
-    MarkdownAutocompletePlugin.prototype.applyPanelAlignment = function () {
+    applyPanelAlignment() {
         this.app.workspace
             .getLeavesOfType(SidePanelControlViewType)
-            .forEach(function (leaf) {
+            .forEach((leaf) => {
             // A leaf restored from the saved layout but not yet shown holds a
             // placeholder view; it draws with the current setting when revealed.
             if (leaf.view instanceof SidePanelControlView) {
                 leaf.view.applyAlignment();
             }
         });
-    };
-    return MarkdownAutocompletePlugin;
-}(obsidian.Plugin));
-var SettingsTab = /** @class */ (function (_super) {
-    __extends(SettingsTab, _super);
-    function SettingsTab(app, plugin) {
-        var _this = _super.call(this, app, plugin) || this;
+    }
+}
+class SettingsTab extends obsidian.PluginSettingTab {
+    constructor(app, plugin) {
+        super(app, plugin);
         /**
          * Text fields fire on every keystroke and each save rewrites data.json in
          * full, so a 200-character template meant 200 rewrites - and on a synced
          * vault, 200 chances at a conflict. Coalescing them costs nothing: the
          * in-memory settings are already up to date when the panel reads them.
          */
-        _this.saveSoon = obsidian.debounce(function () {
-            void _this.plugin.saveSettings();
+        this.saveSoon = obsidian.debounce(() => {
+            void this.plugin.saveSettings();
         }, 400, true);
-        _this.plugin = plugin;
-        return _this;
+        this.plugin = plugin;
     }
     /**
      * Obsidian calls this when the tab goes away. Whatever the debounce is still
      * holding has to be written now: quitting within 400 ms of the last
      * keystroke used to lose the setting that was just typed.
      */
-    SettingsTab.prototype.hide = function () {
+    hide() {
         this.saveSoon.run();
-    };
+    }
     // Must stay synchronous: other plugins (e.g. Settings Search) call display()
     // and read containerEl straight after, which sees nothing if this returns a
     // promise instead of a filled container.
-    SettingsTab.prototype.display = function () {
-        var _this = this;
-        var containerEl = this.containerEl;
+    display() {
+        let { containerEl } = this;
         containerEl.empty();
         // Scopes the stylesheet's overrides of Obsidian's own button classes to
         // this tab, so they cannot restyle the rest of the app.
@@ -6924,117 +6737,79 @@ var SettingsTab = /** @class */ (function (_super) {
         new obsidian.Setting(containerEl)
             .setName(t('settings.language.name'))
             .setDesc(t('settings.language.desc'))
-            .addDropdown(function (dropdown) {
+            .addDropdown((dropdown) => {
             dropdown.addOption(AUTO_LOCALE, t('settings.language.auto'));
-            SUPPORTED_LOCALES.forEach(function (code) {
-                return dropdown.addOption(code, LOCALE_NAMES[code]);
-            });
+            SUPPORTED_LOCALES.forEach((code) => dropdown.addOption(code, LOCALE_NAMES[code]));
             dropdown
-                .setValue(_this.plugin.settings.language)
-                .onChange(function (value) { return __awaiter(_this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            this.plugin.settings.language = value;
-                            setLocale(this.plugin.settings.language);
-                            return [4 /*yield*/, this.plugin.saveSettings()];
-                        case 1:
-                            _a.sent();
-                            // Redraw so the change is visible without reopening the tab.
-                            this.display();
-                            return [2 /*return*/];
-                    }
-                });
-            }); });
+                .setValue(this.plugin.settings.language)
+                .onChange(async (value) => {
+                this.plugin.settings.language = value;
+                setLocale(this.plugin.settings.language);
+                await this.plugin.saveSettings();
+                // Redraw so the change is visible without reopening the tab.
+                this.display();
+            });
         });
         new obsidian.Setting(containerEl)
             .setName(t('settings.sidePaneSide.name'))
             .setDesc(t('settings.sidePaneSide.desc'))
-            .addText(function (text) {
-            return text
-                .setPlaceholder(t('settings.sidePaneSide.placeholder'))
-                .setValue(_this.plugin.settings.sidePaneSideLeft ? 'left' : 'right')
-                .onChange(function (value) {
-                _this.plugin.settings.sidePaneSideLeft =
-                    value === 'left' ? true : false;
-                _this.saveSoon();
-            });
-        });
+            .addText((text) => text
+            .setPlaceholder(t('settings.sidePaneSide.placeholder'))
+            .setValue(this.plugin.settings.sidePaneSideLeft ? 'left' : 'right')
+            .onChange((value) => {
+            this.plugin.settings.sidePaneSideLeft =
+                value === 'left' ? true : false;
+            this.saveSoon();
+        }));
         new obsidian.Setting(containerEl)
             .setName(t('settings.panelAlign.name'))
             .setDesc(t('settings.panelAlign.desc'))
-            .addDropdown(function (dropdown) {
-            PANEL_ALIGNMENTS.forEach(function (option) {
-                return dropdown.addOption(option, t("settings.align.".concat(option)));
-            });
+            .addDropdown((dropdown) => {
+            PANEL_ALIGNMENTS.forEach((option) => dropdown.addOption(option, t(`settings.align.${option}`)));
             dropdown
-                .setValue(_this.plugin.settings.panelAlignment)
-                .onChange(function (value) { return __awaiter(_this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            this.plugin.settings.panelAlignment = normalisePanelAlignment(value);
-                            this.plugin.applyPanelAlignment();
-                            return [4 /*yield*/, this.plugin.saveSettings()];
-                        case 1:
-                            _a.sent();
-                            return [2 /*return*/];
-                    }
-                });
-            }); });
+                .setValue(this.plugin.settings.panelAlignment)
+                .onChange(async (value) => {
+                this.plugin.settings.panelAlignment = normalisePanelAlignment(value);
+                this.plugin.applyPanelAlignment();
+                await this.plugin.saveSettings();
+            });
         });
         new obsidian.Setting(containerEl)
             .setName(t('settings.calloutTitles.name'))
             .setDesc(t('settings.calloutTitles.desc'))
-            .addToggle(function (comp) {
+            .addToggle((comp) => {
             comp
-                .setValue(_this.plugin.settings.calloutTitles)
-                .onChange(function (value) { return __awaiter(_this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            this.plugin.settings.calloutTitles = value;
-                            return [4 /*yield*/, this.plugin.saveSettings()];
-                        case 1:
-                            _a.sent();
-                            return [2 /*return*/];
-                    }
-                });
-            }); });
+                .setValue(this.plugin.settings.calloutTitles)
+                .onChange(async (value) => {
+                this.plugin.settings.calloutTitles = value;
+                await this.plugin.saveSettings();
+            });
         });
-        var getRegion = function (name) {
-            return _this.plugin.settings.regionSettings.find(function (item) { return item.name === name; });
+        const getRegion = (name) => {
+            return this.plugin.settings.regionSettings.find((item) => item.name === name);
         };
         // One templated pair of strings instead of seven hand-written ones - which
         // is also how the old copy-paste mix-ups got fixed, where the Tables toggle
         // described the Greek Letters section.
-        SECTION_ORDER.forEach(function (regionName) {
-            var region = getRegion(regionName);
+        SECTION_ORDER.forEach((regionName) => {
+            const region = getRegion(regionName);
             // A settings file written by an older version may not list every region.
             if (!region)
                 return;
-            var section = sectionLabel(regionName);
+            const section = sectionLabel(regionName);
             new obsidian.Setting(containerEl)
-                .setName(t('settings.toggleSection.name', { section: section }))
-                .setDesc(t('settings.toggleSection.desc', { section: section }))
-                .addToggle(function (comp) {
-                comp.setValue(region.active).onChange(function (value) { return __awaiter(_this, void 0, void 0, function () {
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0:
-                                region.active = value;
-                                return [4 /*yield*/, this.plugin.saveSettings()];
-                            case 1:
-                                _a.sent();
-                                return [2 /*return*/];
-                        }
-                    });
-                }); });
+                .setName(t('settings.toggleSection.name', { section }))
+                .setDesc(t('settings.toggleSection.desc', { section }))
+                .addToggle((comp) => {
+                comp.setValue(region.active).onChange(async (value) => {
+                    region.active = value;
+                    await this.plugin.saveSettings();
+                });
             });
         });
         this.addSavedColorSettings(containerEl);
         this.addToolbarSettings(containerEl);
-    };
+    }
     /**
      * The toolbar above the note: whether to show it, and which buttons.
      *
@@ -7042,75 +6817,54 @@ var SettingsTab = /** @class */ (function (_super) {
      * the vault has registered - Obsidian's own commands and other plugins' as
      * readily as this one's.
      */
-    SettingsTab.prototype.addToolbarSettings = function (containerEl) {
-        var _this = this;
-        var toolbar = this.plugin.settings.toolbar;
+    addToolbarSettings(containerEl) {
+        const toolbar = this.plugin.settings.toolbar;
         new obsidian.Setting(containerEl)
             .setName(t('settings.toolbar.name'))
             .setDesc(t('settings.toolbar.desc'))
-            .addToggle(function (toggle) {
-            return toggle.setValue(toolbar.enabled).onChange(function (value) { return __awaiter(_this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            toolbar.enabled = value;
-                            return [4 /*yield*/, this.plugin.saveSettings()];
-                        case 1:
-                            _a.sent();
-                            this.plugin.toolbar.refresh();
-                            // Redraw so the button list appears or goes away with the toggle.
-                            this.display();
-                            return [2 /*return*/];
-                    }
-                });
-            }); });
-        });
+            .addToggle((toggle) => toggle.setValue(toolbar.enabled).onChange(async (value) => {
+            toolbar.enabled = value;
+            await this.plugin.saveSettings();
+            this.plugin.toolbar.refresh();
+            // Redraw so the button list appears or goes away with the toggle.
+            this.display();
+        }));
         if (!toolbar.enabled)
             return;
         new obsidian.Setting(containerEl)
             .setName(t('settings.toolbar.align.name'))
             .setDesc(t('settings.toolbar.align.desc'))
-            .addDropdown(function (dropdown) {
-            TOOLBAR_ALIGNMENTS.forEach(function (option) {
-                return dropdown.addOption(option, t("settings.align.".concat(option)));
+            .addDropdown((dropdown) => {
+            TOOLBAR_ALIGNMENTS.forEach((option) => dropdown.addOption(option, t(`settings.align.${option}`)));
+            dropdown.setValue(toolbar.alignment).onChange(async (value) => {
+                toolbar.alignment = normaliseToolbarAlignment(value);
+                await this.plugin.saveSettings();
+                this.plugin.toolbar.refresh();
             });
-            dropdown.setValue(toolbar.alignment).onChange(function (value) { return __awaiter(_this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            toolbar.alignment = normaliseToolbarAlignment(value);
-                            return [4 /*yield*/, this.plugin.saveSettings()];
-                        case 1:
-                            _a.sent();
-                            this.plugin.toolbar.refresh();
-                            return [2 /*return*/];
-                    }
-                });
-            }); });
         });
-        var registry = getCommandRegistry(this.plugin);
+        const registry = getCommandRegistry(this.plugin);
         // Redraw before the write, never after. Awaiting first leaves the old rows
         // on screen and clickable for the whole of it, and each of them closes over
         // the position it was rendered at - so a second click removes whatever has
         // since moved into that slot. Double-clicking a button's x used to delete
         // its neighbour. The saved-colour swatches already work this way.
-        var commit = function (commands) {
+        const commit = (commands) => {
             toolbar.commands = commands;
-            _this.display();
-            _this.plugin.toolbar.refresh();
-            void _this.plugin.saveSettings();
+            this.display();
+            this.plugin.toolbar.refresh();
+            void this.plugin.saveSettings();
         };
-        var list = containerEl.createDiv({ cls: 'mfa-toolbar-editor' });
+        const list = containerEl.createDiv({ cls: 'mfa-toolbar-editor' });
         if (toolbar.commands.length === 0) {
             list
                 .createDiv({ cls: 'mfa-toolbar-empty' })
                 .setText(t('settings.toolbar.empty'));
         }
-        toolbar.commands.forEach(function (id, index) {
-            var command = registry.commands[id];
-            var row = list.createDiv({ cls: 'mfa-toolbar-item' });
+        toolbar.commands.forEach((id, index) => {
+            const command = registry.commands[id];
+            const row = list.createDiv({ cls: 'mfa-toolbar-item' });
             row.draggable = true;
-            var icon = row.createSpan({ cls: 'mfa-toolbar-item-icon' });
+            const icon = row.createSpan({ cls: 'mfa-toolbar-item-icon' });
             if (command && command.icon) {
                 obsidian.setIcon(icon, command.icon);
             }
@@ -7119,33 +6873,31 @@ var SettingsTab = /** @class */ (function (_super) {
             // beats showing a blank row.
             row
                 .createSpan({ cls: 'mfa-toolbar-item-name' })
-                .setText(command ? command.name : t('settings.toolbar.unavailable', { id: id }));
+                .setText(command ? command.name : t('settings.toolbar.unavailable', { id }));
             if (!command)
                 row.addClass('is-unavailable');
-            var remove = row.createSpan({ cls: 'mfa-toolbar-item-remove' });
+            const remove = row.createSpan({ cls: 'mfa-toolbar-item-remove' });
             obsidian.setIcon(remove, 'x');
             remove.setAttribute('aria-label', t('settings.toolbar.remove'));
-            remove.onClickEvent(function () {
-                commit(toolbar.commands.filter(function (_, at) { return at !== index; }));
+            remove.onClickEvent(() => {
+                commit(toolbar.commands.filter((_, at) => at !== index));
             });
             // Named like the panel's own drag payload rather than with the mfa-
             // prefix, which throughout this project means a CSS class - and there is
             // a test that holds it to that.
-            row.ondragstart = function (event) {
-                var _a;
-                (_a = event.dataTransfer) === null || _a === void 0 ? void 0 : _a.setData(DRAG_PAYLOAD, String(index));
+            row.ondragstart = (event) => {
+                event.dataTransfer?.setData(DRAG_PAYLOAD, String(index));
             };
-            row.ondragover = function (event) {
+            row.ondragover = (event) => {
                 event.preventDefault();
             };
-            row.ondrop = function (event) {
-                var _a;
+            row.ondrop = (event) => {
                 event.preventDefault();
                 // Every row accepts any drag, so the payload has to be checked rather
                 // than trusted. getData returns '' for a format that was never set,
                 // and Number('') is 0 - a perfectly valid index, which used to send
                 // the first button wherever a stray text selection was dropped.
-                var payload = (_a = event.dataTransfer) === null || _a === void 0 ? void 0 : _a.getData(DRAG_PAYLOAD);
+                const payload = event.dataTransfer?.getData(DRAG_PAYLOAD);
                 if (!payload)
                     return;
                 commit(moveItem(toolbar.commands, Number(payload), index));
@@ -7154,16 +6906,14 @@ var SettingsTab = /** @class */ (function (_super) {
         new obsidian.Setting(containerEl)
             .setName(t('settings.toolbar.add'))
             .setDesc(t('settings.toolbar.addDesc', { max: String(MAX_TOOLBAR_COMMANDS) }))
-            .addButton(function (button) {
-            return button
-                .setButtonText(t('settings.toolbar.add'))
-                .setCta()
-                .setDisabled(toolbar.commands.length >= MAX_TOOLBAR_COMMANDS)
-                .onClick(function () {
-                CommandPickerModal.open(_this.app, allCommands(registry), toolbar.commands, t('settings.toolbar.pick'), function (id) { return void commit(__spreadArray(__spreadArray([], toolbar.commands, true), [id], false)); });
-            });
-        });
-    };
+            .addButton((button) => button
+            .setButtonText(t('settings.toolbar.add'))
+            .setCta()
+            .setDisabled(toolbar.commands.length >= MAX_TOOLBAR_COMMANDS)
+            .onClick(() => {
+            CommandPickerModal.open(this.app, allCommands(registry), toolbar.commands, t('settings.toolbar.pick'), (id) => void commit([...toolbar.commands, id]));
+        }));
+    }
     /**
      * Saved colours as swatches rather than a text field.
      *
@@ -7172,53 +6922,41 @@ var SettingsTab = /** @class */ (function (_super) {
      * a warning for malformed lines. Showing the actual colours removes all of
      * that: a swatch cannot be misspelled.
      */
-    SettingsTab.prototype.addSavedColorSettings = function (containerEl) {
-        var _this = this;
-        var colors = this.plugin.settings.savedColors;
-        var setting = new obsidian.Setting(containerEl)
+    addSavedColorSettings(containerEl) {
+        const colors = this.plugin.settings.savedColors;
+        const setting = new obsidian.Setting(containerEl)
             .setName(t('settings.savedColors.name'))
             .setDesc(t('settings.savedColors.desc'));
         // Built into the control area ahead of the picker rather than left loose
         // under the description, where they read as leftover decoration instead of
         // as a control.
-        var swatches = setting.controlEl.createDiv({ cls: 'mfa-color-swatches' });
+        const swatches = setting.controlEl.createDiv({ cls: 'mfa-color-swatches' });
         if (colors.length === 0) {
             swatches.createSpan({ cls: 'mfa-color-empty' }).setText(t('settings.savedColors.empty'));
         }
-        colors.forEach(function (color, index) {
-            var swatch = swatches.createDiv({
+        colors.forEach((color, index) => {
+            const swatch = swatches.createDiv({
                 cls: 'mfa-color-icon mfa-removable',
             });
             swatch.style.setProperty('--mfa-swatch', color);
             swatch.setAttribute('aria-label', color);
-            swatch.title = "".concat(color, " - ").concat(t('settings.savedColors.removeHint'));
+            swatch.title = `${color} - ${t('settings.savedColors.removeHint')}`;
             // Redraw before awaiting the write: the old DOM stays live during the
             // await, and a second click would still carry its stale index.
-            swatch.onClickEvent(function () {
+            swatch.onClickEvent(() => {
                 colors.splice(index, 1);
-                _this.display();
-                void _this.plugin.saveSettings();
+                this.display();
+                void this.plugin.saveSettings();
             });
         });
-        setting.addColorPicker(function (picker) {
-            return picker.setValue(DEFAULT_PICKER_COLOR).onChange(function (value) { return __awaiter(_this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            if (colors.includes(value))
-                                return [2 /*return*/];
-                            colors.push(value);
-                            return [4 /*yield*/, this.plugin.saveSettings()];
-                        case 1:
-                            _a.sent();
-                            this.display();
-                            return [2 /*return*/];
-                    }
-                });
-            }); });
-        });
-    };
-    return SettingsTab;
-}(obsidian.PluginSettingTab));
+        setting.addColorPicker((picker) => picker.setValue(DEFAULT_PICKER_COLOR).onChange(async (value) => {
+            if (colors.includes(value))
+                return;
+            colors.push(value);
+            await this.plugin.saveSettings();
+            this.display();
+        }));
+    }
+}
 
 module.exports = MarkdownAutocompletePlugin;

@@ -2,7 +2,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "module": "ESNext",
-    "target": "es5",
+    // What Obsidian's sample plugin builds for, and what Obsidian now asks of
+    // plugins (#96). ES5 rewrote every class into a function that extends its
+    // base with `_super.call(this)`, which a native class constructor refuses -
+    // so the plugin would not even construct once Obsidian's own classes are
+    // native.
+    "target": "ES2021",
     "allowJs": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
@@ -10,12 +15,7 @@
     // Third-party declaration files are not ours to fix.
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "lib": [
-      "dom",
-      "es5",
-      "scripthost",
-      "es2015"
-    ]
+    "lib": ["DOM", "ES2021"]
   },
   "include": [
     "**/*.ts"

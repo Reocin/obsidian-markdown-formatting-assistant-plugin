@@ -1,5 +1,10 @@
 # Changelog
 
+- Version: 0.10.1
+
+  - **Changed**
+    - Built for ES2021 instead of ES5, as Obsidian now asks of plugins ([#96](https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin/issues/96)). ES5 rewrote the plugin's classes into functions that extend Obsidian's with a call the language forbids on a native class, so the plugin would have failed to load once Obsidian's own classes are native. Nothing you see changes; the plugin file is 19 KB smaller.
+
 - Version: 0.10.0
 
   - **Added**
