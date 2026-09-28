@@ -37,10 +37,21 @@ const typescriptUnder = (dir: string): Array<string> =>
 
 const sources = typescriptUnder('src');
 
-const files = [...sources, 'README.md', 'manifest.json', 'package.json'];
+// Every language's README, not only the English one: they carry the same
+// links, and a translation is the likeliest place for one to be missed.
+const readmes = fs
+  .readdirSync(ROOT)
+  .filter((name) => /^README(\.[a-z]{2})?\.md$/.test(name));
+
+const files = [...sources, ...readmes, 'manifest.json', 'package.json'];
 
 test('every link to the repository names the one the catalogue installs from', () => {
-  const pattern = new RegExp(`github\\.com[/:]([\\w-]+)/${REPOSITORY}`, 'g');
+  // The badges name the repository too, through shields.io, and would go on
+  // quietly showing the old one's numbers after a transfer.
+  const pattern = new RegExp(
+    `(?:github\\.com[/:]|shields\\.io/github/(?:[\\w-]+/)+?)([\\w-]+)/${REPOSITORY}`,
+    'g',
+  );
   const elsewhere: Array<string> = [];
 
   for (const file of files) {
@@ -50,6 +61,26 @@ test('every link to the repository names the one the catalogue installs from', (
   }
 
   assert.deepEqual(elsewhere, []);
+});
+
+test('there is a README for every interface language, and each links to all of them', () => {
+  // The row of languages at the top is copied into every file, so a language
+  // added to one and forgotten in another is easy - and invisible until a
+  // reader clicks it.
+  const locales = fs
+    .readdirSync(path.join(ROOT, 'src', 'locales'))
+    .filter((name) => name.endsWith('.ts') && name !== 'index.ts');
+
+  assert.equal(readmes.length, locales.length, 'a language has no README');
+
+  for (const file of readmes) {
+    const linked = new Set(
+      [...read(file).matchAll(/href="(README(?:\.[a-z]{2})?\.md)"/g)].map(
+        ([, target]) => target,
+      ),
+    );
+    assert.deepEqual([...linked].sort(), [...readmes].sort(), file);
+  }
 });
 
 test('the panel links to the repository at all', () => {
