@@ -1,6 +1,42 @@
+<div align="center">
+
+<img src="assets/logo.svg" width="112" alt="Markdown Formatting Assistant">
+
 # Markdown Formatting Assistant
 
-An Obsidian plugin that puts formatting one click or one keystroke away: a side panel of buttons for Markdown, tables, HTML, LaTeX, Greek letters, callouts and colours, a search window over all of them, a hotkey for every action, and — if you want one — a toolbar of your own above the note.
+**Formatting one click or one keystroke away**<br>
+a side panel, a search window and a toolbar of your own — for Markdown, HTML, LaTeX, tables and callouts
+
+<a href="README.md"><img src="https://img.shields.io/badge/-English-7c3aed?style=flat-square" alt="English"></a>
+<a href="README.be.md"><img src="https://img.shields.io/badge/-%D0%91%D0%B5%D0%BB%D0%B0%D1%80%D1%83%D1%81%D0%BA%D0%B0%D1%8F-2a2d36?style=flat-square" alt="Беларуская"></a>
+<a href="README.de.md"><img src="https://img.shields.io/badge/-Deutsch-2a2d36?style=flat-square" alt="Deutsch"></a>
+<a href="README.es.md"><img src="https://img.shields.io/badge/-Espa%C3%B1ol-2a2d36?style=flat-square" alt="Español"></a>
+<a href="README.fr.md"><img src="https://img.shields.io/badge/-Fran%C3%A7ais-2a2d36?style=flat-square" alt="Français"></a>
+<a href="README.it.md"><img src="https://img.shields.io/badge/-Italiano-2a2d36?style=flat-square" alt="Italiano"></a>
+<a href="README.ja.md"><img src="https://img.shields.io/badge/-%E6%97%A5%E6%9C%AC%E8%AA%9E-2a2d36?style=flat-square" alt="日本語"></a>
+<a href="README.ko.md"><img src="https://img.shields.io/badge/-%ED%95%9C%EA%B5%AD%EC%96%B4-2a2d36?style=flat-square" alt="한국어"></a>
+<a href="README.pt.md"><img src="https://img.shields.io/badge/-Portugu%C3%AAs-2a2d36?style=flat-square" alt="Português"></a>
+<a href="README.ru.md"><img src="https://img.shields.io/badge/-%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-2a2d36?style=flat-square" alt="Русский"></a>
+<a href="README.uk.md"><img src="https://img.shields.io/badge/-%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B0-2a2d36?style=flat-square" alt="Українська"></a>
+<a href="README.zh.md"><img src="https://img.shields.io/badge/-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-2a2d36?style=flat-square" alt="简体中文"></a>
+
+<a href="https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin/releases/latest"><img src="https://img.shields.io/github/v/release/Reocin/obsidian-markdown-formatting-assistant-plugin?style=for-the-badge&label=version&labelColor=1c1e25&color=8cc3fc" alt="version"></a>
+<a href="https://community.obsidian.md/plugins/obsidian-markdown-formatting-assistant-plugin"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fobsidianmd%2Fobsidian-releases%2Fmaster%2Fcommunity-plugin-stats.json&query=%24%5B%22obsidian-markdown-formatting-assistant-plugin%22%5D.downloads&label=downloads&style=for-the-badge&labelColor=1c1e25&color=a78bfa&logo=obsidian&logoColor=white" alt="downloads"></a>
+<img src="https://img.shields.io/badge/obsidian-1.0%2B-b7b5fc?style=for-the-badge&labelColor=1c1e25" alt="Obsidian 1.0+">
+<a href="LICENSE"><img src="https://img.shields.io/github/license/Reocin/obsidian-markdown-formatting-assistant-plugin?style=for-the-badge&label=license&labelColor=1c1e25&color=e4b572" alt="license"></a>
+<a href="https://github.com/Reocin/obsidian-markdown-formatting-assistant-plugin/stargazers"><img src="https://img.shields.io/github/stars/Reocin/obsidian-markdown-formatting-assistant-plugin?style=for-the-badge&label=stars&labelColor=1c1e25&color=f8a49d" alt="stars"></a>
+
+<br>
+
+<img src="assets/overview.png" alt="Obsidian with the side panel open on the right and the toolbar above the note">
+
+<br>
+
+<a href="https://community.obsidian.md/plugins/obsidian-markdown-formatting-assistant-plugin"><img src="https://img.shields.io/badge/Install%20in%20Obsidian-7c3aed?style=for-the-badge&logo=obsidian&logoColor=white" height="36" alt="Install in Obsidian"></a>
+
+<sub>Obsidian 1.0 or newer · desktop and mobile · 12 interface languages · free and open source</sub>
+
+</div>
 
 - **Side panel** with seven sections you can reorder, fold and switch off, its buttons lined up left, centre or right.
 - **`Alt+Q`** searches about 160 snippets by name, in your language or in English. **`Alt+C`** does the same for the 26 callouts.
@@ -9,8 +45,6 @@ An Obsidian plugin that puts formatting one click or one keystroke away: a side 
 - **Colour picker** that colours selected text in one click, and remembers recent and saved colours.
 - **12 languages**, following Obsidian's own by default.
 - **Works from the keyboard** and with screen readers.
-
-![Obsidian with the side panel open on the right and the toolbar above the note](assets/overview.png)
 
 Written by [Reocin](https://github.com/Reocin), who handed maintenance over in 2026; versions from 0.5.0 on are maintained by Mark Karte and Claude, in this same repository.
 
@@ -76,7 +110,7 @@ Two things that are not tags but are written as HTML because Obsidian has no Mar
 
 26 callout types, each inserting the corresponding Obsidian callout block.
 
-The heading is written in your interface language, so a note reads `> [!note] Информация` rather than showing Obsidian's English default. The keyword inside the brackets always stays English — that is what Obsidian matches on to pick the icon and the colour. Turn `Write callout headings` off if you would rather type the heading yourself.
+The heading is written in your interface language, so a note reads `> [!note] Заметка` rather than showing Obsidian's English default. The keyword inside the brackets always stays English — that is what Obsidian matches on to pick the icon and the colour. Turn `Write callout headings` off if you would rather type the heading yourself.
 
 Selected text becomes the body of the callout, and a selection spanning several paragraphs stays inside it: the quote marker is repeated on every line.
 
